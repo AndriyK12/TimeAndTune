@@ -24,7 +24,7 @@ Anyone who wants to improve their time management skills
 
 Call to action:
 
-Download the Time Manager app today and start managing your time more efficiently!
+Download the Time & Tune app today and start managing your time more efficiently!
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 UA
@@ -54,4 +54,4 @@ Target audience:
 
 Call to action:
 
-Завантажте додаток Time Manager сьогодні та почніть ефективніше керувати своїм часом!
+Завантажте додаток Time & Tune сьогодні та почніть ефективніше керувати своїм часом!
