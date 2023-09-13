@@ -1,4 +1,4 @@
-# TimeAndTune
+# Time&Tune
 
 Time & Tune is an app that helps users manage their time effectively. It provides a wide range of features including time tracking, goal setting, and focusing.
 
