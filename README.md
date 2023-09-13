@@ -6,7 +6,7 @@ Features:
 
 * Create custom tasks and track their progress
 * Scheduling activities for a specific period of time, reminders for breaks and time expiration
-* Drag-and-drop graphs that show progress on tasks and visualize what time was spent on
+* Graphs that show progress on tasks and visualize what time was spent on
 * Focus mode, which helps users stay focused by blocking background notifications and tracking the time spent in this mode
 * A list of tasks for the day, month, and year, with reminders and the ability to customize the execution time
 
