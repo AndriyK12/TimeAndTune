@@ -22,7 +22,7 @@ CREATE TABLE task (
 );
 
 -- Створення таблиці sounds
-CREATE TABLE sounds (
+CREATE TABLE sound(
     sound_id SERIAL PRIMARY KEY,
     sound_name VARCHAR(255) NOT NULL,
     file_path VARCHAR(255)
