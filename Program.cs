@@ -5,55 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.Entity.Core.Metadata.Edm;
 using Npgsql;
+using Faker;
+using ConsoleTableExt;
+
 
 namespace T_and_T_ADO_usage
 {
 
     internal class Program
     {
-        static string GenerateRandomString(int length)
+        static int GetRandomUserId(NpgsqlConnection conn)
         {
-            const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            StringBuilder stringBuilder = new StringBuilder();
-            Random random = new Random();
-
-            for (int i = 0; i < length; i++)
+            string query = "SELECT userId FROM \"user\" ORDER BY random() LIMIT 1";
+            using (var cmd = new NpgsqlCommand(query, conn))
             {
-                int index = random.Next(0, characters.Length);
-                stringBuilder.Append(characters[index]);
+                return (int)cmd.ExecuteScalar();
             }
-
-            return stringBuilder.ToString();
         }
-        static int GenerateRandomInt(int min=0, int max=1000)
+        static void PrintDataTableInColumn(DataTable table)
         {
-            Random random = new Random();
-            return random.Next(min, max + 1);
-        }
-        public static void AddUser(NpgsqlConnection connection, string username, string email, int coins_amount, string password)
-        {
-            NpgsqlCommand command = new NpgsqlCommand();
-            command.Connection = connection;
-            command.CommandText = "INSERT INTO public.\"user\" (username, email, coins_amount, password) VALUES (@username, @email, @coins_amount, @password)";
-            command.Parameters.AddWithValue("@username", username);
-            command.Parameters.AddWithValue("@email", email);
-            command.Parameters.AddWithValue("@coins_amount", coins_amount);
-            command.Parameters.AddWithValue("@password", password);
-            command.ExecuteNonQuery();
-        }
-        public static void FillUserWithRandomInfo(NpgsqlConnection connection, int number_of_rows) {
-            string username;
-            string email;
-            int coins_amount;
-            string password;
-            for (int i = 0; i< number_of_rows; i++)
+            foreach (DataRow row in table.Rows)
             {
-                username = GenerateRandomString(5);
-                email = $"mail{GenerateRandomInt(0, 100000000)+i}"+"@gmail.com";
-                coins_amount = GenerateRandomInt();
-                password = GenerateRandomString(8);
-                AddUser(connection, username, email, coins_amount, password);
+                foreach (DataColumn column in table.Columns)
+                {
+                    Console.WriteLine($"{column.ColumnName}: {row[column]}");
+                    Console.WriteLine("---------------------------------------------------------------------------------------");
+                }
+                Console.WriteLine();
             }
         }
         static void Main(string[] args)
@@ -62,32 +42,84 @@ namespace T_and_T_ADO_usage
 
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
-                try
+                connection.Open();
+                Console.WriteLine("Successfully connected to PostgreSQL.");
+                for (int i = 0; i < 30; i++)
                 {
-                    connection.Open();
-                    Console.WriteLine("Successfully connected to PostgreSQL.");
-                    //AddUser(connection, "test2", "test2@email.com", 10, "228822");
-                    FillUserWithRandomInfo(connection,30);
-
-                    NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM public.\"user\"", connection);
-
-                    NpgsqlDataReader reader = command.ExecuteReader();
-                    Console.WriteLine("Info about users :");
-
-                    while (reader.Read())
+                    using (NpgsqlCommand command = new NpgsqlCommand())
                     {
-                        Console.WriteLine($"ID: {reader["user_id"]}");
-                        Console.WriteLine($"username: {reader["username"]}");
-                        Console.WriteLine($"email: {reader["email"]}");
-                        Console.WriteLine($"coins_amount: {reader["coins_amount"]}");
-                        Console.WriteLine($"password: {reader["password"]}");
+                        command.Connection = connection;
+                        command.CommandText = "INSERT INTO \"user\" (username, email, coinsAmount, \"password\", passwordSalt) VALUES (@username, @email, @coinsAmount, @password, @passwordSalt)";
+                        command.Parameters.AddWithValue("username", Faker.Internet.UserName());
+                        command.Parameters.AddWithValue("email", Faker.Internet.Email());
+                        command.Parameters.AddWithValue("coinsAmount", Faker.RandomNumber.Next(0, 1000));
+                        command.Parameters.AddWithValue("password", BCrypt.Net.BCrypt.HashPassword(Faker.Lorem.Sentence()));
+                        command.Parameters.AddWithValue("passwordSalt", Faker.Lorem.Sentence());
+                        command.ExecuteNonQuery();
                     }
-
                 }
-                catch (Exception ex)
+                for (int i = 0; i < 30; i++)
                 {
-                    Console.WriteLine("Error: " + ex.Message);
+                    using (NpgsqlCommand command = new NpgsqlCommand())
+                    {
+                        Random rand = new Random();
+                        command.Connection = connection;
+                        command.CommandText = "INSERT INTO task (\"name\", description, dateOfCreation, expectedFinishTime, finishtime, priority, completed, executiontime, userIdRef) VALUES (@name, @description, @dateOfCreation, @expectedFinishTime, @finishtime, @priority, @completed, @executiontime, @userIdRef)";
+                        command.Parameters.AddWithValue("name", Faker.Lorem.Sentence());
+                        command.Parameters.AddWithValue("description", Faker.Lorem.Paragraph());
+                        command.Parameters.AddWithValue("dateOfCreation", Faker.DateTimeFaker.DateTime());
+                        command.Parameters.AddWithValue("expectedFinishTime", Faker.DateTimeFaker.DateTime());
+                        command.Parameters.AddWithValue("finishtime", Faker.DateTimeFaker.DateTime());
+                        command.Parameters.AddWithValue("priority", Faker.RandomNumber.Next(1, 3));
+                        command.Parameters.AddWithValue("completed", Faker.Boolean.Random());
+                        command.Parameters.AddWithValue("executiontime", TimeSpan.FromMilliseconds(rand.Next(0, int.MaxValue)));
+                        command.Parameters.AddWithValue("userIdRef", GetRandomUserId(connection));
+                        command.ExecuteNonQuery();
+                    }
                 }
+                for (int i = 0; i < 30; i++)
+                {
+                    using (NpgsqlCommand command = new NpgsqlCommand())
+                    {
+                        command.Connection = connection;
+                        command.CommandText = "INSERT INTO sound (soundName, audioFilePath, photoFilePath) VALUES (@soundName, @audioFilePath, @photoFilePath)";
+                        command.Parameters.AddWithValue("soundName", Faker.Lorem.Sentence());
+                        command.Parameters.AddWithValue("audioFilePath", "audio/" + Faker.Lorem.Sentence());
+                        command.Parameters.AddWithValue("photoFilePath", "photos/" + Faker.Lorem.Sentence());
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                string userQuery = "SELECT * FROM \"user\"";
+                using (NpgsqlDataAdapter userAdapter = new NpgsqlDataAdapter(userQuery, connection))
+                {
+                    DataTable userTable = new DataTable();
+                    userAdapter.Fill(userTable);
+
+                    Console.WriteLine("Data from 'user' table:");
+                    PrintDataTableInColumn(userTable);
+                }
+
+                string taskQuery = "SELECT * FROM task";
+                using (NpgsqlDataAdapter taskAdapter = new NpgsqlDataAdapter(taskQuery, connection))
+                {
+                    DataTable taskTable = new DataTable();
+                    taskAdapter.Fill(taskTable);
+
+                    Console.WriteLine("Data from 'task' table:");
+                    PrintDataTableInColumn(taskTable);
+                }
+
+                string soundQuery = "SELECT * FROM sound";
+                using (NpgsqlDataAdapter soundAdapter = new NpgsqlDataAdapter(soundQuery, connection))
+                {
+                    DataTable soundTable = new DataTable();
+                    soundAdapter.Fill(soundTable);
+
+                    Console.WriteLine("Data from 'sound' table:");
+                    PrintDataTableInColumn(soundTable);
+                }
+
                 connection.Close();
                 Console.WriteLine("Connection Closed.");
             }
