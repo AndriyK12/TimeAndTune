@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TimeAndTune"
         mc:Ignorable="d" 
         WindowState="Maximized"
-        Height="1117" Width="1728"
+        Height="1080" Width="1920"
         Background="black"
         Title="MainWindow">
     <Grid>
