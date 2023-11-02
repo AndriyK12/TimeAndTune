@@ -10,6 +10,7 @@
       Title="HomePage">
     <Grid>
         <Button
+            Visibility="Visible"
             Margin="90,53,0,0"
             Width="90" Height="90"
             VerticalAlignment="Top"
@@ -21,41 +22,51 @@
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Style>
             </Button.Style>
-            <Image Source="../pics/menu_icon.png"
-               Width="90" Height="90" />
+            <Image Source="/Pages/menu_icon.png"
+               Width="90" Height="90" 
+               Visibility="Visible"/>
         </Button>
-        <Rectangle RadiusX="12"
-                   RadiusY="12"
-                   Margin="0,60,0,0"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Center"
-                   Width="282"
-                   Height="84"
-                   Stroke="#5FA6E7" 
-                   StrokeThickness="6"
-                   />
-        <TextBlock Text="Home"
-                   Margin="906,77,906,953"
-                   Foreground="White"
-                   FontSize="37"
-                   />
+        <Rectangle 
+            Grid.Row="0" Grid.Column="0" Panel.ZIndex="1"
+            Fill="Transparent"
+            RadiusX="12"
+            RadiusY="12"
+            Margin="0,60,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="282"
+            Height="84"
+            Stroke="#5FA6E7" 
+            StrokeThickness="6"
+            />
+        <TextBlock 
+            Grid.Row="0" Grid.Column="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            Text="Home"
+            Margin="906,77,906,953"
+            Foreground="White"
+            FontSize="37"
+            />
         <Button
+            Visibility="Visible"
             Background="Transparent"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Right"
             Height="100"
             Width="100"
-            Margin="1730,60,0,0"
+            Margin="0,60,90,0"
             BorderThickness="0">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Style>
             </Button.Style>
-            <Image HorizontalAlignment="Left"
+            <Image HorizontalAlignment="Right"
                Height="100"
                Width="100" 
-               Source="/pics/user_image.png"/>
+               Source="/Pages/user_image.png"
+               Visibility="Visible"
+            />
         </Button>
     </Grid>
 </Page>

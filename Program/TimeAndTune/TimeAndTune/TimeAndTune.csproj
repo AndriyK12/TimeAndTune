@@ -7,4 +7,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\menu_icon.png" />
+    <None Remove="Pages\user_image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\menu_icon.png" />
+    <Resource Include="Pages\user_image.png" />
+  </ItemGroup>
+
 </Project>
