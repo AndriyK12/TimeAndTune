@@ -9,6 +9,11 @@
       Background="#25232A"
       Title="HomePage">
     <Grid>
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+        </Grid.LayoutTransform>
+
+
         <Button
             Margin="90,53,0,0"
             Width="90" Height="90"
@@ -70,7 +75,7 @@
             Fill="#7A7373"
             RadiusX="32"
             RadiusY="32"
-            Margin="259,237,0,0"
+            Margin="520,237,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Width="160"
@@ -80,7 +85,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Text="TODAY"
-            Margin="283,233,0,0"
+            Margin="545,233,0,0"
             Foreground="White"
             FontSize="37"
             />
@@ -88,7 +93,7 @@
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
-            Margin="450,237,0,0"
+            Margin="750,237,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Width="160"
@@ -98,7 +103,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Text="WEEK"
-            Margin="483,233,0,0"
+            Margin="783,233,0,0"
             Foreground="White"
             FontSize="37"
             />
@@ -106,7 +111,7 @@
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
-            Margin="638,237,0,0"
+            Margin="978,237,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Width="160"
@@ -116,14 +121,14 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Text="MONTH"
-            Margin="650,233,0,0"
+            Margin="990,233,0,0"
             Foreground="White"
             FontSize="37" RenderTransformOrigin="0.5,0.5"
             >
         </TextBlock>
         <Grid
             Width="1200" 
-            Margin="283,381,245,230"
+            Margin="283,381,245,85"
             >
             <Rectangle 
             Fill="#454545"
@@ -152,11 +157,51 @@
                 </RadioButton.Template>
 
             </RadioButton>
+            <TextBlock 
+                Text="Name of the specific task"
+                Margin="90,35,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" />
+            <Line 
+                Y2="65" 
+                Margin="646,35,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <TextBlock
+                Text="24.08.2023" 
+                Margin="670,35,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                />
+            <Line 
+                Y2="65" 
+                Margin="920,35,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <Ellipse
+                Width="46"
+                Height="45"
+                Fill="#00A3FF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Margin="1017,50,0,0"/>
             <Rectangle 
                 Fill="#454545"
                 RadiusX="12"
                 RadiusY="12"
-                Margin="10,164,0,0"
+                Margin="10,168,0,0"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
                 Width="1100"
@@ -179,6 +224,46 @@
                 </RadioButton.Template>
 
             </RadioButton>
+            <TextBlock 
+                Text="Name of the specific task"
+                Margin="90,189,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" />
+            <Line 
+                Y2="65" 
+                Margin="646,189,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <TextBlock
+                Text="24.08.2023" 
+                Margin="670,189,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                />
+            <Line 
+                Y2="65" 
+                Margin="920,189,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <Ellipse
+                Width="45"
+                Height="44"
+                Fill="#001AFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Margin="1017,206,0,0"/>
             <Rectangle 
                 Fill="#454545"
                 RadiusX="12"
@@ -206,6 +291,113 @@
                 </RadioButton.Template>
 
             </RadioButton>
+            <TextBlock 
+                Text="Name of the specific task"
+                Margin="90,345,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" />
+            <Line 
+                Y2="65" 
+                Margin="646,345,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <TextBlock
+                Text="24.08.2023" 
+                Margin="670,345,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                />
+            <Line 
+                Y2="65" 
+                Margin="920,345,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <Ellipse
+                Width="45"
+                Height="45"
+                Fill="#00A3FF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Margin="1017,354,0,0"/>
+            <Rectangle 
+                Fill="#454545"
+                RadiusX="12"
+                RadiusY="12"
+                Margin="10,476,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="1100"
+                Height="120"
+            />
+            <RadioButton
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="50"
+                Height="50" 
+                Margin="27,507,0,0"
+                >
+                <RadioButton.Template>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.Template>
+
+            </RadioButton>
+            <TextBlock 
+                Text="Name of the specific task"
+                Margin="90,500,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" />
+            <Line 
+                Y2="65" 
+                Margin="646,500,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <TextBlock
+                Text="24.08.2023" 
+                Margin="670,500,0,0"
+                Foreground="#FFFFFF"
+                FontSize="48"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                />
+            <Line 
+                Y2="65" 
+                Margin="920,500,0,0" 
+                Stroke="#FFFFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Width="65"
+                StrokeThickness="5"
+                />
+            <Ellipse
+                Width="45"
+                Height="44"
+                Fill="#D0FFFF"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left" 
+                Margin="1017,521,0,0"/>
         </Grid>
         <Ellipse
             VerticalAlignment="Bottom"
@@ -235,6 +427,23 @@
                Width="100"
                Source="/Pages/plus_image.png"/>
         </Button>
-
+        <Rectangle
+            RadiusX="8"
+            RadiusY="8"
+            Margin="1579,381,0,0"
+            Fill="#D9D9D9"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="17"
+            Height="605" />
+        <Rectangle
+            RadiusX="8" 
+            RadiusY="8" 
+            Margin="1581,382,0,0"
+            Fill="#3F3E3E"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="12"
+            Height="182" />
     </Grid>
 </Page>
