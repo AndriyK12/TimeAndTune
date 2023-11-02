@@ -21,7 +21,7 @@
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Style>
             </Button.Style>
-            <Image Source="/menu_icon.png"
+            <Image Source="../pics/menu_icon.png"
                Width="90" Height="90" />
         </Button>
         <Rectangle RadiusX="12"
@@ -35,7 +35,7 @@
                    StrokeThickness="6"
                    />
         <TextBlock Text="Home"
-                   Margin="906,79,906,951"
+                   Margin="906,77,906,953"
                    Foreground="White"
                    FontSize="37"
                    />
