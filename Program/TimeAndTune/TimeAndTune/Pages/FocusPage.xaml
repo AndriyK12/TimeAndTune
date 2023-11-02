@@ -10,6 +10,10 @@
       Title="FocusPage">
 
     <Grid>
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+        </Grid.LayoutTransform>
+
         <Button
             Visibility="Visible"
             Margin="90,53,0,0"
@@ -133,7 +137,7 @@
                     </Style>
                 </Button.Style>
                 <Image 
-                    Source="/Pages/SoundsPhotos/cafe_sound.png"
+                    Source="/Pages/cafe_sound.png"
                     Width="550" Height="200" 
                     Visibility="Visible"/>
             </Button>
@@ -182,10 +186,9 @@
                         <Setter Property="IsHitTestVisible" Value="False" />
                     </Style>
                 </Button.Style>
-                <Image 
-                    Source="/Pages/camp_fire_sound.png"
+                <Image
                     Width="550" Height="200" 
-                    Visibility="Visible"/>
+                    Visibility="Visible" Source="/Pages/camp_fire_sound.png"/>
             </Button>
             <TextBlock 
                 Grid.Row="0" Panel.ZIndex="2"
@@ -292,9 +295,9 @@
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Style>
             </Button.Style>
-            <Image Source="/Pages/mute_logo.png"
+            <Image
             Width="100" Height="100" 
-            Visibility="Visible"/>
+            Visibility="Visible" Source="/Pages/mute_logo.png"/>
         </Button>
         <TextBlock 
             Grid.Row="0" Panel.ZIndex="2"
