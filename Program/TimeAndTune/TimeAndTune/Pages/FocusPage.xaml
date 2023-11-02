@@ -8,8 +8,11 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Background="#25232A"
       Title="FocusPage">
-
+    
     <Grid>
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+        </Grid.LayoutTransform>
         <Button
             Visibility="Visible"
             Margin="90,53,0,0"
@@ -133,7 +136,7 @@
                     </Style>
                 </Button.Style>
                 <Image 
-                    Source="/Pages/SoundsPhotos/cafe_sound.png"
+                    Source="/Pages/cafe_sound.png"
                     Width="550" Height="200" 
                     Visibility="Visible"/>
             </Button>
@@ -183,7 +186,7 @@
                     </Style>
                 </Button.Style>
                 <Image 
-                    Source="/Pages/camp_fire_sound.png"
+                    Source="/Pages/fireplace_sound.png"
                     Width="550" Height="200" 
                     Visibility="Visible"/>
             </Button>

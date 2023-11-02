@@ -8,17 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\cafe_sound.png" />
+    <None Remove="Pages\camp_fire_sound.png" />
+    <None Remove="Pages\fireplace_sound.png" />
     <None Remove="Pages\menu_icon.png" />
+    <None Remove="Pages\mute_logo.png" />
+    <None Remove="Pages\night_crickets_sound.png" />
     <None Remove="Pages\play.png" />
     <None Remove="Pages\plus_image.png" />
+    <None Remove="Pages\rain_sound.png" />
+    <None Remove="Pages\train_sound.png" />
     <None Remove="Pages\user_image.png" />
+    <None Remove="Pages\wind_sound.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Pages\cafe_sound.png" />
+    <Resource Include="Pages\camp_fire_sound.png" />
+    <Resource Include="Pages\fireplace_sound.png" />
+    <Resource Include="Pages\night_crickets_sound.png" />
+    <Resource Include="Pages\rain_sound.png" />
+    <Resource Include="Pages\SoundsPhotos\cafe_sound.png" />
     <Resource Include="Pages\menu_icon.png" />
+    <Resource Include="Pages\mute_logo.png" />
     <Resource Include="Pages\play.png" />
     <Resource Include="Pages\plus_image.png" />
+    <Resource Include="Pages\train_sound.png" />
     <Resource Include="Pages\user_image.png" />
+    <Resource Include="Pages\wind_sound.png" />
   </ItemGroup>
 
 </Project>
