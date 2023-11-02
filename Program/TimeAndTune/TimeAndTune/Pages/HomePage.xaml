@@ -1,0 +1,61 @@
+﻿<Page x:Class="TimeAndTune.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TimeAndTune"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Background="#25232A"
+      Title="HomePage">
+    <Grid>
+        <Button
+            Margin="90,53,0,0"
+            Width="90" Height="90"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Background="Transparent"
+            BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image Source="/menu_icon.png"
+               Width="90" Height="90" />
+        </Button>
+        <Rectangle RadiusX="12"
+                   RadiusY="12"
+                   Margin="0,60,0,0"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Width="282"
+                   Height="84"
+                   Stroke="#5FA6E7" 
+                   StrokeThickness="6"
+                   />
+        <TextBlock Text="Home"
+                   Margin="906,79,906,951"
+                   Foreground="White"
+                   FontSize="37"
+                   />
+        <Button
+            Background="Transparent"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Height="100"
+            Width="100"
+            Margin="1730,60,0,0"
+            BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image HorizontalAlignment="Left"
+               Height="100"
+               Width="100" 
+               Source="/pics/user_image.png"/>
+        </Button>
+    </Grid>
+</Page>

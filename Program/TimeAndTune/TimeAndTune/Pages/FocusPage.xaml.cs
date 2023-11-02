@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace TimeAndTune
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FocusPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FocusPage : Page
     {
-        public MainWindow()
+        public FocusPage()
         {
             InitializeComponent();
-            mainFrame.Navigate(new HomePage());
-
         }
     }
 }
