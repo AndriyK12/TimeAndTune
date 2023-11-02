@@ -10,7 +10,6 @@
       Title="HomePage">
     <Grid>
         <Button
-            Visibility="Visible"
             Margin="90,53,0,0"
             Width="90" Height="90"
             VerticalAlignment="Top"
@@ -22,12 +21,12 @@
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Style>
             </Button.Style>
-            <Image Source="/Pages/menu_icon.png"
+            <Image 
+               Source="/Pages/menu_icon.png"
                Width="90" Height="90" 
-               Visibility="Visible"/>
+               />
         </Button>
         <Rectangle 
-            Grid.Row="0" Grid.Column="0" Panel.ZIndex="1"
             Fill="Transparent"
             RadiusX="12"
             RadiusY="12"
@@ -40,8 +39,6 @@
             StrokeThickness="6"
             />
         <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Text="Home"
@@ -50,7 +47,6 @@
             FontSize="37"
             />
         <Button
-            Visibility="Visible"
             Background="Transparent"
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
@@ -63,12 +59,182 @@
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Style>
             </Button.Style>
-            <Image HorizontalAlignment="Right"
+            <Image 
+               HorizontalAlignment="Right"
                Height="100"
                Width="100" 
                Source="/Pages/user_image.png"
-               Visibility="Visible"
             />
         </Button>
+        <Rectangle 
+            Fill="#7A7373"
+            RadiusX="32"
+            RadiusY="32"
+            Margin="259,237,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="160"
+            Height="50"
+            />
+        <TextBlock 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Text="TODAY"
+            Margin="283,233,0,0"
+            Foreground="White"
+            FontSize="37"
+            />
+        <Rectangle 
+            Fill="#353535"
+            RadiusX="32"
+            RadiusY="32"
+            Margin="450,237,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="160"
+            Height="50"
+            />
+        <TextBlock 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Text="WEEK"
+            Margin="483,233,0,0"
+            Foreground="White"
+            FontSize="37"
+            />
+        <Rectangle 
+            Fill="#353535"
+            RadiusX="32"
+            RadiusY="32"
+            Margin="638,237,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="160"
+            Height="50"
+            />
+        <TextBlock 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Text="MONTH"
+            Margin="650,233,0,0"
+            Foreground="White"
+            FontSize="37" RenderTransformOrigin="0.5,0.5"
+            >
+        </TextBlock>
+        <Grid
+            Width="1200" 
+            Margin="283,381,245,230"
+            >
+            <Rectangle 
+            Fill="#454545"
+            RadiusX="12"
+            RadiusY="12"
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="1100"
+            Height="120"
+            />
+            <RadioButton
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="50"
+                Height="50" 
+                Margin="27,45,0,0"
+                >
+                <RadioButton.Template>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid>
+                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.Template>
+
+            </RadioButton>
+            <Rectangle 
+                Fill="#454545"
+                RadiusX="12"
+                RadiusY="12"
+                Margin="10,164,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="1100"
+                Height="120"
+            />
+            <RadioButton
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="50"
+                Height="50" 
+                Margin="27,203,0,0"
+                >
+                <RadioButton.Template>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.Template>
+
+            </RadioButton>
+            <Rectangle 
+                Fill="#454545"
+                RadiusX="12"
+                RadiusY="12"
+                Margin="10,320,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="1100"
+                Height="120"
+            />
+            <RadioButton
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="50"
+                Height="50" 
+                Margin="27,355,0,0"
+                >
+                <RadioButton.Template>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.Template>
+
+            </RadioButton>
+        </Grid>
+        <Ellipse
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Fill="#1C4335"
+            Width="164"
+            Height="163"
+            Stroke="White"
+            StrokeThickness="2" Margin="0,0,58,38"
+            >
+        </Ellipse>
+        <Button
+            HorizontalAlignment="Right"
+            Margin="0,0,90,70"
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            BorderThickness="0"
+            Height="100"
+            Width="100">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image HorizontalAlignment="Right"
+               Height="100"
+               Width="100"
+               Source="/Pages/plus_image.png"/>
+        </Button>
+
     </Grid>
 </Page>
