@@ -40,10 +40,12 @@
             StrokeThickness="6"
             />
         <TextBlock 
-            Grid.Row="0" Grid.Column="0" Panel.ZIndex="2"
+            Grid.Row="0" Panel.ZIndex="2"
             Visibility="Visible"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
             Text="Home"
-            Margin="906,77,906,953"
+            Margin="0,77,0,0"
             Foreground="White"
             FontSize="37"
             />
