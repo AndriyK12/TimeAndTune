@@ -5,11 +5,308 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TimeAndTune"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Background="#25232A"
       Title="FocusPage">
 
     <Grid>
-        
+        <Button
+            Visibility="Visible"
+            Margin="90,53,0,0"
+            Width="90" Height="90"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Background="Transparent"
+            BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image Source="/Pages/menu_icon.png"
+               Width="90" Height="90" 
+               Visibility="Visible"/>
+        </Button>
+
+        <Rectangle 
+            Grid.Row="0" Grid.Column="0" Panel.ZIndex="1"
+            Fill="Transparent"
+            RadiusX="12"
+            RadiusY="12"
+            Margin="0,60,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="282"
+            Height="84"
+            Stroke="#5CF26B" 
+            StrokeThickness="6"
+            />
+        <TextBlock 
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Text="Focus"
+            Margin="0,77,0,0"
+            Foreground="White"
+            FontSize="37"
+            />
+        <Button
+            Visibility="Visible"
+            Background="Transparent"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Height="100"
+            Width="100"
+            Margin="0,60,90,0"
+            BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image HorizontalAlignment="Right"
+               Height="100"
+               Width="100" 
+               Source="/Pages/user_image.png"
+               Visibility="Visible"
+            />
+        </Button>
+        <Button
+            Visibility="Visible"
+            Margin="300,200,0,0"
+            Width="135" Height="135"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Background="Transparent"
+            BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image Source="/Pages/play.png"
+               Width="130" Height="130" 
+               Visibility="Visible"/>
+        </Button>
+        <TextBlock 
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Text="Master volume"
+            Margin="0,200,0,0"
+            Foreground="White"
+            FontSize="40"/>
+
+        <ProgressBar
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Background="#313131"
+            BorderThickness="0"
+            Margin="0,265,0,0"
+            Width="400"
+            Height="60"
+            Minimum="0" 
+            Maximum="100" 
+            Value="75" 
+            ValueChanged="ProgressBar_ValueChanged">
+            <ProgressBar.Foreground>
+                <SolidColorBrush Color="#D9D9D9" />
+            </ProgressBar.Foreground>
+        </ProgressBar>
+
+         
+        <Grid
+            VerticalAlignment="center"
+            HorizontalAlignment="center"
+            Margin="0,0,0,90">
+            <Button
+                Visibility="Visible"
+                Margin="-1200,0,0,0"
+                Width="550" Height="200"
+                Background="Transparent"
+                BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Button.Style>
+                <Image 
+                    Source="/Pages/SoundsPhotos/cafe_sound.png"
+                    Width="550" Height="200" 
+                    Visibility="Visible"/>
+            </Button>
+            <TextBlock 
+                Grid.Row="0" Panel.ZIndex="2"
+                Visibility="Visible"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Text="CAFE"
+                Margin="170,55,0,0"
+                Foreground="White"
+                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+            <Button
+                Visibility="Visible"
+                Margin="0,0,0,0"
+                Width="550" Height="200"
+                Background="Transparent"
+                BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Button.Style>
+                <Image 
+                    Source="/Pages/rain_sound.png"
+                    Width="550" Height="200" 
+                    Visibility="Visible"/>
+            </Button>
+            <TextBlock 
+                Grid.Row="0" Panel.ZIndex="2"
+                Visibility="Visible"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Text="RAIN"
+                Margin="0,55,0,0"
+                Foreground="White"
+                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+            <Button
+                Visibility="Visible"
+                Margin="1200,0,0,0"
+                Width="550" Height="200"
+                Background="Transparent"
+                BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Button.Style>
+                <Image 
+                    Source="/Pages/camp_fire_sound.png"
+                    Width="550" Height="200" 
+                    Visibility="Visible"/>
+            </Button>
+            <TextBlock 
+                Grid.Row="0" Panel.ZIndex="2"
+                Visibility="Visible"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Text="CAMP FIRE"
+                Margin="0,55,80,0"
+                Foreground="White"
+                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+        </Grid>
+
+        <Grid
+            VerticalAlignment="center"
+            HorizontalAlignment="center"
+            Margin="0,0,0,-400">
+            <Button
+                Visibility="Visible"
+                Margin="-1200,0,0,0"
+                Width="550" Height="200"
+                Background="Transparent"
+                BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Button.Style>
+                <Image 
+                    Source="/Pages/night_crickets_sound.png"
+                    Width="550" Height="200" 
+                    Visibility="Visible"/>
+            </Button>
+            <TextBlock 
+                Grid.Row="0" Panel.ZIndex="2"
+                Visibility="Visible"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Text="NIGHT CRICKETS"
+                Margin="20,62,0,0"
+                Foreground="White"
+                FontSize="70" FontFamily="Franklin Gothic Medium"/>
+            <Button
+                Visibility="Visible"
+                Margin="0,0,0,0"
+                Width="550" Height="200"
+                Background="Transparent"
+                BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Button.Style>
+                <Image 
+                    Source="/Pages/train_sound.png"
+                    Width="550" Height="200" 
+                    Visibility="Visible"/>
+            </Button>
+            <TextBlock 
+                Grid.Row="0" Panel.ZIndex="2"
+                Visibility="Visible"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Text="TRAIN"
+                Margin="0,55,0,0"
+                Foreground="White"
+                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+            <Button
+                Visibility="Visible"
+                Margin="1200,0,0,0"
+                Width="550" Height="200"
+                Background="Transparent"
+                BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Button.Style>
+                <Image 
+                    Source="/Pages/wind_sound.png"
+                    Width="550" Height="200" 
+                    Visibility="Visible"/>
+            </Button>
+            <TextBlock 
+                Grid.Row="0" Panel.ZIndex="2"
+                Visibility="Visible"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Text="WIND"
+                Margin="0,55,180,0"
+                Foreground="White"
+                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+        </Grid>
+
+        <Button
+            Visibility="Visible"
+            Margin="0,0,0,90"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="center"
+            Width="135" Height="135"
+            Background="Transparent"
+            BorderThickness="0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Style>
+            </Button.Style>
+            <Image Source="/Pages/mute_logo.png"
+            Width="100" Height="100" 
+            Visibility="Visible"/>
+        </Button>
+        <TextBlock 
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            Text="Mute notifications"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="center"
+            Margin="0,0,0,30"
+            Foreground="White"
+            FontSize="40"/>
+       
+
+
     </Grid>
 </Page>
