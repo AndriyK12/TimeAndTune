@@ -1,0 +1,101 @@
+﻿<Window x:Class="TimeAndTune.UserInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeAndTune"
+        mc:Ignorable="d"
+        Title="UserInfoWindow"
+        Height="475"
+        Width="450"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="Manual"
+        Background ="#4E4747"
+        >
+    <Grid>
+        <Image 
+               Margin="0,45,65,0"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Right"
+               Height="80"
+               Width="80" 
+               Source="/Pages/user_image.png"
+            />
+        <TextBlock
+            Text="Username"
+            Margin="30,55,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Foreground="White"
+            FontSize="35"
+            >
+        </TextBlock>
+        <Image
+            Margin="30,130,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Height="20"
+            Width="20" Source="/coin_image.png" 
+            >
+        </Image>
+        <TextBlock
+            Text="125"
+            Margin="60,118,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Foreground="White"
+            FontSize="30"
+            >
+        </TextBlock>
+        <TextBlock
+            Text="example@gmail.com"
+            Margin="30,0,0,200"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Foreground="White"
+            FontSize="30"
+            >
+        </TextBlock>
+        <Image
+            Margin="30,0,0,12"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Height="30"
+            Width="30" Source="/logout_image.png" 
+            >
+        </Image>
+        <TextBlock
+            Text="Exit"
+            Margin="70,0,0,10"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Foreground="White"
+            FontSize="30"
+            >
+        </TextBlock>
+        <Button
+            Margin="30,0,0,12"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Background="Transparent"
+            Width="100"
+            Height="30"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>

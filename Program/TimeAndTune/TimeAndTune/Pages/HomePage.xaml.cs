@@ -31,7 +31,7 @@ namespace TimeAndTune
             {
                 mainWnd.Opacity = 1.0;
             };
-            dialog.ShowDialog();
+            dialog.Show();
         }
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +42,41 @@ namespace TimeAndTune
             {
                 mainWnd.Opacity = 1.0;
             };
-            nav.ShowDialog();
+            nav.Show();
+        }
+        public void openUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            UserInfoWindow userWnd = new UserInfoWindow();
+            Window mainWnd = Window.GetWindow((DependencyObject)sender);
+            mainWnd.Opacity = 0.3;
+            userWnd.Closed += (s, args) =>
+            {
+                mainWnd.Opacity = 1.0;
+            };
+            userWnd.Show();
+        }
+        private void Today_Click(object sender, RoutedEventArgs e)
+        {
+            TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
+            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            //add some logic
+        }
+
+        private void Week_Click(object sender, RoutedEventArgs e)
+        {
+            TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
+            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            //add some logic
+        }
+
+        private void Month_Click(object sender, RoutedEventArgs e)
+        {
+            TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
+            //add some logic
         }
         public HomePage()
         {
