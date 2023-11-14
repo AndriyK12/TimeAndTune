@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="back_button.png" />
+    <None Remove="logo.png" />
     <None Remove="Pages\cafe_sound.png" />
     <None Remove="Pages\camp_fire_sound.png" />
     <None Remove="Pages\menu_icon.png" />
@@ -22,6 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EFCore\EFCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="back_button.png" />
+    <Resource Include="logo.png" />
     <Resource Include="Pages\cafe_sound.png" />
     <Resource Include="Pages\camp_fire_sound.png" />
     <Resource Include="Pages\menu_icon.png" />

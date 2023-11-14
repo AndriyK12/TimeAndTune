@@ -18,8 +18,32 @@ namespace TimeAndTune
     /// <summary>
     /// Interaction logic for HomePage.xaml
     /// </summary>
+
+
     public partial class HomePage : Page
     {
+        public void openCreateNewTaskDialog_Click(object sender, RoutedEventArgs e)
+        {
+            NewTaskDialog dialog = new NewTaskDialog();
+            Window mainWnd = Window.GetWindow((DependencyObject)sender);
+            mainWnd.Opacity = 0.3;
+            dialog.Closed += (s, args) =>
+            {
+                mainWnd.Opacity = 1.0;
+            };
+            dialog.ShowDialog();
+        }
+        public void openNavigation_Click(object sender, RoutedEventArgs e)
+        {
+            NavWindow nav = new NavWindow();
+            Window mainWnd = Window.GetWindow((DependencyObject)sender);
+            mainWnd.Opacity = 0.3;
+            nav.Closed += (s, args) =>
+            {
+                mainWnd.Opacity = 1.0;
+            };
+            nav.ShowDialog();
+        }
         public HomePage()
         {
             InitializeComponent();
