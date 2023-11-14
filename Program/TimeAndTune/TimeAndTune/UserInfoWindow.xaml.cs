@@ -15,24 +15,20 @@ using System.Windows.Shapes;
 namespace TimeAndTune
 {
     /// <summary>
-    /// Interaction logic for NewTaskDialog.xaml
+    /// Interaction logic for UserInfoWindow.xaml
     /// </summary>
-    public partial class NewTaskDialog : Window
+    public partial class UserInfoWindow : Window
     {
-        public void goBackToHomePage(object sender, RoutedEventArgs e)
+        protected override void OnDeactivated(EventArgs e)
         {
-            Window currentWindow = Window.GetWindow((DependencyObject)sender);
-
-            if (currentWindow != null)
-            {
-                currentWindow.Close();
-            }
+            base.OnDeactivated(e);
+            Close();
         }
-
-        public NewTaskDialog()
+        public UserInfoWindow()
         {
             InitializeComponent();
-
+            Left = SystemParameters.PrimaryScreenWidth - Width;
+            Top = 23;
         }
     }
 }
