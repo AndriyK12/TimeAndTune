@@ -98,7 +98,8 @@ namespace TimeAndTune
                     Title = "Completed Tasks",
                     Values = new ChartValues<int>(completedTasks),
                     Fill = gradientBrush,
-                }
+                    MaxColumnWidth = 110
+        }
             };
 
             Labels = dates.Select(date => date.ToString("dd/MM")).ToArray();
