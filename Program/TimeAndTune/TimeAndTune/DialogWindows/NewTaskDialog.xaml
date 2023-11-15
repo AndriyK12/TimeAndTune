@@ -1,0 +1,57 @@
+﻿<Window x:Class="TimeAndTune.NewTaskDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeAndTune"
+        mc:Ignorable="d"
+        Title="NewTaskDialog" Height="710" Width="1340"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background ="#25232A"
+        BorderBrush="White"
+        BorderThickness="3"
+        >
+    <Window.Resources>
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="17"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Image 
+            HorizontalAlignment="Left"
+            Height="59" 
+            Margin="31,26,0,0"
+            VerticalAlignment="Top"
+            Width="59"
+            Source="/back_button.png" Grid.ColumnSpan="2"
+            />
+        <Button
+            HorizontalAlignment="Left"
+            Margin="31,26,0,0"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            BorderThickness="0"
+            Height="59"
+            Width="59"
+            Click="goBackToHomePage" Grid.ColumnSpan="2"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+
+    </Grid>
+</Window>

@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="back_button.png" />
+    <None Remove="coin_image.png" />
+    <None Remove="DialogWindows\focus_image.png" />
+    <None Remove="DialogWindows\home_image.png" />
+    <None Remove="DialogWindows\statistics_image.png" />
+    <None Remove="logo.png" />
+    <None Remove="logout_image.png" />
     <None Remove="Pages\cafe_sound.png" />
     <None Remove="Pages\camp_fire_sound.png" />
     <None Remove="Pages\menu_icon.png" />
@@ -23,6 +30,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EFCore\EFCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="back_button.png" />
+    <Resource Include="coin_image.png" />
+    <Resource Include="DialogWindows\focus_image.png" />
+    <Resource Include="DialogWindows\home_image.png" />
+    <Resource Include="DialogWindows\statistics_image.png" />
+    <Resource Include="logo.png" />
+    <Resource Include="logout_image.png" />
     <Resource Include="Pages\cafe_sound.png" />
     <Resource Include="Pages\camp_fire_sound.png" />
     <Resource Include="Pages\menu_icon.png" />

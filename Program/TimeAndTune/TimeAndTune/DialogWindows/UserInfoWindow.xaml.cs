@@ -10,22 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TimeAndTune
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserInfoWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserInfoWindow : Window
     {
-        public MainWindow()
+        protected override void OnDeactivated(EventArgs e)
+        {
+            base.OnDeactivated(e);
+            Close();
+        }
+        public UserInfoWindow()
         {
             InitializeComponent();
-
-            mainFrame.Navigate(new HomePage());
-
+            Left = SystemParameters.PrimaryScreenWidth - Width;
+            Top = 23;
         }
     }
 }
