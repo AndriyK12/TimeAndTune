@@ -14,7 +14,13 @@
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
 
-
+        <Image Source="/Pages/menu_icon.png"
+               Width="90"
+               Height="90"
+               Margin="90,53,0,0"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               />
         <Button
             Margin="90,53,0,0"
             Width="90"
@@ -22,15 +28,23 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Background="Transparent"
-            BorderThickness="0">
+            BorderThickness="0"
+            Click="openNavigation_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Button.Style>
-            <Image Source="/Pages/menu_icon.png"
-                   Width="90"
-                   Height="90"/>
         </Button>
         <Rectangle
             Fill="Transparent"
@@ -52,6 +66,14 @@
             Foreground="White"
             FontSize="37"
             />
+        <Image
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Margin="0,60,90,0"
+            Height="100"
+            Width="100" 
+            Source="/Pages/user_image.png"
+            />
         <Button
             Background="Transparent"
             VerticalAlignment="Top"
@@ -59,19 +81,26 @@
             Height="100"
             Width="100"
             Margin="0,60,90,0"
-            BorderThickness="0">
+            BorderThickness="0"
+            Click="openUserInfo_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Button.Style>
-            <Image HorizontalAlignment="Right"
-               Height="100"
-               Width="100" 
-               Source="/Pages/user_image.png"
-            />
         </Button>
         <Rectangle 
+            x:Name="WeekRect"
             Fill="#7A7373"
             RadiusX="32"
             RadiusY="32"
@@ -89,7 +118,31 @@
             Foreground="White"
             FontSize="37"
             />
+        <Button
+            Margin="704,236,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="160"
+            Height="50"
+            Click="Week_Click"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
         <Rectangle 
+            x:Name="MonthRect"
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
@@ -107,7 +160,31 @@
             Foreground="White"
             FontSize="37"
             />
+        <Button
+            Margin="950,236,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="160"
+            Height="50"
+            Click="Month_Click"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
         <Rectangle 
+            x:Name="YearRect"
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
@@ -126,6 +203,29 @@
             FontSize="37" RenderTransformOrigin="0.5,0.5"
             >
         </TextBlock>
+        <Button
+            Margin="1189,236,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="150"
+            Height="50"
+            Click="Year_Click"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
         <Rectangle 
             RadiusX="5.5" 
             RadiusY="5.5"
