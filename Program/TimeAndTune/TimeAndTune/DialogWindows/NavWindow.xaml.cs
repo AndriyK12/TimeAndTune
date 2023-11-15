@@ -20,10 +20,14 @@ namespace TimeAndTune
     /// </summary>
     public partial class NavWindow : Window
     {
+        private bool isClosedByUser = false;
         protected override void OnDeactivated(EventArgs e)
         {
             base.OnDeactivated(e);
-            Close();
+            if (!isClosedByUser)
+            {
+                Close();
+            }
         }
         public void navigateHome_Click(object sender, RoutedEventArgs e)
         {
@@ -33,6 +37,8 @@ namespace TimeAndTune
             {
                 mainFrame.Navigate(homePage);
             }
+            isClosedByUser = true;
+            Close();
         }
         public void navigateStatistics_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +48,8 @@ namespace TimeAndTune
             {
                 mainFrame.Navigate(statisticsPage);
             }
+            isClosedByUser = true;
+            Close();
         }
         public void navigateFocus_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +59,8 @@ namespace TimeAndTune
             {
                 mainFrame.Navigate(focusPage);
             }
+            isClosedByUser = true;
+            Close();
         }
         public NavWindow()
         {
