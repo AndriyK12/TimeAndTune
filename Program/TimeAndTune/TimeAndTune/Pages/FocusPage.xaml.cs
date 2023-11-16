@@ -24,7 +24,28 @@ namespace TimeAndTune
         {
             InitializeComponent();
         }
-
+        public void openNavigation_Click(object sender, RoutedEventArgs e)
+        {
+            NavWindow nav = new NavWindow();
+            Window mainWnd = Window.GetWindow((DependencyObject)sender);
+            mainWnd.Opacity = 0.3;
+            nav.Closed += (s, args) =>
+            {
+                mainWnd.Opacity = 1.0;
+            };
+            nav.Show();
+        }
+        public void openUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            UserInfoWindow userWnd = new UserInfoWindow();
+            Window mainWnd = Window.GetWindow((DependencyObject)sender);
+            mainWnd.Opacity = 0.3;
+            userWnd.Closed += (s, args) =>
+            {
+                mainWnd.Opacity = 1.0;
+            };
+            userWnd.Show();
+        }
         private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 

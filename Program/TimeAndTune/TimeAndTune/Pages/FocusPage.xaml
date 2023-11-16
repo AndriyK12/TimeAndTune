@@ -14,6 +14,15 @@
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
 
+
+        <Image 
+            Margin="90,53,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Source="/Pages/menu_icon.png"
+            Width="90" Height="90" 
+            Visibility="Visible"
+            />
         <Button
             Visibility="Visible"
             Margin="90,53,0,0"
@@ -21,15 +30,23 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Background="Transparent"
-            BorderThickness="0">
+            BorderThickness="0"
+            Click="openNavigation_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Button.Style>
-            <Image Source="/Pages/menu_icon.png"
-               Width="90" Height="90" 
-               Visibility="Visible"/>
         </Button>
 
         <Rectangle 
@@ -55,6 +72,14 @@
             Foreground="White"
             FontSize="37"
             />
+        <Image HorizontalAlignment="Right"
+               Height="100"
+               Width="100" 
+               Source="/Pages/user_image.png"
+               Visibility="Visible"
+               VerticalAlignment="Top"
+               Margin="0,60,90,0"
+               />
         <Button
             Visibility="Visible"
             Background="Transparent"
@@ -63,18 +88,23 @@
             Height="100"
             Width="100"
             Margin="0,60,90,0"
-            BorderThickness="0">
+            BorderThickness="0"
+            Click="openUserInfo_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Button.Style>
-            <Image HorizontalAlignment="Right"
-               Height="100"
-               Width="100" 
-               Source="/Pages/user_image.png"
-               Visibility="Visible"
-            />
         </Button>
         <Button
             Visibility="Visible"
