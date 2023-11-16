@@ -8,7 +8,7 @@
         WindowState="Maximized"
         Height="1080" Width="1920"
         Background="black"
-        Title="MainWindow"
+        Title="Time&amp;Tune"
         Icon ="/logo.png"
         >
 
