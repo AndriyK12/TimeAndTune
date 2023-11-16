@@ -23,7 +23,9 @@ namespace TimeAndTune
         public MainWindow()
         {
             InitializeComponent();
+
             mainFrame.Navigate(new HomePage());
+
         }
     }
 }

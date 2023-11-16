@@ -20,7 +20,8 @@
     <None Remove="Pages\menu_icon.png" />
     <None Remove="Pages\mute_logo.png" />
     <None Remove="Pages\night_crickets_sound.png" />
-    <None Remove="Pages\play.png" />
+    <None Remove="Pages\pauseButton.png" />
+    <None Remove="Pages\playButton.png" />
     <None Remove="Pages\plus_image.png" />
     <None Remove="Pages\rain_sound.png" />
     <None Remove="Pages\train_sound.png" />
@@ -49,12 +50,17 @@
     <Resource Include="Pages\menu_icon.png" />
     <Resource Include="Pages\mute_logo.png" />
     <Resource Include="Pages\night_crickets_sound.png" />
-    <Resource Include="Pages\play.png" />
+    <Resource Include="Pages\pauseButton.png" />
+    <Resource Include="Pages\playButton.png" />
     <Resource Include="Pages\plus_image.png" />
     <Resource Include="Pages\rain_sound.png" />
     <Resource Include="Pages\train_sound.png" />
     <Resource Include="Pages\user_image.png" />
     <Resource Include="Pages\wind_sound.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\CustomTemplates\" />
   </ItemGroup>
 
 </Project>
