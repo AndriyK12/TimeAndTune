@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
@@ -18,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using NAudio.CoreAudioApi;
 
 namespace TimeAndTune
 {
@@ -30,13 +33,14 @@ namespace TimeAndTune
         bool soundEffectWasPressed = false;
         string[] soundsName = {"cafeImage", "rainImage", "campFireImage", "nightCricketsImage", "trainImage", "windImage"};
 
-        SoundPlayer playSound;
+        MediaPlayer mediaPlayer = new MediaPlayer();
         int state = 0;
 
         public FocusPage()
         {
             InitializeComponent();
         }
+
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             NavWindow nav = new NavWindow();
@@ -64,12 +68,15 @@ namespace TimeAndTune
 
         }
         
-
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if(ProgressBar != null)
             {
                 ProgressBar.Value = Slider.Value;
+            }
+            if(mediaPlayer != null)
+            {
+                mediaPlayer.Volume = (float)(Slider.Value/100.0);
             }
         }
 
@@ -81,9 +88,9 @@ namespace TimeAndTune
                 PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/play.png", UriKind.Relative));
                 playPauseButtonWasPressed = false;
                 soundEffectWasPressed = false;
-                if (playSound != null)
+                if (mediaPlayer != null)
                 {
-                    playSound.Stop();
+                    mediaPlayer.Stop();
                 }
             } 
             else if(!playPauseButtonWasPressed && soundEffectWasPressed)
@@ -99,6 +106,7 @@ namespace TimeAndTune
             state = smoothButtonTransform("cafeImage");
             changeFocus("cafeImage");
             playPauseSound("cafe");
+
         }
 
         private void RainSoundButton(object sender, RoutedEventArgs e)
@@ -153,35 +161,40 @@ namespace TimeAndTune
         {
             if(state == 0)
             {
-                playSound.Stop();
+                mediaPlayer.Stop();
             } 
             else
             {
                 switch (name)
                 {
-                    case "cafe": 
-                        playSound = new SoundPlayer(Properties.Resources.cafe);
+                    case "cafe":
+                        mediaPlayer.Open(new Uri("pack://siteoforigin:,,,/Pages/FocusPageSounds/cafe.wav"));
                         break;
                     case "rain":
-                        playSound = new SoundPlayer(Properties.Resources.rain);
+                        mediaPlayer.Open(new Uri("pack://siteoforigin:,,,/Pages/FocusPageSounds/rain1.wav"));
                         break;
                     case "campFire":
-                        playSound = new SoundPlayer(Properties.Resources.campFire);
+                        mediaPlayer.Open(new Uri("pack://siteoforigin:,,,/Pages/FocusPageSounds/campFire.wav"));
                         break;
                     case "nightCrickets":
-                        playSound = new SoundPlayer(Properties.Resources.nightCrickets);
+                        mediaPlayer.Open(new Uri("pack://siteoforigin:,,,/Pages/FocusPageSounds/nightCrickets.wav"));
                         break;
                     case "train":
-                        playSound = new SoundPlayer(Properties.Resources.train);
+                        mediaPlayer.Open(new Uri("pack://siteoforigin:,,,/Pages/FocusPageSounds/train.wav"));
                         break;
                     case "wind":
-                        playSound = new SoundPlayer(Properties.Resources.wind);
+                        mediaPlayer.Open(new Uri("pack://siteoforigin:,,,/Pages/FocusPageSounds/wind.wav"));
                         break;
                 }
-                playSound.PlayLooping();
+                mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+                mediaPlayer.Play();
             }
         }
-
+        private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+        {
+            mediaPlayer.Position = TimeSpan.Zero;
+            mediaPlayer.Play();
+        }
         private int smoothButtonTransform(string name)
         {
             int returnValue = 0;
@@ -214,12 +227,7 @@ namespace TimeAndTune
 
             return returnValue;
         }
-        private void stopCurrentSound()
-        {
-            MessageBox.Show("Works");
-            PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/playButton.png", UriKind.Relative));
-            
-        }
+       
         private void changeFocus(string name)
         {
             for (int i = 0; i < soundsName.Length; i++)
