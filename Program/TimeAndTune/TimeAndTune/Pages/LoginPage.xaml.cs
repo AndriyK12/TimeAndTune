@@ -12,9 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EFCore;
+using EFCore.Service;
 
 namespace TimeAndTune.Pages
 {
+    public class PasswordManager
+    {
+        public static bool VerifyPassword(string enteredPassword, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
+        }
+    }
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
@@ -27,7 +36,24 @@ namespace TimeAndTune.Pages
 
         public void Continue_Click(object sender, RoutedEventArgs e)
         {
-            // add login logic
+            string enteredEmail = txtEmail.Text;
+            string enteredPassword = txtPassword.Password;
+
+            DatabaseUserProvider userService = new DatabaseUserProvider();
+            User user = userService.getUserByEmail(enteredEmail);
+            string hashedPassword = user.Password;
+            if (hashedPassword != null && PasswordManager.VerifyPassword(enteredPassword, hashedPassword))
+            {
+                NavigateToHomePage(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Authentication failed. Please check your username and password.");
+            }
+        }
+
+        public void NavigateToHomePage(object sender, RoutedEventArgs e)
+        {
             HomePage homePage = new HomePage();
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)

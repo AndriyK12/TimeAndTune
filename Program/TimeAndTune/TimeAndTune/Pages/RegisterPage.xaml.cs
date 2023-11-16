@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCore.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace TimeAndTune.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
-        public void Continue_Click(object sender, RoutedEventArgs e)
+        public bool comparePasswords(string passw1, string passw2)
         {
-            // add register logic
+            return passw1 == passw2;
+        }
+        public void NavigateToHomePage(object sender, RoutedEventArgs e)
+        {
             HomePage homePage = new HomePage();
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
@@ -30,9 +34,34 @@ namespace TimeAndTune.Pages
                 mainFrame.Navigate(homePage);
             }
         }
+        public void Continue_Click(object sender, RoutedEventArgs e)
+        {
+            string enteredName = txtName.Text;
+            string enteredEmail = txtEmail.Text;
+            string enteredPassword = txtPassword.Password;
+            string passwordConfirmation = txtConfirmPassword.Password;
+            bool passwordsMatch = false;
+            if (!comparePasswords(enteredPassword,passwordConfirmation)){
+                passwordsMatch = true;
+                MessageBox.Show("Passwords do not match!");
+            }
+            else 
+            { 
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(enteredPassword);
+                if (enteredName == "" || enteredEmail == "" || enteredPassword == "")
+                {
+                    MessageBox.Show("Please enter every field!");
+                }
+                else
+                {
+                    DatabaseUserProvider userService = new DatabaseUserProvider();
+                    userService.addNewUser(enteredName, enteredEmail, hashedPassword);
+                    NavigateToHomePage(sender, e);
+                }
+            }
+        }
         public void onSignIn_Click(object sender, RoutedEventArgs e)
         {
-            // add register logic
             LoginPage loginPage = new LoginPage();
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)

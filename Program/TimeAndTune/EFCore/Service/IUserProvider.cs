@@ -13,5 +13,7 @@ namespace EFCore.Service
         string getEmail(User user);
         int getCoinsAmount(User user);
         void setCoinsAmount(User user, int amount);
+        User getUserByEmail(string email);
+        void addNewUser(string username, string email, string password);
     }
 }
