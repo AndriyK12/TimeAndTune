@@ -25,7 +25,7 @@ namespace TimeAndTune
         {
             InitializeComponent();
 
-            mainFrame.Navigate(new RegisterPage());
+            mainFrame.Navigate(new LoginPage());
 
         }
     }
