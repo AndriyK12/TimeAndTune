@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace TimeAndTune
 {
@@ -43,5 +44,104 @@ namespace TimeAndTune
             InitializeComponent();
 
         }
+
+        private void txtTaskName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string newText = txtTaskName.Text;
+            Console.WriteLine("Text changed: " + newText);
+        }
+        private void txtTaskName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtTaskName.Text == "")
+            {
+                txtTaskName.Text = "";
+            }
+        }
+
+        private void txtTaskName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTaskName.Text))
+            {
+                txtTaskName.Text = "";
+            }
+        }
+
+        private void txtDate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string newText = txtDate.Text;
+            Console.WriteLine("Text changed: " + newText);
+        }
+        private void txtDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtDate.Text == "")
+            {
+                txtDate.Text = "";
+            }
+        }
+
+        private void txtDate_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                txtDate.Text = "";
+            }
+        }
+
+        private void txtDate_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Дозволяємо тільки цифри та символи дати ("/", ".", "-", тощо)
+            if (!char.IsDigit(e.Text[0]) && e.Text[0] != '/' && e.Text[0] != '.' && e.Text[0] != '-')
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                TextBox textBox = (TextBox)sender;
+                string currentText = textBox.Text;
+                int caretIndex = textBox.CaretIndex;
+
+                // Вставляємо символи розділення для отримання формату дати
+                if ((caretIndex == 2 || caretIndex == 5) && caretIndex < 10)
+                {
+                    textBox.Text = currentText + "/";
+                    textBox.CaretIndex = caretIndex + 1;
+                }
+                if (textBox.Text.Length >= 10)
+                {
+                    e.Handled = true;
+                }
+
+                //if (caretIndex == 0 && (e.Text[0] > '1' || (e.Text[0] == '1' && currentText.Length > 0 && currentText[0] > '1')))
+                //{
+                //    e.Handled = true; // Забороняємо введення значень більше 12 для місяця
+                //}
+
+
+            }
+        }
+
+
+        private void txtDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string newText = txtDescription.Text;
+            Console.WriteLine("Text changed: " + newText);
+        }
+        private void txtDescription_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtDescription.Text == "")
+            {
+                txtDescription.Text = "";
+            }
+        }
+
+        private void txtDescription_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                txtDescription.Text = "";
+            }
+        }
+
+        
     }
 }
