@@ -1,4 +1,5 @@
-﻿using EFCore.Service;
+﻿using EFCore;
+using EFCore.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,8 @@ namespace TimeAndTune.Pages
                 {
                     DatabaseUserProvider userService = new DatabaseUserProvider();
                     userService.addNewUser(enteredName, enteredEmail, hashedPassword);
+                    User user = userService.getUserByEmail(enteredEmail);
+                    MainWindow.ActiveUser = user;
                     NavigateToHomePage(sender, e);
                 }
             }
