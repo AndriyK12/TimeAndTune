@@ -222,6 +222,7 @@
             Width="342" Height="62"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
+            Click="onCreateAccount_Click"
             >
             <Button.Style>
                 <Style TargetType="Button">

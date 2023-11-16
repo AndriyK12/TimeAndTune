@@ -20,6 +20,26 @@ namespace TimeAndTune.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
+        public void Continue_Click(object sender, RoutedEventArgs e)
+        {
+            // add register logic
+            HomePage homePage = new HomePage();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
+            {
+                mainFrame.Navigate(homePage);
+            }
+        }
+        public void onSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            // add register logic
+            LoginPage loginPage = new LoginPage();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
+            {
+                mainFrame.Navigate(loginPage);
+            }
+        }
         public RegisterPage()
         {
             InitializeComponent();
