@@ -16,26 +16,35 @@ using System.Windows.Shapes;
 namespace TimeAndTune.Pages
 {
     /// <summary>
-    /// Interaction logic for LoginPage.xaml
+    /// Interaction logic for RegisterPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class RegisterPage : Page
     {
-        public LoginPage()
+        public RegisterPage()
         {
             InitializeComponent();
         }
 
-        public void Continue_Click(object sender, RoutedEventArgs e)
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // add login logic
-            HomePage homePage = new HomePage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
+            string newText = txtName.Text;
+            Console.WriteLine("Text changed: " + newText);
+        }
+        private void txtName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtName.Text == "")
             {
-                mainFrame.Navigate(homePage);
+                txtEmail.Text = "";
             }
         }
 
+        private void txtName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                txtName.Text = "";
+            }
+        }
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             string newText = txtEmail.Text;
@@ -57,11 +66,6 @@ namespace TimeAndTune.Pages
             }
         }
 
-        private void txtPassword_TextChanged(object sender, RoutedEventArgs e)
-        {
-            string newText = txtPassword.Password;
-            Console.WriteLine("Text changed: " + newText);
-        }
         private void txtPassword_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txtPassword.Password == "")
@@ -81,6 +85,7 @@ namespace TimeAndTune.Pages
             txtPasswordVisible.Visibility = Visibility.Visible;
             txtPasswordVisible.Text = txtPassword.Password;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
+
         }
 
         private void btnShowPassword_Unchecked(object sender, RoutedEventArgs e)
@@ -89,6 +94,35 @@ namespace TimeAndTune.Pages
             txtPassword.Visibility = Visibility.Visible;
             txtPasswordVisible.Visibility = Visibility.Collapsed;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
+        }
+
+        private void txtConfirmPassword_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtConfirmPassword.Password == "")
+            {
+                txtConfirmPassword.Password = "";
+                txtConfirmPassword.Foreground = Brushes.Black;
+                txtConfirmPasswordVisible.Text = txtConfirmPassword.Password;
+                txtConfirmPasswordVisible.Text = "";
+            }
+        }
+
+        private void btnShowConfirmPassword_Checked(object sender, RoutedEventArgs e)
+        {
+
+            // Показати пароль
+            txtConfirmPassword.Visibility = Visibility.Collapsed;
+            txtConfirmPasswordVisible.Visibility = Visibility.Visible;
+            txtConfirmPasswordVisible.Text = txtConfirmPassword.Password;
+            confPasswordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
+        }
+
+        private void btnShowConfirmPassword_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Приховати пароль
+            txtConfirmPassword.Visibility = Visibility.Visible;
+            txtConfirmPasswordVisible.Visibility = Visibility.Collapsed;
+            confPasswordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
         }
     }
 }
