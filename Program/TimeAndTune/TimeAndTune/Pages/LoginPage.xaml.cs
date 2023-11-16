@@ -25,6 +25,17 @@ namespace TimeAndTune.Pages
             InitializeComponent();
         }
 
+        public void Continue_Click(object sender, RoutedEventArgs e)
+        {
+            // add login logic
+            HomePage homePage = new HomePage();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
+            {
+                mainFrame.Navigate(homePage);
+            }
+        }
+
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             string newText = txtEmail.Text;

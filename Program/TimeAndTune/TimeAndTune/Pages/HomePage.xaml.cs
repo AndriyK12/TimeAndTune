@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeAndTune.BLL;
 
 namespace TimeAndTune
 {
@@ -24,36 +25,15 @@ namespace TimeAndTune
     {
         public void openCreateNewTaskDialog_Click(object sender, RoutedEventArgs e)
         {
-            NewTaskDialog dialog = new NewTaskDialog();
-            Window mainWnd = Window.GetWindow((DependencyObject)sender);
-            mainWnd.Opacity = 0.3;
-            dialog.Closed += (s, args) =>
-            {
-                mainWnd.Opacity = 1.0;
-            };
-            dialog.Show();
+            HomePageBack.openCreateNewTaskDialog_Click(sender, e);
         }
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
-            NavWindow nav = new NavWindow();
-            Window mainWnd = Window.GetWindow((DependencyObject)sender);
-            mainWnd.Opacity = 0.3;
-            nav.Closed += (s, args) =>
-            {
-                mainWnd.Opacity = 1.0;
-            };
-            nav.Show();
+            HomePageBack.openNavigation_Click(sender, e);
         }
         public void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
-            UserInfoWindow userWnd = new UserInfoWindow();
-            Window mainWnd = Window.GetWindow((DependencyObject)sender);
-            mainWnd.Opacity = 0.3;
-            userWnd.Closed += (s, args) =>
-            {
-                mainWnd.Opacity = 1.0;
-            };
-            userWnd.Show();
+            HomePageBack.openUserInfo_Click(sender, e);
         }
         private void Today_Click(object sender, RoutedEventArgs e)
         {
