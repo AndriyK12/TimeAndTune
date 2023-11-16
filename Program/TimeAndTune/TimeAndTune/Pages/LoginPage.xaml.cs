@@ -44,6 +44,7 @@ namespace TimeAndTune.Pages
             string hashedPassword = user.Password;
             if (hashedPassword != null && PasswordManager.VerifyPassword(enteredPassword, hashedPassword))
             {
+                MainWindow.ActiveUser = user;
                 NavigateToHomePage(sender, e);
             }
             else
