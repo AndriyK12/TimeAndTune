@@ -81,6 +81,7 @@
             Background="Transparent"
             Width="100"
             Height="30"
+            Click="exit_Click"
             >
             <Button.Style>
                 <Style TargetType="Button">

@@ -36,6 +36,16 @@ namespace TimeAndTune.Pages
             }
         }
 
+        public void onCreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterPage registerPage = new RegisterPage();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
+            {
+                mainFrame.Navigate(registerPage);
+            }
+        }
+
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
             string newText = txtEmail.Text;
