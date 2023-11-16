@@ -168,7 +168,7 @@
                                 <RepeatButton />
                             </Track.DecreaseRepeatButton>
                             <Track.Thumb>
-                                <Thumb x:Name="Thumb" Height="58" Width="40" />
+                                <Thumb x:Name="Thumb" Height="58" Width="50" />
                             </Track.Thumb>
                             <Track.IncreaseRepeatButton>
                                 <RepeatButton />
