@@ -102,9 +102,19 @@
 
             </StackPanel>
         </Border>
+        <Image 
+            x:Name="passwordVisibility"
+            Width="80"
+            Height="60"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="1285,613,0,0" Source="/Pages/showPassword_image.png"
+            >
+
+        </Image>
         <ToggleButton
              Name="btnShowPassword"
-             Content="Show"
+             Background="Transparent"
              Width="80"
              Height="40"
              VerticalAlignment="Top"
@@ -112,7 +122,22 @@
              Margin="1275,623,0,0"
              Checked="btnShowPassword_Checked"
              Unchecked="btnShowPassword_Unchecked"
-/>
+        >
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
         <TextBlock
             Text="Email:"
             Margin="700,354,0,0"
