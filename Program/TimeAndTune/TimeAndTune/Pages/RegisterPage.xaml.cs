@@ -83,7 +83,7 @@ namespace TimeAndTune.Pages
         {
             if (txtName.Text == "")
             {
-                txtEmail.Text = "";
+                txtName.Text = "";
             }
         }
 
