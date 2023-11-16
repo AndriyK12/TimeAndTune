@@ -26,6 +26,7 @@
     <None Remove="Pages\rain_sound.png" />
     <None Remove="Pages\train_sound.png" />
     <None Remove="Pages\user_image.png" />
+    <None Remove="Pages\volume_image.png" />
     <None Remove="Pages\wind_sound.png" />
   </ItemGroup>
 
@@ -56,6 +57,7 @@
     <Resource Include="Pages\rain_sound.png" />
     <Resource Include="Pages\train_sound.png" />
     <Resource Include="Pages\user_image.png" />
+    <Resource Include="Pages\volume_image.png" />
     <Resource Include="Pages\wind_sound.png" />
   </ItemGroup>
 

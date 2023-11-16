@@ -271,7 +271,8 @@
                 Text="RAIN"
                 Margin="0,55,0,0"
                 Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+                FontSize="80" FontFamily="Franklin Gothic Medium"
+                IsHitTestVisible="False"/>
 
             <Image
                 x:Name="campFireImage"
@@ -302,41 +303,45 @@
             </Button>
         </Grid>
         <TextBlock 
-                Grid.Row="0" Panel.ZIndex="2"
-                Visibility="Visible"
-                VerticalAlignment="Center"
-                HorizontalAlignment="center"
-                Text="CAFE"
-                Margin="-1200,-70,0,0"
-                Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            VerticalAlignment="Center"
+            HorizontalAlignment="center"
+            Text="CAFE"
+            Margin="-1200,-70,0,0"
+            Foreground="White"
+            FontSize="80" FontFamily="Franklin Gothic Medium"
+            IsHitTestVisible="False"/>
         <TextBlock 
-                Grid.Row="0" Panel.ZIndex="2"
-                Visibility="Visible"
-                VerticalAlignment="center"
-                HorizontalAlignment="center"
-                Text="CAMP FIRE"
-                Margin="1300,-70,80,0"
-                Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            VerticalAlignment="center"
+            HorizontalAlignment="center"
+            Text="CAMP FIRE"
+            Margin="1300,-70,80,0"
+            Foreground="White"
+            FontSize="80" FontFamily="Franklin Gothic Medium"
+            IsHitTestVisible="False"/>
         <TextBlock 
-                Grid.Row="0" Panel.ZIndex="2"
-                Visibility="Visible"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Text="NIGHT CRICKETS"
-                Margin="-1200,400,0,0"
-                Foreground="White"
-                FontSize="70" FontFamily="Franklin Gothic Medium"/>
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Text="NIGHT CRICKETS"
+            Margin="-1200,400,0,0"
+            Foreground="White"
+            FontSize="70" FontFamily="Franklin Gothic Medium"
+            IsHitTestVisible="False"/>
         <TextBlock 
-                Grid.Row="0" Panel.ZIndex="2"
-                Visibility="Visible"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Text="WIND"
-                Margin="1390,400,180,0"
-                Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+            Grid.Row="0" Panel.ZIndex="2"
+            Visibility="Visible"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Text="WIND"
+            Margin="1390,400,180,0"
+            Foreground="White"
+            FontSize="80" FontFamily="Franklin Gothic Medium"
+            IsHitTestVisible="False"/>
         <Grid
             VerticalAlignment="center"
             HorizontalAlignment="center"
@@ -405,7 +410,8 @@
                 Text="TRAIN"
                 Margin="0,55,0,0"
                 Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"/>
+                FontSize="80" FontFamily="Franklin Gothic Medium"
+                IsHitTestVisible="False"/>
 
             <Image 
                 x:Name="windImage"
@@ -442,6 +448,7 @@
         </Grid>
 
         <Image
+            x:Name = "muteImage"
             Margin="0,0,0,90"
             VerticalAlignment="Bottom"
             HorizontalAlignment="center"
@@ -470,7 +477,6 @@
                     </Setter>
                 </Style>
             </Button.Style>
-
         </Button>
         <TextBlock 
             Grid.Row="0" Panel.ZIndex="2"
