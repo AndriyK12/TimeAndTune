@@ -24,6 +24,7 @@
     <None Remove="logout_image.png" />
     <None Remove="Pages\cafe_sound.png" />
     <None Remove="Pages\camp_fire_sound.png" />
+    <None Remove="Pages\hidePassword_image.png" />
     <None Remove="Pages\menu_icon.png" />
     <None Remove="Pages\mute_logo.png" />
     <None Remove="Pages\night_crickets_sound.png" />
@@ -31,6 +32,7 @@
     <None Remove="Pages\playButton.png" />
     <None Remove="Pages\plus_image.png" />
     <None Remove="Pages\rain_sound.png" />
+    <None Remove="Pages\showPassword_image.png" />
     <None Remove="Pages\train_sound.png" />
     <None Remove="Pages\user_image.png" />
     <None Remove="Pages\volume_image.png" />
@@ -38,8 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
-    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +60,7 @@
     <Resource Include="logout_image.png" />
     <Resource Include="Pages\FocusPageImages\cafeSound.png" />
     <Resource Include="Pages\FocusPageImages\campFireSound.png" />
+    <Resource Include="Pages\hidePassword_image.png" />
     <Resource Include="Pages\menu_icon.png" />
     <Resource Include="Pages\FocusPageImages\mute.png" />
     <Resource Include="Pages\FocusPageImages\nightCricketsSound.png" />
@@ -64,6 +69,7 @@
     <Resource Include="Pages\plus_image.png" />
     <Resource Include="Pages\FocusPageImages\rainSound.png" />
     <Resource Include="Pages\FocusPageImages\trainSound.png" />
+    <Resource Include="Pages\showPassword_image.png" />
     <Resource Include="Pages\user_image.png" />
     <Resource Include="Pages\FocusPageImages\volume.png" />
     <Resource Include="Pages\FocusPageImages\windSound.png" />

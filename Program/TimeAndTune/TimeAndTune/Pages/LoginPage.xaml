@@ -1,0 +1,243 @@
+﻿<Page x:Class="TimeAndTune.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TimeAndTune.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Background="#25232A"
+      Title="LoginPage">
+
+    <Grid>
+
+
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+        </Grid.LayoutTransform>
+        <Rectangle 
+            Fill="Transparent"
+            RadiusX="12"
+            RadiusY="12"
+            Margin="0,60,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="367"
+            Height="131"
+            Stroke="#5FA6E7" 
+            StrokeThickness="6"
+        />
+        <TextBlock 
+             VerticalAlignment="Top"
+             HorizontalAlignment="Center"
+             Text="Sign in"
+             Margin="0,77,0,0"
+             Foreground="White"
+             FontSize="64"
+        />
+        <Border
+            Margin="0,414,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="720"
+            Height="85"
+            Background="#A6A3A3"
+            CornerRadius="15" 
+            >
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox
+                    Name="txtEmail"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    Text=""
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Foreground="#FFFFFF"
+                    FontSize="32"
+                    Width="720"
+                    Height="85"
+                    Margin="30,25,0,0"
+                    GotFocus="txtEmail_GotFocus"
+                    LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"
+                />
+            </StackPanel>
+        </Border>
+        <Border
+        Margin="0,600,0,0"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Center"
+        Width="720"
+        Height="85"
+        Background="#A6A3A3"
+        CornerRadius="15" 
+        >
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <PasswordBox
+                Name="txtPassword"
+                BorderThickness="0"
+                Background="Transparent"
+                Password=""
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Foreground="#FFFFFF"
+                FontSize="32"
+                Width="720"
+                Height="85"
+                Padding="10,25,0,0"
+                GotFocus="txtPassword_GotFocus"
+            />
+                <TextBlock
+                Name="txtPasswordVisible"
+                Text=""
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Foreground="#FFFFFF"
+                FontSize="32"
+                Width="400"
+                Height="40"
+                Padding="10,0,0,0"
+                Visibility="Collapsed"
+/>
+
+            </StackPanel>
+        </Border>
+        <Image 
+            x:Name="passwordVisibility"
+            Width="80"
+            Height="60"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="1285,613,0,0" Source="/Pages/showPassword_image.png"
+            >
+
+        </Image>
+        <ToggleButton
+             Name="btnShowPassword"
+             Background="Transparent"
+             Width="80"
+             Height="40"
+             VerticalAlignment="Top"
+             HorizontalAlignment="Left"
+             Margin="1275,623,0,0"
+             Checked="btnShowPassword_Checked"
+             Unchecked="btnShowPassword_Unchecked"
+        >
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+        <TextBlock
+            Text="Email:"
+            Margin="700,354,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Foreground="#FFFFFF"
+            FontSize="32"
+        />
+        <TextBlock
+            Text="Password:"
+            Margin="700,540,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Foreground="#FFFFFF"
+            FontSize="32"
+        />
+        <Rectangle
+            RadiusX="15"
+            RadiusY="15"
+            Margin="0,795,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="342" Height="112"
+            Fill="#1C2C43"
+            Stroke="#FFFFFF"
+            StrokeThickness="3"/>
+        <Image HorizontalAlignment="Left"
+           Margin="865,0,0,180"
+           VerticalAlignment="Bottom"
+           Height="59"
+           Width="59"
+           Source="/back_button.png" RenderTransformOrigin="0.5,0.5"
+           >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-182.368"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TextBlock 
+             VerticalAlignment="Top"
+             HorizontalAlignment="Center"
+             Text="Continue"
+             Margin="35,815,0,0"
+             Foreground="White"
+             FontSize="48"
+        />
+        <Button
+            Margin="0,795,0,0"
+            Width="342" Height="112"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Click="Continue_Click"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock
+            Text="Create account"
+            Margin="0,950,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Foreground="White"
+            FontSize="48"/>
+        <Button
+            Margin="0,950,0,0"
+            Width="342" Height="62"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Click="onCreateAccount_Click"
+            >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Page>

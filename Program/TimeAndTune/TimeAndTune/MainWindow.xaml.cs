@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeAndTune.Pages;
 
 namespace TimeAndTune
 {
@@ -24,7 +25,7 @@ namespace TimeAndTune
         {
             InitializeComponent();
 
-            mainFrame.Navigate(new FocusPage());
+            mainFrame.Navigate(new LoginPage());
 
         }
     }
