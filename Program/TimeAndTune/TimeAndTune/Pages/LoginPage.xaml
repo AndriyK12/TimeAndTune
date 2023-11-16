@@ -64,54 +64,55 @@
             </StackPanel>
         </Border>
         <Border
-            Margin="0,600,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Width="720"
-            Height="85"
-            Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+        Margin="0,600,0,0"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Center"
+        Width="720"
+        Height="85"
+        Background="#A6A3A3"
+        CornerRadius="15" 
+        >
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <PasswordBox
-                    Name="txtPassword"
-                    BorderThickness="0"
-                    Background="Transparent"
-                    Password=""
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
-                    FontSize="32"
-                    Width="720"
-                    Height="85"
-                    Padding="10,25,0,0"
-                    GotFocus="txtPassword_GotFocus"
-                />
+                Name="txtPassword"
+                BorderThickness="0"
+                Background="Transparent"
+                Password=""
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Foreground="#FFFFFF"
+                FontSize="32"
+                Width="720"
+                Height="85"
+                Padding="10,25,0,0"
+                GotFocus="txtPassword_GotFocus"
+            />
                 <TextBlock
-                    Name="txtPasswordVisible"
-                    Text=""
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
-                    FontSize="32"
-                    Width="400"
-                    Height="40"
-                    Padding="10,0,0,0"
-                    Visibility="Collapsed"
-        />
-                <ToggleButton
-                    Name="btnShowPassword"
-                    Content="Show"
-                    Width="80"
-                    Height="40"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Margin="-100,0,0,0"
-                    Checked="btnShowPassword_Checked"
-                    Unchecked="btnShowPassword_Unchecked"
-                   />
+                Name="txtPasswordVisible"
+                Text=""
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Foreground="#FFFFFF"
+                FontSize="32"
+                Width="400"
+                Height="40"
+                Padding="10,0,0,0"
+                Visibility="Collapsed"
+/>
+
             </StackPanel>
         </Border>
+        <ToggleButton
+             Name="btnShowPassword"
+             Content="Show"
+             Width="80"
+             Height="40"
+             VerticalAlignment="Top"
+             HorizontalAlignment="Left"
+             Margin="1275,623,0,0"
+             Checked="btnShowPassword_Checked"
+             Unchecked="btnShowPassword_Unchecked"
+/>
         <TextBlock
             Text="Email:"
             Margin="700,354,0,0"
