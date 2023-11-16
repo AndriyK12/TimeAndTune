@@ -46,6 +46,9 @@ namespace TimeAndTune
             InitializeComponent();
             Left = SystemParameters.PrimaryScreenWidth - Width;
             Top = 23;
+            usernameText.Text = MainWindow.ActiveUser.Username;
+            emailText.Text = MainWindow.ActiveUser.Email;
+            coinsAmountText.Text = $"{MainWindow.ActiveUser.Coinsamount}";
         }
     }
 }

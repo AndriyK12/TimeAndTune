@@ -22,7 +22,8 @@
                Width="80" 
                Source="/Pages/user_image.png"
             />
-        <TextBlock
+        <TextBlock 
+            x:Name="usernameText"
             Text="Username"
             Margin="30,55,0,0"
             VerticalAlignment="Top"
@@ -40,6 +41,7 @@
             >
         </Image>
         <TextBlock
+            x:Name="coinsAmountText"
             Text="125"
             Margin="60,118,0,0"
             VerticalAlignment="Top"
@@ -49,6 +51,7 @@
             >
         </TextBlock>
         <TextBlock
+            x:Name="emailText"
             Text="example@gmail.com"
             Margin="30,0,0,200"
             VerticalAlignment="Bottom"

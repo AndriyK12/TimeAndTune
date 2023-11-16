@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace TimeAndTune
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static User ActiveUser { get; set; }
         public MainWindow()
         {
             InitializeComponent();
