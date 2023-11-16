@@ -2,6 +2,7 @@
 using Npgsql;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using EFCore.Service;
 
 namespace EFCore
 {
@@ -15,6 +16,9 @@ namespace EFCore
                 var allUsers = context.Users.ToList();
                 var allTasks = context.Tasks.ToList();
                 var allSounds = context.Sounds.ToList();
+
+                DatabaseUserProvider userService = new DatabaseUserProvider();
+                Console.WriteLine(userService.getEmail(allUsers[0]));
 
                 var firstTaskUsername = allTasks[0].UseridrefNavigation?.Username;
                 var secondTaskUsername = allTasks[1].UseridrefNavigation?.Username;

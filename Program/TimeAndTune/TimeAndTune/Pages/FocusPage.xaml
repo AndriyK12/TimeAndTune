@@ -21,7 +21,8 @@
             HorizontalAlignment="Left"
             Source="/Pages/menu_icon.png"
             Width="90" Height="90" 
-            Visibility="Visible"/>
+            Visibility="Visible"
+            />
         <Button
             Visibility="Visible"
             Margin="90,53,0,0"
@@ -29,7 +30,9 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Background="Transparent"
-            BorderThickness="0">
+            BorderThickness="0"
+            Click="openNavigation_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -85,7 +88,9 @@
             Height="100"
             Width="100"
             Margin="0,60,90,0"
-            BorderThickness="0">
+            BorderThickness="0"
+            Click="openUserInfo_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -100,7 +105,7 @@
                     </Setter>
                 </Style>
             </Button.Style>
-            
+          
         </Button>
         <Image 
             x:Name="PlayPauseImage"
