@@ -27,44 +27,23 @@ namespace TimeAndTune
     
     public partial class FocusPage : Page
     {
-        const uint SPI_SETSUPPRESSMESSAGES = 0x0A;
 
-        [DllImport("user32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);
+        
 
-        private void MuteButton(object sender, RoutedEventArgs e)
-        {
-            if (!muteButtonWasPressed)
-            {
-                
-                muteImage.Source = new BitmapImage(new Uri("/Pages/volume_image.png", UriKind.Relative));
-                muteButtonWasPressed = true;
-                //SystemParametersInfo(SPI_SETSUPPRESSMESSAGES, 1, IntPtr.Zero, 0);
-                //DisableNotifications();
-                MessageBox.Show(IsQuietHours().ToString());
-            }
-            else
-            {
-                muteImage.Source = new BitmapImage(new Uri("/Pages/mute_logo.png", UriKind.Relative));
-                muteButtonWasPressed = false;
-                SystemParametersInfo(SPI_SETSUPPRESSMESSAGES, 1, IntPtr.Zero, 0);
-
-            }
-        }
-
-        public static bool IsQuietHours()
+        /*public static bool IsQuietHours()
         {
             string path = "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Notifications\\Settings";
             string key = "NOC_GLOBAL_SETTING_TOASTS_ENABLED";
             int? toastsEnabled = (int?)Microsoft.Win32.Registry.GetValue(path, key, 1);
             //Microsoft.Win32.Registry.SetValue(path, key, 1);
             return (toastsEnabled == 0);
-        }
+        }*/
 
         bool playPauseButtonWasPressed = false;
         bool muteButtonWasPressed = false;
         string[] soundsName = {"cafeImage", "rainImage", "campFireImage", "nightCricketsImage", "trainImage", "windImage"};
+
+        private MediaPlayer mediaPlayer = new MediaPlayer();
         public FocusPage()
         {
             InitializeComponent();
@@ -110,12 +89,12 @@ namespace TimeAndTune
             stopOtherSounds("");
             if (playPauseButtonWasPressed)
             {
-                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/playButton.png", UriKind.Relative));
+                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/play.png", UriKind.Relative));
                 playPauseButtonWasPressed = false;
             } 
             else 
             {
-                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/pauseButton.png", UriKind.Relative));
+                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/pause.png", UriKind.Relative));
                 playPauseButtonWasPressed = true;
             }
         }
@@ -125,6 +104,27 @@ namespace TimeAndTune
             smoothButtonTransform("cafeImage");
             stopOtherSounds("cafeImage");
 
+            /*mediaPlayer.Open(new Uri("/Pages/FocusPageSounds/rain.mp3", UriKind.RelativeOrAbsolute));
+            mediaPlayer.Play();*/
+
+            SoundPlayer playSound = new SoundPlayer(Properties.Resources.rain);
+            playSound.PlayLooping();
+
+            /*MediaElement mediaElement = new MediaElement();
+
+            // Встановіть джерело звуку
+            mediaElement.Source = new Uri("D:\\University\\Університет\\Програмна інженерія\\files for projects\\sound\\rain.mp3", UriKind.RelativeOrAbsolute);
+            
+            // Увімкніть звук
+            mediaElement.Play();
+
+            MediaPlayer mediaPlayer = new MediaPlayer();
+
+            // Встановіть для нього джерело звуку
+            mediaPlayer.Source. = new Uri("D:\\University\\Університет\\Програмна інженерія\\files for projects\\sound\\rain.mp3", UriKind.RelativeOrAbsolute);
+
+            // Запустіть відтворення
+            mediaPlayer.Play();*/
         }
 
         private void RainSoundButton(object sender, RoutedEventArgs e)
@@ -161,26 +161,24 @@ namespace TimeAndTune
             stopOtherSounds("windImage");
 
         }
-        /*private void MuteButton(object sender, RoutedEventArgs e)
+        private void MuteButton(object sender, RoutedEventArgs e)
         {
             if (!muteButtonWasPressed)
             {
-                muteImage.Source = new BitmapImage(new Uri("/Pages/volume_image.png", UriKind.Relative));
+                muteImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/volume.png", UriKind.Relative));
                 muteButtonWasPressed = true;
-                
+
                 //DisableNotifications();
             }
             else
             {
-                muteImage.Source = new BitmapImage(new Uri("/Pages/mute_logo.png", UriKind.Relative));
+                muteImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/mute.png", UriKind.Relative));
                 muteButtonWasPressed = false;
-
-                
             }
-        }*/
-        
-        
-        
+        }
+
+
+
         private void smoothButtonTransform(string name)
         {
             Image image = FindName(name) as Image;
@@ -190,14 +188,14 @@ namespace TimeAndTune
             {
                 targetWidth = image.Width - 30;
 
-                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/playButton.png", UriKind.Relative));
+                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/play.png", UriKind.Relative));
                 playPauseButtonWasPressed = false;
             } 
             else
             {
                 targetWidth = image.Width + 30;
 
-                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/pauseButton.png", UriKind.Relative));
+                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/pause.png", UriKind.Relative));
                 playPauseButtonWasPressed = true;
             }
 

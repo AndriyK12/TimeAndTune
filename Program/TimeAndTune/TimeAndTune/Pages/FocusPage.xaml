@@ -112,7 +112,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Margin="300,200,0,0"
-            Source="/Pages/playButton.png"
+            Source="/Pages/FocusPageImages/play.png"
             Width="130" Height="130" 
             Visibility="Visible"/>
         <Button
@@ -203,11 +203,12 @@
             VerticalAlignment="center"
             HorizontalAlignment="center"
             Margin="0,0,0,90">
+            
             <Image 
                 x:Name="cafeImage"
                 Margin="-1200,0,0,0"
                 Width="550" Height="200"
-                Source="/Pages/cafe_sound.png"
+                Source="/Pages/FocusPageImages/cafeSound.png"
                 Visibility="Visible">
             </Image>
             
@@ -238,7 +239,7 @@
 
             <Image 
                 x:Name="rainImage"
-                Source="/Pages/rain_sound.png"
+                Source="/Pages/FocusPageImages/rainSound.png"
                 Width="550" Height="200" 
                 Visibility="Visible"/>
             <Button
@@ -278,7 +279,7 @@
                 x:Name="campFireImage"
                 Margin="1200,0,0,0"
                 Width="550" Height="200" 
-                Visibility="Visible" Source="/Pages/camp_fire_sound.png"/>
+                Visibility="Visible" Source="/Pages/FocusPageImages/campFireSound.png"/>
             <Button 
                 Visibility="Visible"
                 Margin="1200,0,0,0"
@@ -349,7 +350,7 @@
             <Image 
                 x:Name="nightCricketsImage"
                 Margin="-1200,0,0,0"
-                Source="/Pages/night_crickets_sound.png"
+                Source="/Pages/FocusPageImages/nightCricketsSound.png"
                 Width="550" Height="200" 
                 Visibility="Visible"/>
             <Button
@@ -377,7 +378,7 @@
             
             <Image 
                 x:Name="trainImage"
-                Source="/Pages/train_sound.png"
+                Source="/Pages/FocusPageImages/trainSound.png"
                 Width="550" Height="200" 
                 Visibility="Visible"/>
             <Button
@@ -416,7 +417,7 @@
             <Image 
                 x:Name="windImage"
                 Margin="1200,0,0,0"
-                Source="/Pages/wind_sound.png"
+                Source="/Pages/FocusPageImages/windSound.png"
                 Width="550" Height="200" 
                 Visibility="Visible"/>
             <Button
@@ -453,7 +454,7 @@
             VerticalAlignment="Bottom"
             HorizontalAlignment="center"
             Width="100" Height="100" 
-            Visibility="Visible" Source="/Pages/mute_logo.png"/>
+            Visibility="Visible" Source="/Pages/FocusPageImages/mute.png"/>
         <Button
             Visibility="Visible"
             Margin="0,0,0,90"
