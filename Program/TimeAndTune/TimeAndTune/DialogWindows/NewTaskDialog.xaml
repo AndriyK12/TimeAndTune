@@ -171,9 +171,9 @@
                 />
             </StackPanel>
         </Border>
-        
-        
-        <Button
+
+
+            <Button x:Name="priorBtn"
             Margin="124,435,0,0"
             Width="280" Height="62"
             VerticalAlignment="Top"
@@ -187,7 +187,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <ComboBox Width="280" BorderBrush="#A6A3A3" Background="#ADD8E6" FontSize="34"  >
+                                <ComboBox x:Name="priorComboBox" Width="280" BorderBrush="#A6A3A3" Background="#ADD8E6" FontSize="34"  >
                                     <ComboBoxItem FontSize="20">Normal</ComboBoxItem>
                                     <ComboBoxItem FontSize="20">Important</ComboBoxItem>
                                     <ComboBoxItem FontSize="20">Very important</ComboBoxItem>
@@ -208,7 +208,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        
+
         <Rectangle
             RadiusX="15"
             RadiusY="15"
@@ -230,6 +230,7 @@
             Width="279" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
+            Click="addNewTask_Click"
             >
             <Button.Style>
                 <Style TargetType="Button">

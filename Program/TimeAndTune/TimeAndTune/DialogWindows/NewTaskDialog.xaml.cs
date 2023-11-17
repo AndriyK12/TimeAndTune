@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EFCore;
+using EFCore.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,23 +22,78 @@ namespace TimeAndTune
     /// </summary>
     public partial class NewTaskDialog : Window
     {
-        private bool isClosedByUser = false;
+        private bool noNeedToCloseOnDeactivated = false;
         public void goBackToHomePage(object sender, RoutedEventArgs e)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
 
             if (currentWindow != null)
             {
-                isClosedByUser = true;
+                noNeedToCloseOnDeactivated = true;
                 currentWindow.Close();
             }
         }
         protected override void OnDeactivated(EventArgs e)
         {
             base.OnDeactivated(e);
-            if (!isClosedByUser)
+            if (!noNeedToCloseOnDeactivated)
             {
                 Close();
+            }
+        }
+        private void addNewTask_Click(object sender, RoutedEventArgs e)
+        {
+            string taskName = txtTaskName.Text;
+            string taskDescription = txtDescription.Text;
+            DateOnly taskExpectedTime;
+            int taskPriority = 0;
+            int userIdRef = MainWindow.ActiveUser.Userid;
+            ComboBox priorComboBox = (ComboBox)priorBtn.Template.FindName("priorComboBox", priorBtn);
+            if (priorComboBox != null)
+            {
+                ComboBoxItem priorityComboBoxItem = (ComboBoxItem)priorComboBox.SelectedItem;
+                noNeedToCloseOnDeactivated = true;
+                if (priorityComboBoxItem.Content.ToString() == "Normal")
+                {
+                    taskPriority = 1;
+                }
+                else if(priorityComboBoxItem.Content.ToString() == "Important")
+                {
+                    taskPriority = 2;
+                }
+                else
+                {
+                    taskPriority = 3;
+                }
+            }
+            else{
+                taskPriority = 1;
+            }
+            if (DateOnly.TryParse(txtDate.Text, out DateOnly result))
+            {
+                taskExpectedTime = result;
+                noNeedToCloseOnDeactivated = true;
+                DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+                if (taskExpectedTime >= today)
+                {
+                    if (taskName == "") 
+                    {
+                        MessageBox.Show("Please enter task name!");
+                    }
+                    else {
+                        DatabaseTaskProvider taskService = new DatabaseTaskProvider();
+                        taskService.addNewTask(taskName, taskDescription, taskExpectedTime, taskPriority, userIdRef);
+                        Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You can not set expected finish date to past time!");
+                }
+                
+            }
+            else{
+                MessageBox.Show("Date was set incorrectly! Please enter in format dd/mm/yyyy.");
             }
         }
         public NewTaskDialog()
@@ -141,7 +198,5 @@ namespace TimeAndTune
                 txtDescription.Text = "";
             }
         }
-
-        
     }
 }

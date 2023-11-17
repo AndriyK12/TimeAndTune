@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace EFCore.Service
 {
-    internal class DatabaseTaskProvider : ITaskProvider
+    public class DatabaseTaskProvider : ITaskProvider
     {
+        public void addNewTask(string name, string description, DateOnly expectedDate, int priority,int userRef)
+        {
+            Task newTask = new Task();
+            using (var context = new TTContext())
+            {
+                newTask.Name = name;
+                newTask.Description = description;
+                newTask.Expectedfinishtime = expectedDate;
+                newTask.Priority = priority;
+                newTask.Dateofcreation = DateOnly.FromDateTime(DateTime.Now);
+                newTask.Useridref = userRef;
+                context.Tasks.Add(newTask);
+                context.SaveChanges();
+            }
+        }
         public List<Task> GetAllTasks()
         {
             using (var context = new TTContext())
