@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EFCore.Service
 {
-    internal class DatabaseSoundProvider : ISoundProvider
+    public class DatabaseSoundProvider : ISoundProvider
     {
         public string getAudioFilePath(Sound sound)
         {
