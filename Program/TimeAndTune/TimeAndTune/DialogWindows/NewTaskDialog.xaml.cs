@@ -49,7 +49,7 @@ namespace TimeAndTune
             int taskPriority = 0;
             int userIdRef = MainWindow.ActiveUser.Userid;
             ComboBox priorComboBox = (ComboBox)priorBtn.Template.FindName("priorComboBox", priorBtn);
-            if (priorComboBox != null)
+            if (priorComboBox.SelectedItem != null)
             {
                 ComboBoxItem priorityComboBoxItem = (ComboBoxItem)priorComboBox.SelectedItem;
                 noNeedToCloseOnDeactivated = true;
@@ -57,7 +57,7 @@ namespace TimeAndTune
                 {
                     taskPriority = 1;
                 }
-                else if(priorityComboBoxItem.Content.ToString() == "Important")
+                else if (priorityComboBoxItem.Content.ToString() == "Important")
                 {
                     taskPriority = 2;
                 }
@@ -66,7 +66,8 @@ namespace TimeAndTune
                     taskPriority = 3;
                 }
             }
-            else{
+            else
+            {
                 taskPriority = 1;
             }
             if (DateOnly.TryParse(txtDate.Text, out DateOnly result))
@@ -78,7 +79,9 @@ namespace TimeAndTune
                 {
                     if (taskName == "") 
                     {
+                        noNeedToCloseOnDeactivated = true;
                         MessageBox.Show("Please enter task name!");
+                        noNeedToCloseOnDeactivated = false;
                     }
                     else {
                         DatabaseTaskProvider taskService = new DatabaseTaskProvider();
@@ -88,12 +91,16 @@ namespace TimeAndTune
                 }
                 else
                 {
+                    noNeedToCloseOnDeactivated = true;
                     MessageBox.Show("You can not set expected finish date to past time!");
+                    noNeedToCloseOnDeactivated = false;
                 }
                 
             }
             else{
+                noNeedToCloseOnDeactivated = true;
                 MessageBox.Show("Date was set incorrectly! Please enter in format dd/mm/yyyy.");
+                noNeedToCloseOnDeactivated = false;
             }
         }
         public NewTaskDialog()
