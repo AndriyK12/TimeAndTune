@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -118,6 +119,8 @@ namespace TimeAndTune.Pages
             txtPassword.Visibility = Visibility.Collapsed;
             txtPasswordVisible.Visibility = Visibility.Visible;
             txtPasswordVisible.Text = txtPassword.Password;
+            Image passwordVisibility = FindName("passwordVisibility") as Image;
+           
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
         }
 
@@ -126,6 +129,7 @@ namespace TimeAndTune.Pages
             // Приховати пароль
             txtPassword.Visibility = Visibility.Visible;
             txtPasswordVisible.Visibility = Visibility.Collapsed;
+            Image passwordVisibility = FindName("passwordVisibility") as Image;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
         }
     }
