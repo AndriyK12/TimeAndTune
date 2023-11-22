@@ -32,7 +32,7 @@ namespace EFCore.Service
             }
         }
 
-        public int GetAmountOfTasksByDate(DateOnly date)
+        public int GetAmountOfCompletedTasksByDate(DateOnly date, int userID)
         {
             using (var context = new TTContext())
             {
@@ -42,7 +42,10 @@ namespace EFCore.Service
                 {
                     if (task.Finishtime == date && getCompleted(task))
                     {
-                        dateTasksAmount++;
+                        if (task.Useridref == userID)
+                        {
+                            dateTasksAmount++;
+                        }
                     }
                 }
                 return dateTasksAmount;
