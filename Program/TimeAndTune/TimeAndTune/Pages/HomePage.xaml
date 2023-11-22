@@ -8,6 +8,43 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Background="#25232A"
       Title="HomePage">
+    <Page.Resources>
+        <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Background" Value="#D9D9D9"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" CornerRadius="10"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Margin" Value="50"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border x:Name="rectangle" Background="#3F3E3E" Height="{TemplateBinding Height}" SnapsToDevicePixels="True" Width="{TemplateBinding Width}" CornerRadius="8"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="rectangle" Value="#3F3E3E"/>
+                            </Trigger>
+                            <Trigger Property="IsDragging" Value="true">
+                                <Setter Property="Background" TargetName="rectangle" Value="#3F3E3E"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
     <Grid>
         <Grid.LayoutTransform>
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
@@ -224,13 +261,48 @@
             </Button.Style>
         </Button>
         <Grid
-            Width="1200" 
+            Width="1240" 
             Margin="283,381,245,85">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="361*"/>
+                <ColumnDefinition Width="39*"/>
+            </Grid.ColumnDefinitions>
             <ListView 
-                Margin="10"
+                Margin="10,10,10,10"
                 Name="TaskListView" 
                 Background="Transparent"
-                BorderBrush="Transparent">
+                BorderBrush="Transparent" d:ItemsSource="{d:SampleData ItemCount=78}" Grid.ColumnSpan="2">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type ScrollBar}">
+                        <Setter Property="Background" Value="#D9D9D9"/>
+                        <Setter Property="BorderBrush" Value="#D9D9D9"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                    <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+                                            <RowDefinition Height="0.00001*"/>
+                                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+                                        </Grid.RowDefinitions>
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Row="1" CornerRadius="10"/>
+                                        <Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
+                                            <Track.DecreaseRepeatButton>
+                                                <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource RepeatButtonTransparent}" HorizontalAlignment="Left" Width="17"/>
+                                            </Track.DecreaseRepeatButton>
+                                            <Track.IncreaseRepeatButton>
+                                                <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource RepeatButtonTransparent}"/>
+                                            </Track.IncreaseRepeatButton>
+                                            <Track.Thumb>
+                                                <Thumb Style="{StaticResource ScrollBarThumbVertical}" Margin="2"/>
+                                            </Track.Thumb>
+                                        </Track>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.Resources>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
@@ -310,8 +382,7 @@
             Width="164"
             Height="163"
             Stroke="White"
-            StrokeThickness="2" Margin="0,0,58,38"
-            >
+            StrokeThickness="2" Margin="0,0,58,38">
         </Ellipse>
         <Image HorizontalAlignment="Right"
                Margin="0,0,90,70"
@@ -346,7 +417,7 @@
             </Button.Style>
         </Button>
 
-        
+
     </Grid>
 
 </Page>
