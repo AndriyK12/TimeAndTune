@@ -101,6 +101,16 @@
                 />
             </StackPanel>
         </Border>
+        <TextBox
+            Name="errorRegisterEmailInput"
+            Text=""
+            Margin="0,250,1435,0"
+            Foreground="Red"
+            Background="Transparent"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            BorderBrush="Transparent"
+            FontSize="20"/>
         <TextBlock
             Text="Password:"
             Margin="1180,322,0,0"
@@ -230,6 +240,26 @@
                 />
             </StackPanel>
         </Border>
+        <TextBox
+            Name="errorRegisterPasswordsDontMatch"
+            Text=""
+            Margin="1180,275,0,0"
+            Foreground="Red"
+            Background="Transparent"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            BorderBrush="Transparent"
+            FontSize="20"/>
+        <TextBox
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Name="errorRegisterAllFields"
+            Text=""
+            Margin="0,700,0,0"
+            Foreground="Red"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            FontSize="20"/>
         <Image 
             x:Name="confPasswordVisibility"
             Width="80"
@@ -307,7 +337,7 @@
             Width="342" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="Continue_Click"
+            Click="SighUp_Click"
             >
             <Button.Style>
                 <Style TargetType="Button">

@@ -52,6 +52,8 @@ namespace TimeAndTune
         }
         private void addNewTask_Click(object sender, RoutedEventArgs e)
         {
+            errorTaskDate.Text = "";
+            errorTaskName.Text = "";
             string taskName = txtTaskName.Text;
             string taskDescription = txtDescription.Text;
             DateOnly taskExpectedTime;
@@ -89,7 +91,7 @@ namespace TimeAndTune
                     if (taskName == "") 
                     {
                         noNeedToCloseOnDeactivated = true;
-                        MessageBox.Show("Please enter task name!");
+                        errorTaskName.Text = "Please enter task name!";
                         noNeedToCloseOnDeactivated = false;
                     }
                     else {
@@ -102,14 +104,14 @@ namespace TimeAndTune
                 else
                 {
                     noNeedToCloseOnDeactivated = true;
-                    MessageBox.Show("You can not set expected finish date to past time!");
+                    errorTaskDate.Text = "You can not set expected finish date to past time!";
                     noNeedToCloseOnDeactivated = false;
                 }
                 
             }
             else{
                 noNeedToCloseOnDeactivated = true;
-                MessageBox.Show("Date was set incorrectly! Please enter in format dd/mm/yyyy.");
+                errorTaskDate.Text = "Date was set incorrectly! Please enter in format dd/mm/yyyy.";
                 noNeedToCloseOnDeactivated = false;
             }
         }

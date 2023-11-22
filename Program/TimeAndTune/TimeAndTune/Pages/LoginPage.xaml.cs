@@ -34,7 +34,7 @@ namespace TimeAndTune.Pages
             InitializeComponent();
         }
 
-        public void Continue_Click(object sender, RoutedEventArgs e)
+        public void SignIn_Click(object sender, RoutedEventArgs e)
         {
             string enteredEmail = txtEmail.Text;
             string enteredPassword = txtPassword.Password;
@@ -49,7 +49,8 @@ namespace TimeAndTune.Pages
             }
             else
             {
-                MessageBox.Show("Authentication failed. Please check your username and password.");
+                txtPassword.Password = "";
+                errorLoginEmail.Text = "Authentication failed. Please check your username and password.";
             }
         }
 
