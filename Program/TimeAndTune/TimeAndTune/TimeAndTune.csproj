@@ -24,6 +24,7 @@
     <None Remove="logout_image.png" />
     <None Remove="Pages\cafe_sound.png" />
     <None Remove="Pages\camp_fire_sound.png" />
+    <None Remove="Pages\checkmark.png" />
     <None Remove="Pages\hidePassword_image.png" />
     <None Remove="Pages\menu_icon.png" />
     <None Remove="Pages\mute_logo.png" />
@@ -34,6 +35,7 @@
     <None Remove="Pages\rain_sound.png" />
     <None Remove="Pages\showPassword_image.png" />
     <None Remove="Pages\train_sound.png" />
+    <None Remove="Pages\uncheckmark.png" />
     <None Remove="Pages\user_image.png" />
     <None Remove="Pages\volume_image.png" />
     <None Remove="Pages\wind_sound.png" />
@@ -58,6 +60,7 @@
     <Resource Include="DialogWindows\statistics_image.png" />
     <Resource Include="logo.png" />
     <Resource Include="logout_image.png" />
+    <Resource Include="Pages\checkmark.png" />
     <Resource Include="Pages\FocusPageImages\cafeSound.png" />
     <Resource Include="Pages\FocusPageImages\campFireSound.png" />
     <Resource Include="Pages\hidePassword_image.png" />
@@ -70,6 +73,7 @@
     <Resource Include="Pages\FocusPageImages\rainSound.png" />
     <Resource Include="Pages\FocusPageImages\trainSound.png" />
     <Resource Include="Pages\showPassword_image.png" />
+    <Resource Include="Pages\uncheckmark.png" />
     <Resource Include="Pages\user_image.png" />
     <Resource Include="Pages\FocusPageImages\volume.png" />
     <Resource Include="Pages\FocusPageImages\windSound.png" />
