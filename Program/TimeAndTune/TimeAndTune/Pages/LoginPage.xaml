@@ -179,14 +179,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBlock 
-             VerticalAlignment="Top"
-             HorizontalAlignment="Center"
-             Text="Continue"
-             Margin="35,815,0,0"
-             Foreground="White"
-             FontSize="48"
-        />
         <TextBox
             Name="errorLoginEmail"
             Text=""
