@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Program",
+    "\\Program\\TimeAndTune",
+    "\\Program\\TimeAndTune\\TimeAndTune",
+    "\\Program\\TimeAndTune\\TimeAndTune\\Pages"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Program\\TimeAndTune\\TimeAndTune\\Pages\\HomePage.xaml",
   "PreviewInSolutionExplorer": false
 }

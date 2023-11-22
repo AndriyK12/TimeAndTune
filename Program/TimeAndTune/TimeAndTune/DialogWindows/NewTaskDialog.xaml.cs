@@ -23,6 +23,15 @@ namespace TimeAndTune
     public partial class NewTaskDialog : Window
     {
         private bool noNeedToCloseOnDeactivated = false;
+        private HomePage homePage;
+
+        public NewTaskDialog(HomePage homePage)
+        {
+            InitializeComponent();
+            this.homePage = homePage;
+
+        }
+
         public void goBackToHomePage(object sender, RoutedEventArgs e)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
@@ -86,6 +95,7 @@ namespace TimeAndTune
                     else {
                         DatabaseTaskProvider taskService = new DatabaseTaskProvider();
                         taskService.addNewTask(taskName, taskDescription, taskExpectedTime, taskPriority, userIdRef);
+                        homePage.updateListView();
                         Close();
                     }
                 }
@@ -103,11 +113,7 @@ namespace TimeAndTune
                 noNeedToCloseOnDeactivated = false;
             }
         }
-        public NewTaskDialog()
-        {
-            InitializeComponent();
-
-        }
+        
 
         private void txtTaskName_TextChanged(object sender, TextChangedEventArgs e)
         {

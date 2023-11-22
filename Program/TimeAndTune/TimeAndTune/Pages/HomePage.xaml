@@ -225,276 +225,83 @@
         </Button>
         <Grid
             Width="1200" 
-            Margin="283,381,245,85"
-            >
-            <Rectangle 
-            Fill="#454545"
-            RadiusX="12"
-            RadiusY="12"
-            Margin="10,10,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Width="1100"
-            Height="120"
-            />
-            <RadioButton
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="50"
-                Height="50" 
-                Margin="27,45,0,0"
-                >
-                <RadioButton.Template>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Grid>
-                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </RadioButton.Template>
+            Margin="283,381,245,85">
+            <ListView 
+                Margin="10"
+                Name="TaskListView" 
+                Background="Transparent"
+                BorderBrush="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Rectangle 
+                                Fill="#454545"
+                                RadiusX="12"
+                                RadiusY="12"
+                                Margin="10,10,0,0"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Width="1138"
+                                Height="120"/>
+                            <RadioButton
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Width="50"
+                                Height="50" 
+                                Margin="-1120,45,0,0">
+                                <RadioButton.Template>
+                                    <ControlTemplate TargetType="RadioButton">
+                                        <Grid>
+                                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </RadioButton.Template>
+                            </RadioButton>
+                            <TextBlock 
+                                Text= "{Binding Name}"
+                                Margin="-1030,35,0,0"
+                                Foreground="#FFFFFF"
+                                FontSize="48"
+                                MaxWidth="600"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"/>
+                            <Line 
+                                Y2="65" 
+                                Margin="-380,35,0,0" 
+                                Stroke="#FFFFFF"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" 
+                                Width="65"
+                                StrokeThickness="5"/>
+                            <TextBlock
+                                Text="{Binding Expectedfinishtime}"
+                                Width="300"
+                                HorizontalAlignment="Center"
+                                Margin="-430,35,0,0"
+                                Foreground="#FFFFFF"
+                                FontSize="48"
+                                VerticalAlignment="Top"/>
+                            <Line 
+                                Y2="65" 
+                                Margin="-94,35,0,0" 
+                                Stroke="#FFFFFF"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" 
+                                Width="65"
+                                StrokeThickness="5"/>
+                            <Ellipse
+                                Width="46"
+                                Height="45"
+                                Fill="#00A3FF"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" 
+                                Margin="-70,44,0,0"/>
 
-            </RadioButton>
-            <TextBlock 
-                Text="Name of the specific task"
-                Margin="90,35,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" />
-            <Line 
-                Y2="65" 
-                Margin="646,35,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <TextBlock
-                Text="24.08.2023" 
-                Margin="670,35,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                />
-            <Line 
-                Y2="65" 
-                Margin="920,35,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <Ellipse
-                Width="46"
-                Height="45"
-                Fill="#00A3FF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Margin="1017,50,0,0"/>
-            <Rectangle 
-                Fill="#454545"
-                RadiusX="12"
-                RadiusY="12"
-                Margin="10,168,0,0"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="1100"
-                Height="120"
-            />
-            <RadioButton
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="50"
-                Height="50" 
-                Margin="27,203,0,0"
-                >
-                <RadioButton.Template>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid>
-                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </RadioButton.Template>
-
-            </RadioButton>
-            <TextBlock 
-                Text="Name of the specific task"
-                Margin="90,189,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" />
-            <Line 
-                Y2="65" 
-                Margin="646,189,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <TextBlock
-                Text="24.08.2023" 
-                Margin="670,189,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                />
-            <Line 
-                Y2="65" 
-                Margin="920,189,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <Ellipse
-                Width="45"
-                Height="44"
-                Fill="#001AFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Margin="1017,206,0,0"/>
-            <Rectangle 
-                Fill="#454545"
-                RadiusX="12"
-                RadiusY="12"
-                Margin="10,320,0,0"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="1100"
-                Height="120"
-            />
-            <RadioButton
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="50"
-                Height="50" 
-                Margin="27,355,0,0"
-                >
-                <RadioButton.Template>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid>
-                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </RadioButton.Template>
-
-            </RadioButton>
-            <TextBlock 
-                Text="Name of the specific task"
-                Margin="90,345,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" />
-            <Line 
-                Y2="65" 
-                Margin="646,345,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <TextBlock
-                Text="24.08.2023" 
-                Margin="670,345,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                />
-            <Line 
-                Y2="65" 
-                Margin="920,345,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <Ellipse
-                Width="45"
-                Height="45"
-                Fill="#00A3FF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Margin="1017,354,0,0"/>
-            <Rectangle 
-                Fill="#454545"
-                RadiusX="12"
-                RadiusY="12"
-                Margin="10,476,0,0"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="1100"
-                Height="120"
-            />
-            <RadioButton
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="50"
-                Height="50" 
-                Margin="27,507,0,0"
-                >
-                <RadioButton.Template>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid>
-                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </RadioButton.Template>
-
-            </RadioButton>
-            <TextBlock 
-                Text="Name of the specific task"
-                Margin="90,500,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" />
-            <Line 
-                Y2="65" 
-                Margin="646,500,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <TextBlock
-                Text="24.08.2023" 
-                Margin="670,500,0,0"
-                Foreground="#FFFFFF"
-                FontSize="48"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                />
-            <Line 
-                Y2="65" 
-                Margin="920,500,0,0" 
-                Stroke="#FFFFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Width="65"
-                StrokeThickness="5"
-                />
-            <Ellipse
-                Width="45"
-                Height="44"
-                Fill="#D0FFFF"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" 
-                Margin="1017,521,0,0"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
         <Ellipse
             VerticalAlignment="Bottom"
@@ -539,24 +346,7 @@
             </Button.Style>
         </Button>
 
-        <Rectangle
-            RadiusX="8"
-            RadiusY="8"
-            Margin="1579,381,0,0"
-            Fill="#D9D9D9"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Width="17"
-            Height="605" />
-        <Rectangle
-            RadiusX="8" 
-            RadiusY="8" 
-            Margin="1581,382,0,0"
-            Fill="#3F3E3E"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Width="12"
-            Height="182" />
+        
     </Grid>
 
 </Page>
