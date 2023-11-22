@@ -3,7 +3,9 @@ using EFCore.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,23 +37,36 @@ namespace TimeAndTune.Pages
                 mainFrame.Navigate(homePage);
             }
         }
-        public void Continue_Click(object sender, RoutedEventArgs e)
+        static bool IsEmail(string input)
         {
+            string pattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+        public void SighUp_Click(object sender, RoutedEventArgs e)
+        {
+            errorRegisterEmailInput.Text = "";
+            errorRegisterPasswordsDontMatch.Text = "";
+            errorRegisterAllFields.Text = "";
             string enteredName = txtName.Text;
             string enteredEmail = txtEmail.Text;
             string enteredPassword = txtPassword.Password;
             string passwordConfirmation = txtConfirmPassword.Password;
-            bool passwordsMatch = false;
-            if (!comparePasswords(enteredPassword,passwordConfirmation)){
-                passwordsMatch = true;
-                MessageBox.Show("Passwords do not match!");
+            if (!IsEmail(enteredEmail))
+            {
+                errorRegisterEmailInput.Text = "Please enter valid email!";
+            }
+            else if (!comparePasswords(enteredPassword,passwordConfirmation)){
+                txtPassword.Password = "";
+                txtConfirmPassword.Password = "";
+                errorRegisterPasswordsDontMatch.Text = "Passwords do not match!";
             }
             else 
             { 
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(enteredPassword);
                 if (enteredName == "" || enteredEmail == "" || enteredPassword == "")
                 {
-                    MessageBox.Show("Please enter every field!");
+                    errorRegisterAllFields.Text = "Please enter every field!";
                 }
                 else
                 {

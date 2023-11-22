@@ -163,12 +163,47 @@
             Fill="#1C4335"
             Stroke="#FFFFFF"
             StrokeThickness="3"/>
+        <Image HorizontalAlignment="Left"
+           Margin="865,0,0,180"
+           VerticalAlignment="Bottom"
+           Height="59"
+           Width="59"
+           Source="/back_button.png" RenderTransformOrigin="0.5,0.5"
+           >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TextBlock 
+             VerticalAlignment="Top"
+             HorizontalAlignment="Center"
+             Text="Continue"
+             Margin="35,815,0,0"
+             Foreground="White"
+             FontSize="48"
+        />
+        <TextBox
+            Name="errorLoginEmail"
+            Text=""
+            Foreground="Red"
+            Background="Transparent"
+            Margin="0,720,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            BorderBrush="Transparent"
+            FontSize="20"/>
         <Button
             Margin="0,795,0,0"
             Width="342" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="Continue_Click">
+            Click="SignIn_Click"
+            >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
