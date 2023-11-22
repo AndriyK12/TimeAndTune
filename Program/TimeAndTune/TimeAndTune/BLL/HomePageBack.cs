@@ -11,9 +11,9 @@ namespace TimeAndTune.BLL
 {
     internal class HomePageBack : Page
     {
-        public static void openCreateNewTaskDialog_Click(object sender, RoutedEventArgs e)
+        public static void openCreateNewTaskDialog_Click(object sender, RoutedEventArgs e, HomePage homePage)
         {
-            NewTaskDialog dialog = new NewTaskDialog();
+            NewTaskDialog dialog = new NewTaskDialog(homePage);
             Window mainWnd = Window.GetWindow((DependencyObject)sender);
             mainWnd.Opacity = 0.3;
             dialog.Closed += (s, args) =>
