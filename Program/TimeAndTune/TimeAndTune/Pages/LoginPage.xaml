@@ -78,54 +78,7 @@
                     Width="720"
                     Height="85"
                     Padding="10,25,0,0"
-                    GotFocus="txtPassword_GotFocus">
-                    <PasswordBox.Template>
-                        <ControlTemplate TargetType="PasswordBox">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Border Background="Transparent">
-                                    <ScrollViewer x:Name="PART_ContentHost"/>
-                                </Border>
-                                <ToggleButton x:Name="btnShowPassword"
-                                    Background="Transparent"
-                                    Width="80"
-                                    Height="40"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
-                                    Grid.Column="1"
-                                    Margin="0,0,0,0"
-                                    Checked="btnShowPassword_Checked"
-                                    Unchecked="btnShowPassword_Unchecked">
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton">
-                                            <Setter Property="BorderThickness" Value="0"/>
-                                            <Setter Property="Cursor" Value="Hand" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate>
-                                                        <Border Background="Transparent">
-                                                            <Image 
-                                                                x:Name="passwordVisibility"
-                                                                Width="80"
-                                                                Height="60"
-                                                                VerticalAlignment="Center"
-                                                                HorizontalAlignment="Center"
-                                                                Margin="0,0,0,0" Source="/Pages/showPassword_image.png">
-                                                            </Image>
-                                                        </Border>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ToggleButton.Style>
-                                </ToggleButton>
-                            </Grid>
-                        </ControlTemplate>
-                    </PasswordBox.Template>
-                </PasswordBox>
+                    GotFocus="txtPassword_GotFocus"/>
                 <TextBlock
                     Name="txtPasswordVisible"
                     Text=""
@@ -139,6 +92,39 @@
                     Visibility="Collapsed"/>
             </StackPanel>
         </Border>
+        <ToggleButton
+             Name="btnShowPassword"
+             Background="Transparent"
+             Width="80"
+             Height="40"
+             VerticalAlignment="Top"
+             HorizontalAlignment="Center"
+             Margin="585,623,0,0"
+             Checked="btnShowPassword_Checked"
+             Unchecked="btnShowPassword_Unchecked" >
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent">
+                                    <Image 
+                                        x:Name="passwordVisibility"
+                                        Width="80"
+                                        Height="60"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,0,0" Source="/Pages/showPassword_image.png">
+                                    </Image>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
         <TextBlock
             Text="Email:"
             Margin="700,354,0,0"
