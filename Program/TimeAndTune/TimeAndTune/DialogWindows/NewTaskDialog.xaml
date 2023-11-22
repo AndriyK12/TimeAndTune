@@ -94,6 +94,16 @@
                 />
             </StackPanel>
         </Border>
+        <TextBox
+            Name="errorTaskName"
+            Text=""
+            Foreground="Red"
+            Background="Transparent"
+            Margin="154,247,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            BorderBrush="Transparent"
+            FontSize="20"/>
         <TextBlock
             Text="Date:"
             Margin="154,265,0,0"
@@ -129,6 +139,16 @@
                 />
             </StackPanel>
         </Border>
+        <TextBox
+            Name="errorTaskDate"
+            Text=""
+            Foreground="Red"
+            Background="Transparent"
+            Margin="25,367,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            BorderBrush="Transparent"
+            FontSize="20"/>
         <TextBlock
             Text="Priority:"
             Margin="154,390,0,0"
