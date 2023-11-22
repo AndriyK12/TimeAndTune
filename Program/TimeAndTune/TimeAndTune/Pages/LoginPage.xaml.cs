@@ -114,23 +114,31 @@ namespace TimeAndTune.Pages
 
         private void btnShowPassword_Checked(object sender, RoutedEventArgs e)
         {
-
             // Показати пароль
             txtPassword.Visibility = Visibility.Collapsed;
             txtPasswordVisible.Visibility = Visibility.Visible;
             txtPasswordVisible.Text = txtPassword.Password;
-            Image passwordVisibility = FindName("passwordVisibility") as Image;
-           
+            //Image passwordVisibility = FindName("passwordVisibility") as Image;
+            ToggleButton toggleButton = sender as ToggleButton;
+            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
+
+
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
+            toggleButton.Content = passwordVisibility;
         }
 
         private void btnShowPassword_Unchecked(object sender, RoutedEventArgs e)
         {
             // Приховати пароль
             txtPassword.Visibility = Visibility.Visible;
+
             txtPasswordVisible.Visibility = Visibility.Collapsed;
-            Image passwordVisibility = FindName("passwordVisibility") as Image;
+            //Image passwordVisibility = FindName("passwordVisibility") as Image;
+            ToggleButton toggleButton = sender as ToggleButton;
+            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
+
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
+            toggleButton.Content = passwordVisibility;
         }
     }
 }
