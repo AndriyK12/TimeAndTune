@@ -25,6 +25,7 @@ namespace TimeAndTune.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
+        DatabaseUserProvider userService = new DatabaseUserProvider();
         public bool comparePasswords(string passw1, string passw2)
         {
             return passw1 == passw2;
@@ -57,6 +58,10 @@ namespace TimeAndTune.Pages
             {
                 errorRegisterEmailInput.Text = "Please enter valid email!";
             }
+            else if (userService.isUserAlreadyExist(enteredEmail))
+            {
+                errorRegisterEmailInput.Text = "User with this email already exists!";
+            }
             else if (!comparePasswords(enteredPassword,passwordConfirmation)){
                 txtPassword.Password = "";
                 txtConfirmPassword.Password = "";
@@ -71,7 +76,7 @@ namespace TimeAndTune.Pages
                 }
                 else
                 {
-                    DatabaseUserProvider userService = new DatabaseUserProvider();
+                    
                     userService.addNewUser(enteredName, enteredEmail, hashedPassword);
                     User user = userService.getUserByEmail(enteredEmail);
                     MainWindow.ActiveUser = user;
