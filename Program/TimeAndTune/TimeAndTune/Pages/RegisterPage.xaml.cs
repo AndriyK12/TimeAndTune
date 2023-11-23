@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -146,13 +147,13 @@ namespace TimeAndTune.Pages
 
         private void btnShowPassword_Checked(object sender, RoutedEventArgs e)
         {
-
             // Показати пароль
             txtPassword.Visibility = Visibility.Collapsed;
             txtPasswordVisible.Visibility = Visibility.Visible;
             txtPasswordVisible.Text = txtPassword.Password;
+            ToggleButton toggleButton = sender as ToggleButton;
+            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
-
         }
 
         private void btnShowPassword_Unchecked(object sender, RoutedEventArgs e)
@@ -160,6 +161,8 @@ namespace TimeAndTune.Pages
             // Приховати пароль
             txtPassword.Visibility = Visibility.Visible;
             txtPasswordVisible.Visibility = Visibility.Collapsed;
+            ToggleButton toggleButton = sender as ToggleButton;
+            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
         }
 
@@ -181,6 +184,8 @@ namespace TimeAndTune.Pages
             txtConfirmPassword.Visibility = Visibility.Collapsed;
             txtConfirmPasswordVisible.Visibility = Visibility.Visible;
             txtConfirmPasswordVisible.Text = txtConfirmPassword.Password;
+            ToggleButton toggleButton = sender as ToggleButton;
+            Image confPasswordVisibility = toggleButton.Template.FindName("confPasswordVisibility", toggleButton) as Image;
             confPasswordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
         }
 
@@ -189,6 +194,8 @@ namespace TimeAndTune.Pages
             // Приховати пароль
             txtConfirmPassword.Visibility = Visibility.Visible;
             txtConfirmPasswordVisible.Visibility = Visibility.Collapsed;
+            ToggleButton toggleButton = sender as ToggleButton;
+            Image confPasswordVisibility = toggleButton.Template.FindName("confPasswordVisibility", toggleButton) as Image;
             confPasswordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
         }
     }

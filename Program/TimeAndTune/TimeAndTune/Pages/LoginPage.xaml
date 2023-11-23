@@ -45,16 +45,15 @@
                     BorderThickness="0"
                     Background="Transparent"
                     Text=""
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Foreground="Black"
                     FontSize="32"
                     Width="720"
                     Height="85"
-                    Margin="30,25,0,0"
+                    Margin="30,20,0,0"
                     GotFocus="txtEmail_GotFocus"
-                    LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"
-                />
+                    LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"/>
             </StackPanel>
         </Border>
         <Border
@@ -83,12 +82,12 @@
                     Name="txtPasswordVisible"
                     Text=""
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
+                    HorizontalAlignment="Center"
+                    Foreground="Black"
                     FontSize="32"
                     Width="400"
                     Height="40"
-                    Padding="10,0,0,0"
+                    Padding="20,0,0,0"
                     Visibility="Collapsed"/>
             </StackPanel>
         </Border>
@@ -127,16 +126,16 @@
         </ToggleButton>
         <TextBlock
             Text="Email:"
-            Margin="700,354,0,0"
+            Margin="0,354,560,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Foreground="#FFFFFF"
             FontSize="32"/>
         <TextBlock
             Text="Password:"
-            Margin="700,540,0,0"
+            Margin="0,540,500,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Foreground="#FFFFFF"
             FontSize="32"/>
         <Rectangle
@@ -149,22 +148,6 @@
             Fill="#1C4335"
             Stroke="#FFFFFF"
             StrokeThickness="3"/>
-        <Image HorizontalAlignment="Left"
-           Margin="865,0,0,180"
-           VerticalAlignment="Bottom"
-           Height="59"
-           Width="59"
-           Source="/back_button.png" RenderTransformOrigin="0.5,0.5"
-           >
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
         <TextBox
             Name="errorLoginEmail"
             Text=""
@@ -180,8 +163,7 @@
             Width="342" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="SignIn_Click"
-            >
+            Click="SignIn_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -195,15 +177,13 @@
                                          HorizontalAlignment="Center"
                                          Text="Sign in"
                                          Foreground="White"
-                                         FontSize="48"/>    
+                                         FontSize="48"/>
                                 </Border>
-                                
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Button.Style>
-            
         </Button>
         <TextBlock
             Text="Create account"
@@ -217,8 +197,7 @@
             Width="367" Height="62"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="onCreateAccount_Click"
-            >
+            Click="onCreateAccount_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>

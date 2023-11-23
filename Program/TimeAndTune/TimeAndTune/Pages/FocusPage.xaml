@@ -21,8 +21,7 @@
             HorizontalAlignment="Left"
             Source="/Pages/menu_icon.png"
             Width="90" Height="90" 
-            Visibility="Visible"
-            />
+            Visibility="Visible"/>
         <Button
             Visibility="Visible"
             Margin="90,53,0,0"
@@ -31,8 +30,7 @@
             HorizontalAlignment="Left"
             Background="Transparent"
             BorderThickness="0"
-            Click="openNavigation_Click"
-            >
+            Click="openNavigation_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -60,8 +58,7 @@
             Width="282"
             Height="84"
             Stroke="#5CF26B" 
-            StrokeThickness="6"
-            />
+            StrokeThickness="6"/>
         <TextBlock 
             Grid.Row="0" Panel.ZIndex="2"
             Visibility="Visible"
@@ -70,8 +67,7 @@
             Text="Focus"
             Margin="0,77,0,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Image 
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
@@ -89,8 +85,7 @@
             Width="100"
             Margin="0,60,90,0"
             BorderThickness="0"
-            Click="openUserInfo_Click"
-            >
+            Click="openUserInfo_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -110,8 +105,8 @@
         <Image 
             x:Name="PlayPauseImage"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Margin="300,200,0,0"
+            HorizontalAlignment="Center"
+            Margin="0,200,1200,0"
             Source="/Pages/FocusPageImages/play.png"
             Width="130" Height="130" 
             Visibility="Visible"/>
@@ -120,7 +115,7 @@
             Margin="300,200,0,0"
             Width="135" Height="135"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Background="Transparent"
             BorderThickness="0"
             Click="PlayButton">
@@ -138,7 +133,6 @@
                     </Setter>
                 </Style>
             </Button.Style>
-
         </Button>
         <TextBlock 
             Grid.Row="0" Panel.ZIndex="2"
@@ -177,7 +171,6 @@
                     </Grid>
                 </ControlTemplate>
             </Slider.Template>
-           
         </Slider>
 
         <ProgressBar

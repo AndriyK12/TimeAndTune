@@ -51,8 +51,19 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Rectangle 
+            Fill="Transparent"
+            RadiusX="12"
+            RadiusY="12"
+            Margin="85,30,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="540"
+            Height="71"
+            Stroke="#C57B0C" 
+            StrokeThickness="6"/>
         <TextBlock 
-            Text="Additional Information"
+            Text="Additional information"
             Margin="475,30,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"

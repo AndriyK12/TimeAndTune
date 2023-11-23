@@ -12,14 +12,12 @@
         <Grid.LayoutTransform>
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
-
         <Image 
             Margin="90,53,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Source="/Pages/menu_icon.png"
-            Width="90" Height="90" 
-            />
+            Width="90" Height="90"/>
         <Button
             Margin="90,53,0,0"
             Width="90" Height="90"
@@ -27,8 +25,7 @@
             HorizontalAlignment="Left"
             Background="Transparent"
             BorderThickness="0"
-            Click="openNavigation_Click"
-            >
+            Click="openNavigation_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -54,24 +51,21 @@
             Width="282"
             Height="84"
             Stroke="#5FA6E7" 
-            StrokeThickness="6"
-            />
+            StrokeThickness="6"/>
         <TextBlock 
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Text="Home"
             Margin="0,77,0,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Image 
-               Margin="0,60,90,0"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Right"
-               Height="100"
-               Width="100" 
-               Source="/Pages/user_image.png"
-            />
+            Margin="0,60,90,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Height="100"
+            Width="100" 
+            Source="/Pages/user_image.png"/>
         <Button
             Background="Transparent"
             VerticalAlignment="Top"
@@ -101,25 +95,23 @@
             Fill="#7A7373"
             RadiusX="32"
             RadiusY="32"
-            Margin="704,236,0,0"
+            Margin="0,236,480,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
-            Height="50"
-            />
+            Height="50"/>
         <TextBlock 
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Text="TODAY"
-            Margin="729,234,0,0"
+            Margin="0,234,480,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Button
             Background="Transparent"
-            Margin="704,236,0,0"
+            Margin="0,236,480,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
             Height="50"
             Click="Today_Click">
@@ -143,25 +135,23 @@
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
-            Margin="950,236,0,0"
+            Margin="10,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
-            Height="50"
-            />
+            Height="50"/>
         <TextBlock 
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Text="WEEK"
-            Margin="984,234,0,0"
+            Margin="10,234,0,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Button
             Background="Transparent"
-            Margin="950,236,0,0"
+            Margin="10,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
             Height="50"
             Click="Week_Click">
@@ -185,26 +175,24 @@
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
-            Margin="1189,236,0,0"
+            Margin="490,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
-            Height="50"
-            />
+            Height="50"/>
         <TextBlock 
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Text="MONTH"
-            Margin="1201,234,0,0"
+            Margin="490,234,0,0"
             Foreground="White"
-            FontSize="37" RenderTransformOrigin="0.5,0.5"
-            >
+            FontSize="37" RenderTransformOrigin="0.5,0.5">
         </TextBlock>
         <Button
             Background="Transparent"
-            Margin="1189,236,0,0"
+            Margin="490,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
             Height="50"
             Click="Month_Click">
@@ -240,15 +228,15 @@
                                 RadiusY="12"
                                 Margin="10,10,0,0"
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Center"
                                 Width="1138"
                                 Height="120"/>
                             <RadioButton
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Center"
                                 Width="50"
                                 Height="50" 
-                                Margin="-1120,45,0,0">
+                                Margin="-2170,45,0,0">
                                 <RadioButton.Template>
                                     <ControlTemplate TargetType="RadioButton">
                                         <Grid>
@@ -297,7 +285,6 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Left" 
                                 Margin="-70,44,0,0"/>
-
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -310,16 +297,14 @@
             Width="164"
             Height="163"
             Stroke="White"
-            StrokeThickness="2" Margin="0,0,58,38"
-            >
+            StrokeThickness="2" Margin="0,0,58,38">
         </Ellipse>
         <Image HorizontalAlignment="Right"
                Margin="0,0,90,70"
                VerticalAlignment="Bottom"
                Height="100"
                Width="100"
-               Source="/Pages/plus_image.png"
-               />
+               Source="/Pages/plus_image.png"/>
         <Button
             HorizontalAlignment="Right"
             Margin="0,0,90,70"
@@ -328,8 +313,7 @@
             BorderThickness="0"
             Height="100"
             Width="100"
-            Click="openCreateNewTaskDialog_Click"
-            >
+            Click="openCreateNewTaskDialog_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -345,8 +329,5 @@
                 </Style>
             </Button.Style>
         </Button>
-
-        
     </Grid>
-
 </Page>

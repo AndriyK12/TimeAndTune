@@ -23,33 +23,29 @@
             Width="367"
             Height="131"
             Stroke="#5FA6E7" 
-            StrokeThickness="6"
-        />
+            StrokeThickness="6"/>
         <TextBlock 
              VerticalAlignment="Top"
              HorizontalAlignment="Center"
              Text="Sign up"
              Margin="0,77,0,0"
              Foreground="White"
-             FontSize="64"
-        />
+             FontSize="64"/>
         <TextBlock
             Text="Name:"
-            Margin="200,322,0,0"
+            Margin="0,322,1560,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Foreground="#FFFFFF"
-            FontSize="32"
-        />
+            FontSize="32"/>
         <Border
-            Margin="170,382,0,0"
+            Margin="0,382,1000,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="720"
             Height="85"
             Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+            CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBox
                     Name="txtName"
@@ -58,47 +54,43 @@
                     Text=""
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
+                    Foreground="Black"
                     FontSize="32"
                     Width="720"
                     Height="85"
                     Margin="30,25,0,-15"
                     GotFocus="txtName_GotFocus"
-                    LostFocus="txtName_LostFocus" TextChanged="txtName_TextChanged"
-                />
+                    LostFocus="txtName_LostFocus" TextChanged="txtName_TextChanged"/>
             </StackPanel>
         </Border>
         <TextBlock
             Text="Email:"
-            Margin="200,488,0,0"
+            Margin="0,488,1565,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Foreground="#FFFFFF"
-            FontSize="32"
-        />
+            FontSize="32"/>
         <Border
-            Margin="170,548,0,0"
+            Margin="0,548,1000,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="720"
             Height="85"
             Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+            CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBox
                     x:Name="txtEmail"
                     BorderThickness="0"
                     Background="Transparent"
                     Text=""
-                    Foreground="#FFFFFF"
+                    Foreground="Black"
                     FontSize="32"
                     Width="720"
                     Height="86"
                     Margin="25,22,0,0"
                     GotFocus="txtEmail_GotFocus"
-                    LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"
-                />
+                    LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"/>
             </StackPanel>
         </Border>
         <TextBox
@@ -113,21 +105,19 @@
             FontSize="20"/>
         <TextBlock
             Text="Password:"
-            Margin="1180,322,0,0"
+            Margin="460,322,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Foreground="#FFFFFF"
-            FontSize="32"
-        />
+            FontSize="32"/>
         <Border
-            Margin="1150,382,0,0"
+            Margin="975,382,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="720"
             Height="85"
             Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+            CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <PasswordBox
                     Name="txtPassword"
@@ -136,49 +126,35 @@
                     Password=""
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
+                    Foreground="Black"
                     FontSize="32"
                     Width="720"
                     Height="85"
                     Padding="20,20,0,0"
-                    GotFocus="txtPassword_GotFocus"
-                />
+                    GotFocus="txtPassword_GotFocus"/>
                 <TextBlock
                     Name="txtPasswordVisible"
                     Text=""
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Foreground="#FFFFFF"
+                    HorizontalAlignment="Center"
+                    Foreground="Black"
                     FontSize="32"
                     Width="400"
                     Height="40"
-                    Padding="10,0,0,0"
-                    Visibility="Collapsed"
-                />
-
+                    Padding="15,0,0,0"
+                    Visibility="Collapsed"/>
             </StackPanel>
         </Border>
-        <Image x:Name="passwordVisibility"
-            Width="80"
-            Height="60"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Margin="1780,395,0,0" Source="/Pages/showPassword_image.png"
-            >
-
-        </Image>
         <ToggleButton
              Name="btnShowPassword"
              Background="Transparent"
              Width="80"
              Height="40"
              VerticalAlignment="Top"
-             HorizontalAlignment="Left"
-             Margin="1770,405,0,0"
+             HorizontalAlignment="Center"
+             Margin="1600,405,0,0"
              Checked="btnShowPassword_Checked"
-             Unchecked="btnShowPassword_Unchecked"
-            
-            >
+             Unchecked="btnShowPassword_Unchecked">
             <ToggleButton.Style>
                 <Style TargetType="ToggleButton">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -187,6 +163,14 @@
                         <Setter.Value>
                             <ControlTemplate>
                                 <Border Background="Transparent">
+                                    <Image x:Name="passwordVisibility"
+                                        Width="80"
+                                        Height="60"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,0,0" 
+                                        Source="/Pages/showPassword_image.png" >
+                                    </Image>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -196,21 +180,19 @@
         </ToggleButton>
         <TextBlock
             Text="Confirm password:"
-            Margin="1180,488,0,0"
+            Margin="580,488,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Foreground="#FFFFFF"
-            FontSize="32"
-        />
+            FontSize="32"/>
         <Border
-             Margin="1150,548,0,0"
+             Margin="975,548,0,0"
              VerticalAlignment="Top"
-             HorizontalAlignment="Left"
+             HorizontalAlignment="Center"
              Width="720"
              Height="85"
              Background="#A6A3A3"
-             CornerRadius="15" 
-             >
+             CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <PasswordBox
                      Name="txtConfirmPassword"
@@ -224,20 +206,18 @@
                      Width="720"
                      Height="85"
                      Padding="20,20,0,0"
-                     GotFocus="txtConfirmPassword_GotFocus"
-                />
+                     GotFocus="txtConfirmPassword_GotFocus"/>
                 <TextBlock
                      Name="txtConfirmPasswordVisible"
                      Text=""
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
-                     Foreground="#FFFFFF"
+                     Foreground="Black"
                      FontSize="32"
                      Width="400"
                      Height="40"
-                     Padding="10,0,0,0"
-                     Visibility="Collapsed"
-                />
+                     Padding="15,0,0,0"
+                     Visibility="Collapsed"/>
             </StackPanel>
         </Border>
         <TextBox
@@ -260,27 +240,16 @@
             Background="Transparent"
             BorderBrush="Transparent"
             FontSize="20"/>
-        <Image 
-            x:Name="confPasswordVisibility"
-            Width="80"
-            Height="60"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Margin="1780,560,0,0" Source="/Pages/showPassword_image.png"
-            >
-            
-        </Image>
         <ToggleButton
-              Name="btnShowConfirmPassword"
-              Width="80"
-              Height="40"
-              Background="Transparent"
-              VerticalAlignment="Top"
-              HorizontalAlignment="Left"
-              Margin="1770,571,0,0"
-              Checked="btnShowConfirmPassword_Checked"
-              Unchecked="btnShowConfirmPassword_Unchecked"
-            >
+            Name="btnShowConfirmPassword"
+            Width="80"
+            Height="40"
+            Background="Transparent"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Margin="1600,571,0,0"
+            Checked="btnShowConfirmPassword_Checked"
+            Unchecked="btnShowConfirmPassword_Unchecked">
             <ToggleButton.Style>
                 <Style TargetType="ToggleButton">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -289,6 +258,15 @@
                         <Setter.Value>
                             <ControlTemplate>
                                 <Border Background="Transparent">
+                                    <Image 
+                                        x:Name="confPasswordVisibility"
+                                        Width="80"
+                                        Height="60"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,0,0" 
+                                        Source="/Pages/showPassword_image.png">
+                                    </Image>
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -296,7 +274,6 @@
                 </Style>
             </ToggleButton.Style>
         </ToggleButton>
-        
         <Rectangle
             RadiusX="15"
             RadiusY="15"
@@ -304,41 +281,22 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Width="342" Height="112"
-            Fill="#1C2C43"
+            Fill="#1C4335"
             Stroke="#FFFFFF"
-            StrokeThickness="3"
-        />
-        <Image HorizontalAlignment="Left"
-            Margin="870,0,0,180"
-            VerticalAlignment="Bottom"
-            Height="59"
-            Width="59"
-            Source="/back_button.png" RenderTransformOrigin="0.5,0.5"
-            >
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+            StrokeThickness="3"/>
         <TextBlock 
              VerticalAlignment="Top"
              HorizontalAlignment="Center"
-             Text="Continue"
-             Margin="35,815,0,0"
+             Text="Sign up"
+             Margin="0,815,0,0"
              Foreground="White"
-             FontSize="48"
-        />
+             FontSize="48"/>
         <Button
             Margin="0,795,0,0"
-            Width="342" Height="112"
+            Width="367" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="SighUp_Click"
-            >
+            Click="SighUp_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -370,8 +328,7 @@
             Width="540" Height="120"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="onSignIn_Click"
-            >
+            Click="onSignIn_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
