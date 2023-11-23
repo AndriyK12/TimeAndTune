@@ -13,15 +13,13 @@
         <Grid.LayoutTransform>
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
-
         <lvc:CartesianChart 
             Series="{Binding SeriesCollection}"
             Width="1400"
             Height="650"
             Margin="0,230,0,0"
             VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            >
+            HorizontalAlignment="Center">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis FontSize="20">
                     <lvc:Axis.Foreground>
@@ -45,26 +43,18 @@
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
-
             <lvc:CartesianChart.Style>
                 <Style TargetType="lvc:CartesianChart" >
                     <Setter Property="Foreground" Value="#FFFFFF"/>
                 </Style>
             </lvc:CartesianChart.Style>
-            
         </lvc:CartesianChart>
-
-
-
-
-
         <Image Source="/Pages/menu_icon.png"
                Width="90"
                Height="90"
                Margin="90,53,0,0"
                VerticalAlignment="Top"
-               HorizontalAlignment="Left"
-               />
+               HorizontalAlignment="Left"/>
         <Button
             Margin="90,53,0,0"
             Width="90"
@@ -73,8 +63,7 @@
             HorizontalAlignment="Left"
             Background="Transparent"
             BorderThickness="0"
-            Click="openNavigation_Click"
-            >
+            Click="openNavigation_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -100,24 +89,21 @@
             Width="282"
             Height="84"
             Stroke="#984BBC" 
-            StrokeThickness="6"
-            />
+            StrokeThickness="6"/>
         <TextBlock
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Text="Statistics"
             Margin="0,77,0,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Image
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
             Margin="0,60,90,0"
             Height="100"
             Width="100" 
-            Source="/Pages/user_image.png"
-            />
+            Source="/Pages/user_image.png"/>
         <Button
             Background="Transparent"
             VerticalAlignment="Top"
@@ -126,8 +112,7 @@
             Width="100"
             Margin="0,60,90,0"
             BorderThickness="0"
-            Click="openUserInfo_Click"
-            >
+            Click="openUserInfo_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -148,28 +133,25 @@
             Fill="#7A7373"
             RadiusX="32"
             RadiusY="32"
-            Margin="704,236,0,0"
+            Margin="0,236,470,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
-            Height="50"
-            />
+            Height="50"/>
         <TextBlock 
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Text="WEEK"
-            Margin="736,234,0,0"
+            Margin="0,234,480,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Button
-            Margin="704,236,0,0"
+            Margin="0,236,480,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
             Height="50"
-            Click="Week_Click"
-            >
+            Click="Week_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -190,28 +172,25 @@
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
-            Margin="950,236,0,0"
+            Margin="0,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
-            Height="50"
-            />
+            Height="50"/>
         <TextBlock 
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Text="MONTH"
-            Margin="961,234,0,0"
+            Margin="0,234,0,0"
             Foreground="White"
-            FontSize="37"
-            />
+            FontSize="37"/>
         <Button
-            Margin="950,236,0,0"
+            Margin="0,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
             Height="50"
-            Click="Month_Click"
-            >
+            Click="Month_Click" >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -232,29 +211,26 @@
             Fill="#353535"
             RadiusX="32"
             RadiusY="32"
-            Margin="1189,236,0,0"
+            Margin="500,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="160"
-            Height="50"
-            />
+            Height="50"/>
         <TextBlock 
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Text="YEAR"
-            Margin="1228,234,0,0"
+            Margin="500,234,0,0"
             Foreground="White"
-            FontSize="37" RenderTransformOrigin="0.5,0.5"
-            >
+            FontSize="37" RenderTransformOrigin="0.5,0.5">
         </TextBlock>
         <Button
-            Margin="1189,236,0,0"
+            Margin="500,236,0,0"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             Width="150"
             Height="50"
-            Click="Year_Click"
-            >
+            Click="Year_Click" >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>

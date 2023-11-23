@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
+using TimeAndTune.DialogWindows;
+using EFCore.Service;
 
 namespace TimeAndTune.BLL
 {
@@ -43,6 +46,30 @@ namespace TimeAndTune.BLL
                 mainWnd.Opacity = 1.0;
             };
             userWnd.Show();
+        }
+
+        public static void openTaskInfo_Click(object sender, RoutedEventArgs e, EFCore.Task t)
+        {
+            AdditionalTaskInfoDialog taskInfoWnd = new AdditionalTaskInfoDialog();
+            Window mainWnd = Window.GetWindow((DependencyObject)sender);
+            mainWnd.Opacity = 0.3;
+            taskInfoWnd.Activated += (s, args) =>
+            {
+                taskInfoWnd.txtTaskName.Text = t.Name;
+                taskInfoWnd.txtDescription.Text = t.Description;
+                taskInfoWnd.txtDate.Text = t.Expectedfinishtime.ToString();
+                ComboBox? priorityComboBox = taskInfoWnd.priorityButton.Template
+                .FindName("priorityComboBox", taskInfoWnd.priorityButton) as ComboBox;
+                if (priorityComboBox != null)
+                {
+                    priorityComboBox.SelectedIndex = t.Priority - 1;
+                }
+            };
+            taskInfoWnd.Closed += (s, args) =>
+            {
+                mainWnd.Opacity = 1.0;
+            };
+            taskInfoWnd.ShowDialog();
         }
     }
 }
