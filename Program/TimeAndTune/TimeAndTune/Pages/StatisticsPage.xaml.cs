@@ -79,7 +79,6 @@ namespace TimeAndTune
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             int currentDayOfWeek = (int)currentDate.DayOfWeek;
             int daysToMonday = currentDayOfWeek - (int)DayOfWeek.Monday;
-            daysToMonday = (daysToMonday + 7) % 7;
             DateOnly startOfWeek = currentDate.AddDays(-daysToMonday);
             DateOnly[] weekDates = new DateOnly[7];
             for (int i = 0; i < 7; i++)
