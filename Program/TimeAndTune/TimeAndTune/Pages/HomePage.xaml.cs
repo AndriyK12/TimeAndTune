@@ -45,7 +45,7 @@ namespace TimeAndTune
         }
     }
 
-    public class CustomTaskStatusToImage : IValueConverter
+    public class CustomTaskStatusToImage: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -66,20 +66,62 @@ namespace TimeAndTune
         }
     }
 
+    public class CustomTaskFinishTimeToRectangleColor : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+            DateOnly finishTime = DateOnly.Parse(value.ToString());
+            if (finishTime < currentDate)
+            {
+                return "#82260c";
+            }
+            else
+            {
+                return "#454545";
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public partial class HomePage : Page
     {
+
+        private string filterState = "today";
+        private int userId;
 
         public HomePage()
         {
             InitializeComponent();
+            userId = MainWindow.ActiveUser.Userid;
             updateListView();
         }
         
         public void updateListView()
         {
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
-            List<Task> items = dataBaseTaskProvider.GetAllTasksByUserID(MainWindow.ActiveUser.Userid);
-
+            List<Task> items = new List<EFCore.Task>();
+            switch (filterState)
+            {
+                case "today":
+                    items = dataBaseTaskProvider.getAllTasksByDayUsingUserId(userId);
+                    break;
+                case "week":
+                    items = dataBaseTaskProvider.getAllTasksByWeekUsingUserId(userId);
+                    break;
+                case "month":
+                    items = dataBaseTaskProvider.getAllTasksByMonthUsingUserId(userId);
+                    break;
+                case "allTime":
+                    items = dataBaseTaskProvider.GetAllTasksByUserID(userId);
+                    break;
+                default:
+                    items = dataBaseTaskProvider.getAllTasksByDayUsingUserId(userId);
+                    break;
+            };
             TaskListView.ItemsSource = items;
         }
 
@@ -100,7 +142,9 @@ namespace TimeAndTune
             TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            //add some logic
+            AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            filterState = "today";
+            updateListView();
         }
 
         private void Week_Click(object sender, RoutedEventArgs e)
@@ -108,7 +152,9 @@ namespace TimeAndTune
             TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            //add some logic
+            AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            filterState = "week";
+            updateListView();
         }
 
         private void Month_Click(object sender, RoutedEventArgs e)
@@ -116,7 +162,18 @@ namespace TimeAndTune
             TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
-            //add some logic
+            AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            filterState = "month";
+            updateListView();
+        }
+        private void AllTime_Click(object sender, RoutedEventArgs e)
+        {
+            TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
+            AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
+            filterState = "allTime";
+            updateListView();
         }
     }
 }

@@ -57,7 +57,8 @@
         </Style>
 
         <local:CustomTaskStatusToColorConverter x:Key="TaskStatusToColorConverter" />
-        <local:CustomTaskStatusToImage x:Key="TaskStatusToImage"/>
+        <local:CustomTaskStatusToImage x:Key="TaskStatusToImage" />
+        <local:CustomTaskFinishTimeToRectangleColor x:Key="TaskFinishTimeToRectangleColor" />
     </Page.Resources>
 
 
@@ -144,124 +145,170 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Rectangle
-            x:Name="TodayRect"
-            Width="160"
-            Height="50"
-            Margin="704,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Fill="#7A7373"
-            RadiusX="32"
-            RadiusY="32" />
-        <TextBlock
-            Margin="729,234,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="37"
-            Foreground="White"
-            Text="TODAY" />
-        <Button
-            Width="160"
-            Height="50"
-            Margin="704,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Transparent"
-            Click="Today_Click">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border Background="Transparent" />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Rectangle
-            x:Name="WeekRect"
-            Width="160"
-            Height="50"
-            Margin="950,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Fill="#353535"
-            RadiusX="32"
-            RadiusY="32" />
-        <TextBlock
-            Margin="984,234,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="37"
-            Foreground="White"
-            Text="WEEK" />
-        <Button
-            Width="160"
-            Height="50"
-            Margin="950,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Transparent"
-            Click="Week_Click">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border Background="Transparent" />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Rectangle
-            x:Name="MonthRect"
-            Width="160"
-            Height="50"
-            Margin="1189,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Fill="#353535"
-            RadiusX="32"
-            RadiusY="32" />
-        <TextBlock
-            Margin="1201,234,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            FontSize="37"
-            Foreground="White"
-            RenderTransformOrigin="0.5,0.5"
-            Text="MONTH" />
-        <Button
-            Width="160"
-            Height="50"
-            Margin="1189,236,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Transparent"
-            Click="Month_Click">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border Background="Transparent" />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
+        <Grid
+            Margin="-220,236,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top">
+            <Rectangle
+                x:Name="TodayRect"
+                Width="160"
+                Height="50"
+                Margin="230,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Fill="#7A7373"
+                RadiusX="32"
+                RadiusY="32" />
+            <TextBlock
+                Margin="252,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="37"
+                Foreground="White"
+                Text="TODAY" />
+            <Button
+                Width="160"
+                Height="50"
+                Margin="230,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Click="Today_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border Background="Transparent" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Rectangle
+                x:Name="WeekRect"
+                Width="160"
+                Height="50"
+                Margin="480,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Fill="#353535"
+                RadiusX="32"
+                RadiusY="32" />
+            <TextBlock
+                Margin="512,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="37"
+                Foreground="White"
+                Text="WEEK" />
+            <Button
+                Width="160"
+                Height="50"
+                Margin="480,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Click="Week_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border Background="Transparent" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Rectangle
+                x:Name="MonthRect"
+                Width="160"
+                Height="50"
+                Margin="730,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Fill="#353535"
+                RadiusX="32"
+                RadiusY="32" />
+            <TextBlock
+                Margin="743,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="37"
+                Foreground="White"
+                RenderTransformOrigin="0.5,0.5"
+                Text="MONTH" />
+            <Button
+                Width="140"
+                Height="50"
+                Margin="743,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Click="Month_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border Background="Transparent" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Rectangle
+                x:Name="AllTimeRect"
+                Width="190"
+                Height="50"
+                Margin="980,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Fill="#353535"
+                RadiusX="32"
+                RadiusY="32" />
+            <TextBlock
+                Margin="999,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="37"
+                Foreground="White"
+                RenderTransformOrigin="0.5,0.5"
+                Text="ALL TIME" />
+            <Button
+                Width="160"
+                Height="50"
+                Margin="994,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Click="AllTime_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border Background="Transparent" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+
         <Grid Width="1240" Margin="283,381,245,85">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1191*" />
@@ -328,7 +375,7 @@
                                 Margin="10,10,0,0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
-                                Fill="#454545"
+                                Fill="{Binding Expectedfinishtime, Converter={StaticResource TaskFinishTimeToRectangleColor}}"
                                 RadiusX="12"
                                 RadiusY="12" />
                             <Image
