@@ -19,7 +19,8 @@ namespace EFCore.Service
         int getPriority(Task task);
         bool getCompleted(Task task);
         TimeSpan getExecutionTime(Task task);
+        EFCore.Task getTaskById(int id);
         void addNewTask(string name, string description, DateOnly expectedDate, int priority, int userRef);
-
+        void updateTaskById(int id, EFCore.Task task);
     }
 }
