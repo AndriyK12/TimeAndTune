@@ -21,25 +21,35 @@ namespace TimeAndTune.DialogWindows
 
     public partial class AdditionalTaskInfoDialog : Window
     {
-        private bool isClosedByUser = false;
+        /*private bool isClosedByUser = false;
+        public static bool noNeedToClose = false;*/
         public void goBackToHomePage(object sender, RoutedEventArgs e)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
 
             if (currentWindow != null)
             {
-                isClosedByUser = true;
+                //isClosedByUser = true;
                 currentWindow.Close();
             }
         }
-        protected override void OnDeactivated(EventArgs e)
+        public void update_Click(object sender, RoutedEventArgs e)
+        {
+            string newName = txtTaskName.Text;
+            string newDesc = txtDescription.Text;
+            string newDate = txtDate.Text;
+            ComboBox? priorityComboBox = priorityButton.Template
+                .FindName("priorityComboBox", priorityButton) as ComboBox;
+            int newPrority = priorityComboBox.SelectedIndex - 1;
+        }
+        /*protected override void OnDeactivated(EventArgs e)
         {
             base.OnDeactivated(e);
-            if (!isClosedByUser)
+            if (!isClosedByUser && !noNeedToClose)
             {
                 Close();
             }
-        }
+        }*/
         public AdditionalTaskInfoDialog()
         {
             InitializeComponent();

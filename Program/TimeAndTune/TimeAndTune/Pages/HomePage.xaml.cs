@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeAndTune.BLL;
+using TimeAndTune.DialogWindows;
 using Task = EFCore.Task;
 
 namespace TimeAndTune
@@ -117,6 +118,15 @@ namespace TimeAndTune
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             //add some logic
+        }
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
+            if (item != null && item.DataContext is Task task)
+            {
+                HomePageBack.openTaskInfo_Click(sender, e, task);
+            }
         }
     }
 }
