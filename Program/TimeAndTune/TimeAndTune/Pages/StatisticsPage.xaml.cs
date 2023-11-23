@@ -1,4 +1,4 @@
-﻿using LiveCharts.Wpf;
+using LiveCharts.Wpf;
 using LiveCharts;
 using System;
 using System.Collections.Generic;

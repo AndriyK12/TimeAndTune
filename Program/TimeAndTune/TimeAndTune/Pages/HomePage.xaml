@@ -319,7 +319,6 @@
                 d:ItemsSource="{d:SampleData ItemCount=78}"
                 Background="Transparent"
                 BorderBrush="Transparent">
-
                 <ListView.Resources>
                     <Style TargetType="{x:Type ScrollBar}">
                         <Setter Property="Background" Value="#D9D9D9" />
@@ -428,6 +427,11 @@
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
         <Ellipse
