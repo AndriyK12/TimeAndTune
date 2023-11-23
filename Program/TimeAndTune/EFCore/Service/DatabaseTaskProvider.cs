@@ -121,32 +121,18 @@ namespace EFCore.Service
         {
             return (TimeSpan)task.Executiontime;
         }
-        public void updateTaskById(int id, EFCore.Task task)
+        public void updateTaskById(int id, string newName, string newDesc, string newDate, int newpriority)
         {
-            List<EFCore.Task> items = this.GetAllTasks();
             using (var context = new TTContext())
             {
-                foreach (EFCore.Task item in items)
-                {
-                    if (item.Taskid == id)
-                    {
-                        Task newTask = new Task();
-                        newTask.Taskid = id;
-                        newTask.Name = task.Name;
-                        newTask.Description = task.Description;
-                        newTask.Dateofcreation = task.Dateofcreation;
-                        newTask.Expectedfinishtime = task.Expectedfinishtime;
-                        newTask.Finishtime = task.Finishtime;
-                        newTask.Priority = task.Priority;
-                        newTask.Completed = task.Completed;
-                        newTask.Executiontime = task.Executiontime;
-                        newTask.Useridref = task.Useridref;
-                        newTask.UseridrefNavigation = task.UseridrefNavigation;
-                        context.Update(newTask);
-                        context.SaveChangesAsync();
-                        break;
-                    }
-                }
+                Task task = getTaskById(id);
+                task.Name = newName;
+                task.Description= newDesc;
+                DateOnly.TryParse(newDate, out DateOnly dateOnly);
+                task.Expectedfinishtime = dateOnly;
+                task.Priority = newpriority + 1;
+                context.Update(task);
+                context.SaveChangesAsync();
             }
         }
 

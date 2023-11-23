@@ -51,6 +51,7 @@ namespace TimeAndTune.BLL
         public static void openTaskInfo_Click(object sender, RoutedEventArgs e, EFCore.Task t)
         {
             AdditionalTaskInfoDialog taskInfoWnd = new AdditionalTaskInfoDialog();
+            taskInfoWnd.taskId = t.Taskid;
             Window mainWnd = Window.GetWindow((DependencyObject)sender);
             mainWnd.Opacity = 0.3;
             taskInfoWnd.Activated += (s, args) =>

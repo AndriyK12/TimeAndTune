@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EFCore.Service;
 
 namespace TimeAndTune.DialogWindows
 {
@@ -18,9 +19,9 @@ namespace TimeAndTune.DialogWindows
     /// Interaction logic for AdditionalTaskInfoDialog.xaml
     /// </summary>
 
-
     public partial class AdditionalTaskInfoDialog : Window
     {
+        public int taskId;
         /*private bool isClosedByUser = false;
         public static bool noNeedToClose = false;*/
         public void goBackToHomePage(object sender, RoutedEventArgs e)
@@ -40,7 +41,11 @@ namespace TimeAndTune.DialogWindows
             string newDate = txtDate.Text;
             ComboBox? priorityComboBox = priorityButton.Template
                 .FindName("priorityComboBox", priorityButton) as ComboBox;
-            int newPrority = priorityComboBox.SelectedIndex - 1;
+            int newPrority = priorityComboBox.SelectedIndex;
+            DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
+            EFCore.Task? newTask =  dataBaseTaskProvider.getTaskById(taskId);
+            dataBaseTaskProvider.updateTaskById(taskId, newName, newDesc, newDate, newPrority);
+            Close();
         }
         /*protected override void OnDeactivated(EventArgs e)
         {

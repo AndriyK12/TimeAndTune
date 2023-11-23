@@ -23,8 +23,6 @@ namespace EFCore.Service
         TimeSpan getExecutionTime(Task task);
         EFCore.Task getTaskById(int id);
         void addNewTask(string name, string description, DateOnly expectedDate, int priority, int userRef);
-        void updateTaskById(int id, EFCore.Task task);
-
-        
+        void updateTaskById(int id, string newName, string newDesc, string newDate, int newpriority);
     }
 }
