@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EFCore;
 using EFCore.Service;
+using LiveCharts.Definitions.Charts;
+using LiveCharts.Wpf.Charts.Base;
 
 namespace TimeAndTune
 {
@@ -25,8 +27,13 @@ namespace TimeAndTune
     /// </summary>
     public partial class StatisticsPage : Page
     {
+        DateOnly[] dates;
         public SeriesCollection SeriesCollection { get; set; }
+        public SeriesCollection SeriesCollectionMonth { get; set; }
+        public SeriesCollection SeriesCollectionYear { get; set; }
         public string[] Labels { get; set; }
+        public string[] LabelsMonth { get; set; }
+        public string[] LabelsYear { get; set; }
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             NavWindow nav = new NavWindow();
@@ -54,7 +61,9 @@ namespace TimeAndTune
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             YearRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            //add some logic
+            WeekHistogram.Visibility = Visibility.Visible;
+            MonthHistogram.Visibility = Visibility.Hidden;
+            YearHistogram.Visibility = Visibility.Hidden;
         }
 
         private void Month_Click(object sender, RoutedEventArgs e)
@@ -62,7 +71,9 @@ namespace TimeAndTune
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             YearRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            //add some logic
+            WeekHistogram.Visibility = Visibility.Hidden;
+            MonthHistogram.Visibility = Visibility.Visible;
+            YearHistogram.Visibility = Visibility.Hidden;
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)
@@ -70,37 +81,31 @@ namespace TimeAndTune
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             YearRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
-            //add some logic
+            WeekHistogram.Visibility = Visibility.Hidden;
+            MonthHistogram.Visibility = Visibility.Hidden;
+            YearHistogram.Visibility = Visibility.Visible;
         }
         public StatisticsPage()
         {
             InitializeComponent();
-
+            // Week Histogram
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             int currentDayOfWeek = (int)currentDate.DayOfWeek;
             int daysToMonday = currentDayOfWeek - (int)DayOfWeek.Monday;
             DateOnly startOfWeek = currentDate.AddDays(-daysToMonday);
-            DateOnly[] weekDates = new DateOnly[7];
+            DateOnly[] dates = new DateOnly[7];
             for (int i = 0; i < 7; i++)
             {
-                weekDates[i] = startOfWeek.AddDays(i);
+                dates[i] = startOfWeek.AddDays(i);
             }
 
-            var completedTasks = new List<int>();
+            var tasks = new List<int>();
             DatabaseTaskProvider taskService = new DatabaseTaskProvider();
             DatabaseUserProvider userService = new DatabaseUserProvider();
-            foreach (DateOnly date in weekDates)
+            foreach (DateOnly date in dates)
             {
-                completedTasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
+                tasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
             }
-
-           /* var completedTasks = new List<int>();
-
-            for (int i = 6; i >= 0; i--)
-            {
-                completedTasks.Add(i + 1); // Кількість завдань від 1 до 7
-            }*/
-
             var gradientBrush = new LinearGradientBrush
             {
                 StartPoint = new Point(0, 0),
@@ -111,19 +116,93 @@ namespace TimeAndTune
 
             // Побудова гістограми
             SeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
                 {
-                    Title = "Completed Tasks",
-                    Values = new ChartValues<int>(completedTasks),
-                    Fill = gradientBrush,
-                    MaxColumnWidth = 110
-        }
-            };
-
-            Labels = weekDates.Select(date => date.ToString("dd/MM")).ToArray();
-
+                new ColumnSeries
+                    {
+                        Title = "Completed Tasks",
+                        Values = new ChartValues<int>(tasks),
+                        Fill = gradientBrush,
+                        MaxColumnWidth = 110
+                    }
+                };
+            Labels = dates.Select(date => date.ToString("dd/MM")).ToArray();
             DataContext = this;
+
+            // Month Histogram
+
+            DateOnly firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
+            DateOnly lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            int daysInMonth = (int)lastDayOfMonth.Day - firstDayOfMonth.Day + 1;
+            dates = new DateOnly[daysInMonth];
+            for (int i = 0; i < daysInMonth; i++)
+            {
+                dates[i] = firstDayOfMonth.AddDays(i);
+            }
+
+            tasks = new List<int>();
+            foreach (DateOnly date in dates)
+            {
+                tasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
+            }
+
+            // Побудова гістограми
+            SeriesCollectionMonth = new SeriesCollection
+                {
+                new ColumnSeries
+                    {
+                        Title = "Completed Tasks",
+                        Values = new ChartValues<int>(tasks),
+                        Fill = gradientBrush,
+                        MaxColumnWidth = 110
+                    }
+                };
+            LabelsMonth = dates.Select(date => date.ToString("dd/MM")).ToArray();
+            DataContext = this;
+
+            // Year Histogram
+
+            int currentYear = currentDate.Year;
+            Dictionary<int, List<DateOnly>> dateDictionary = new Dictionary<int, List<DateOnly>>();
+            for (int month = 1; month <= 12; month++)
+            {
+                firstDayOfMonth = new DateOnly(currentYear, month, 1);
+                lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+                List<DateOnly> datesOfMonth = new List<DateOnly>();
+                for (DateOnly date = firstDayOfMonth; date <= lastDayOfMonth; date = date.AddDays(1))
+                {
+                    datesOfMonth.Add(date);
+                }
+                dateDictionary.Add(month, datesOfMonth);
+            }
+            tasks = new List<int>();
+            foreach (var kvp in dateDictionary)
+            {
+                Console.WriteLine($"Місяць {kvp.Key}:");
+                int amount_of_tasks_by_month = 0;
+                foreach (var date in kvp.Value)
+                {
+                    amount_of_tasks_by_month += taskService.GetAmountOfCompletedTasksByDate(date,
+                        userService.getUserID(MainWindow.ActiveUser));
+                }
+                tasks.Add(amount_of_tasks_by_month);
+            }
+            SeriesCollectionYear = new SeriesCollection
+                {
+                new ColumnSeries
+                    {
+                        Title = "Completed Tasks",
+                        Values = new ChartValues<int>(tasks),
+                        Fill = gradientBrush,
+                        MaxColumnWidth = 110
+                    }
+                };
+            string[] months = {
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            };
+            LabelsYear = months;
+            DataContext = this;
+
         }
     }
 }

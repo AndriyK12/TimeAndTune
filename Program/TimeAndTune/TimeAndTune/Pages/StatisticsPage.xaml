@@ -14,6 +14,7 @@
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
         <lvc:CartesianChart 
+            Name="WeekHistogram"
             Series="{Binding SeriesCollection}"
             Width="1400"
             Height="650"
@@ -49,6 +50,86 @@
                 </Style>
             </lvc:CartesianChart.Style>
         </lvc:CartesianChart>
+
+        <lvc:CartesianChart 
+            Name="MonthHistogram"
+            Visibility="Hidden"
+            Series="{Binding SeriesCollectionMonth}"
+            Width="1400"
+            Height="650"
+            Margin="0,230,0,0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis FontSize="20">
+                    <lvc:Axis.Foreground>
+                        <SolidColorBrush Color="#FFFFFF"/>
+                    </lvc:Axis.Foreground>
+                    <lvc:Axis.Separator>
+                        <lvc:Separator IsEnabled="False"/>
+                    </lvc:Axis.Separator>
+                    <lvc:Axis.Labels>
+                        <Binding Path="LabelsMonth"/>
+                    </lvc:Axis.Labels>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis FontSize="20">
+                    <lvc:Axis.Foreground>
+                        <SolidColorBrush Color="#FFFFFF"/>
+                    </lvc:Axis.Foreground>
+                    <lvc:Axis.Separator>
+                        <lvc:Separator IsEnabled="False" Step="1"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.Style>
+                <Style TargetType="lvc:CartesianChart" >
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Style>
+            </lvc:CartesianChart.Style>
+        </lvc:CartesianChart>
+
+        <lvc:CartesianChart 
+            Name="YearHistogram"
+            Visibility="Hidden"
+            Series="{Binding SeriesCollectionYear}"
+            Width="1400"
+            Height="650"
+            Margin="0,230,0,0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis FontSize="20">
+                    <lvc:Axis.Foreground>
+                        <SolidColorBrush Color="#FFFFFF"/>
+                    </lvc:Axis.Foreground>
+                    <lvc:Axis.Separator>
+                        <lvc:Separator IsEnabled="False"/>
+                    </lvc:Axis.Separator>
+                    <lvc:Axis.Labels>
+                        <Binding Path="LabelsYear"/>
+                    </lvc:Axis.Labels>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis FontSize="20">
+                    <lvc:Axis.Foreground>
+                        <SolidColorBrush Color="#FFFFFF"/>
+                    </lvc:Axis.Foreground>
+                    <lvc:Axis.Separator>
+                        <lvc:Separator IsEnabled="False" Step="10"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.Style>
+                <Style TargetType="lvc:CartesianChart" >
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Style>
+            </lvc:CartesianChart.Style>
+        </lvc:CartesianChart>
+
+
         <Image Source="/Pages/menu_icon.png"
                Width="90"
                Height="90"
