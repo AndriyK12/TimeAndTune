@@ -52,6 +52,17 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Rectangle 
+            Fill="Transparent"
+            RadiusX="12"
+            RadiusY="12"
+            Margin="5,30,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="462"
+            Height="71"
+            Stroke="#C57B0C" 
+            StrokeThickness="6"/>
         <TextBlock 
             Text="Creating new task"
             Margin="475,30,0,0"
