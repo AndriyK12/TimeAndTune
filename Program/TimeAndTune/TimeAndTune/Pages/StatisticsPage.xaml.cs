@@ -95,13 +95,6 @@ namespace TimeAndTune
                 completedTasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
             }
 
-           /* var completedTasks = new List<int>();
-
-            for (int i = 6; i >= 0; i--)
-            {
-                completedTasks.Add(i + 1); // Кількість завдань від 1 до 7
-            }*/
-
             var gradientBrush = new LinearGradientBrush
             {
                 StartPoint = new Point(0, 0),
