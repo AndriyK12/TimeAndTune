@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EFCore.Service
 {
     internal interface ITaskProvider
     {
         List<Task> GetAllTasks();
+        List<Task> getAllTasksByDayUsingUserId(int userId);
+        List<Task> getAllTasksByWeekUsingUserId(int userId);
+        List<Task> getAllTasksByMonthUsingUserId(int userId);
         List<Task> GetAllTasksByUserID(int userID);
         int GetAmountOfCompletedTasksByDate(DateOnly date, int userID);
         int getTaskId(Task task);
@@ -22,5 +24,7 @@ namespace EFCore.Service
         EFCore.Task getTaskById(int id);
         void addNewTask(string name, string description, DateOnly expectedDate, int priority, int userRef);
         void updateTaskById(int id, EFCore.Task task);
+
+        
     }
 }
