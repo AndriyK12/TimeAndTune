@@ -60,89 +60,89 @@
         <local:CustomTaskStatusToImage x:Key="TaskStatusToImage" />
         <local:CustomTaskFinishTimeToRectangleColor x:Key="TaskFinishTimeToRectangleColor" />
     </Page.Resources>
+    
     <Grid>
         <Grid.LayoutTransform>
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
-        <Image 
+        <Image
+            Width="90"
+            Height="90"
             Margin="90,53,0,0"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
-            Source="/Pages/menu_icon.png"
-            Width="90" Height="90"/>
+            VerticalAlignment="Top"
+            Source="/Pages/menu_icon.png" />
         <Button
+            Width="90"
+            Height="90"
             Margin="90,53,0,0"
-            Width="90" Height="90"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="Transparent"
             BorderThickness="0"
             Click="openNavigation_Click">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Button.Style>
         </Button>
-        <Rectangle 
+        <Rectangle
+            Width="282"
+            Height="84"
+            Margin="0,60,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
             Fill="Transparent"
             RadiusX="12"
             RadiusY="12"
-            Margin="0,60,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Width="282"
-            Height="84"
-            Stroke="#5FA6E7" 
-            StrokeThickness="6"/>
-        <TextBlock 
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Text="Home"
+            Stroke="#5FA6E7"
+            StrokeThickness="6" />
+        <TextBlock
             Margin="0,77,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="37"
             Foreground="White"
-            FontSize="37"/>
-        <Image 
-            Margin="0,60,90,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Height="100"
-            Width="100" 
-            Source="/Pages/user_image.png"/>
-        <Button
-            Background="Transparent"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Height="100"
+            Text="Home" />
+        <Image
             Width="100"
+            Height="100"
             Margin="0,60,90,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Source="/Pages/user_image.png" />
+        <Button
+            Width="100"
+            Height="100"
+            Margin="0,60,90,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="Transparent"
             BorderThickness="0"
             Click="openUserInfo_Click">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Button.Style>
         </Button>
-      
         <Grid
             Margin="-220,236,0,0"
             HorizontalAlignment="Center"
@@ -319,6 +319,51 @@
                 d:ItemsSource="{d:SampleData ItemCount=78}"
                 Background="Transparent"
                 BorderBrush="Transparent">
+
+                <ListView.Resources>
+                    <Style TargetType="{x:Type ScrollBar}">
+                        <Setter Property="Background" Value="#D9D9D9" />
+                        <Setter Property="BorderBrush" Value="#D9D9D9" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                    <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
+                                            <RowDefinition Height="0.00001*" />
+                                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
+                                        </Grid.RowDefinitions>
+                                        <Border
+                                            Grid.Row="1"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="10" />
+                                        <Track
+                                            x:Name="PART_Track"
+                                            Grid.Row="1"
+                                            IsDirectionReversed="true"
+                                            IsEnabled="{TemplateBinding IsMouseOver}">
+                                            <Track.DecreaseRepeatButton>
+                                                <RepeatButton
+                                                    Width="17"
+                                                    HorizontalAlignment="Left"
+                                                    Command="{x:Static ScrollBar.PageUpCommand}"
+                                                    Style="{StaticResource RepeatButtonTransparent}" />
+                                            </Track.DecreaseRepeatButton>
+                                            <Track.IncreaseRepeatButton>
+                                                <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource RepeatButtonTransparent}" />
+                                            </Track.IncreaseRepeatButton>
+                                            <Track.Thumb>
+                                                <Thumb Margin="2" Style="{StaticResource ScrollBarThumbVertical}" />
+                                            </Track.Thumb>
+                                        </Track>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.Resources>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
@@ -330,109 +375,94 @@
                                 VerticalAlignment="Top"
                                 Fill="{Binding Expectedfinishtime, Converter={StaticResource TaskFinishTimeToRectangleColor}}"
                                 RadiusX="12"
-                                RadiusY="12"
-                                Margin="10,10,0,0"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Center"
-                                Width="1138"
-                                Height="120"/>
-                            <RadioButton
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Center"
+                                RadiusY="12" />
+                            <Image
+                                x:Name="checkmark"
                                 Width="50"
-                                Height="50" 
-                                Margin="-2170,45,0,0">
-                                <RadioButton.Template>
-                                    <ControlTemplate TargetType="RadioButton">
-                                        <Grid>
-                                            <Ellipse Width="45" Height="45" Fill="Transparent" Stroke="White" StrokeThickness="2"/>
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </RadioButton.Template>
-                            </RadioButton>
-                            <TextBlock 
-                                Text= "{Binding Name}"
-                                Margin="-1030,35,0,0"
-                                Foreground="#FFFFFF"
-                                FontSize="48"
-                                MaxWidth="600"
+                                Height="50"
+                                Margin="-1120,45,0,0"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Left"/>
-                            <Line 
-                                Y2="65" 
-                                Margin="-380,35,0,0" 
-                                Stroke="#FFFFFF"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Left" 
-                                Width="65"
-                                StrokeThickness="5"/>
+                                Source="{Binding Completed, Converter={StaticResource TaskStatusToImage}}"
+                                Visibility="Visible" />
                             <TextBlock
-                                Text="{Binding Expectedfinishtime}"
-                                Width="300"
-                                HorizontalAlignment="Center"
-                                Margin="-430,35,0,0"
-                                Foreground="#FFFFFF"
-                                FontSize="48"
-                                VerticalAlignment="Top"/>
-                            <Line 
-                                Y2="65" 
-                                Margin="-94,35,0,0" 
-                                Stroke="#FFFFFF"
+                                MaxWidth="600"
+                                Margin="-1030,35,0,0"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Left" 
+                                FontSize="48"
+                                Foreground="#FFFFFF"
+                                Text="{Binding Name}" />
+                            <Line
                                 Width="65"
-                                StrokeThickness="5"/>
+                                Margin="-380,35,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Stroke="#FFFFFF"
+                                StrokeThickness="5"
+                                Y2="65" />
+                            <TextBlock
+                                Width="300"
+                                Margin="-430,35,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                FontSize="48"
+                                Foreground="#FFFFFF"
+                                Text="{Binding Expectedfinishtime}" />
+                            <Line
+                                Width="65"
+                                Margin="-94,35,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Stroke="#FFFFFF"
+                                StrokeThickness="5"
+                                Y2="65" />
                             <Ellipse
                                 Width="46"
                                 Height="45"
-                                Fill="#00A3FF"
+                                Margin="-70,44,0,0"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
-                                HorizontalAlignment="Left" 
-                                Margin="-70,44,0,0"/>
+                                Fill="{Binding Priority, Converter={StaticResource TaskStatusToColorConverter}}" />
+
                         </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
-                    </Style>
-                </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
         <Ellipse
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Right"
-            Fill="#1C4335"
             Width="164"
             Height="163"
-            Stroke="White"
-            StrokeThickness="2" Margin="0,0,58,38">
-        </Ellipse>
-        <Image HorizontalAlignment="Right"
-               Margin="0,0,90,70"
-               VerticalAlignment="Bottom"
-               Height="100"
-               Width="100"
-               Source="/Pages/plus_image.png"/>
-        <Button
+            Margin="0,0,58,38"
             HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Fill="#1C4335"
+            Stroke="White"
+            StrokeThickness="2" />
+        <Image
+            Width="100"
+            Height="100"
             Margin="0,0,90,70"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Source="/Pages/plus_image.png" />
+        <Button
+            Width="100"
+            Height="100"
+            Margin="0,0,90,70"
+            HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderThickness="0"
-            Height="100"
-            Width="100"
             Click="openCreateNewTaskDialog_Click">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
