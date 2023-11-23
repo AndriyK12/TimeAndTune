@@ -125,6 +125,7 @@ namespace TimeAndTune
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             if (item != null && item.DataContext is Task task)
             {
+                
                 HomePageBack.openTaskInfo_Click(sender, e, task);
             }
         }
