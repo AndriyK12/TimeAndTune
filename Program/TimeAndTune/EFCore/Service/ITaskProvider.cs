@@ -10,7 +10,7 @@ namespace EFCore.Service
     {
         List<Task> GetAllTasks();
         List<Task> GetAllTasksByUserID(int userID);
-        int GetAmountOfTasksByDate(DateOnly date);
+        int GetAmountOfCompletedTasksByDate(DateOnly date, int userID);
         int getTaskId(Task task);
         string getName(Task task);
         string getDescription(Task task);
@@ -19,7 +19,8 @@ namespace EFCore.Service
         int getPriority(Task task);
         bool getCompleted(Task task);
         TimeSpan getExecutionTime(Task task);
+        EFCore.Task getTaskById(int id);
         void addNewTask(string name, string description, DateOnly expectedDate, int priority, int userRef);
-
+        void updateTaskById(int id, EFCore.Task task);
     }
 }

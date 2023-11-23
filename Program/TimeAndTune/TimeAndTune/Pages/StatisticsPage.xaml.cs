@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EFCore;
+using EFCore.Service;
 
 namespace TimeAndTune
 {
@@ -73,14 +75,32 @@ namespace TimeAndTune
         public StatisticsPage()
         {
             InitializeComponent();
-            var dates = new List<DateTime>();
+
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+            int currentDayOfWeek = (int)currentDate.DayOfWeek;
+            int daysToMonday = currentDayOfWeek - (int)DayOfWeek.Monday;
+            daysToMonday = (daysToMonday + 7) % 7;
+            DateOnly startOfWeek = currentDate.AddDays(-daysToMonday);
+            DateOnly[] weekDates = new DateOnly[7];
+            for (int i = 0; i < 7; i++)
+            {
+                weekDates[i] = startOfWeek.AddDays(i);
+            }
+
             var completedTasks = new List<int>();
+            DatabaseTaskProvider taskService = new DatabaseTaskProvider();
+            DatabaseUserProvider userService = new DatabaseUserProvider();
+            foreach (DateOnly date in weekDates)
+            {
+                completedTasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
+            }
+
+           /* var completedTasks = new List<int>();
 
             for (int i = 6; i >= 0; i--)
             {
-                dates.Add(DateTime.Now.AddDays(-i)); // Додаємо дати в зворотньому порядку
                 completedTasks.Add(i + 1); // Кількість завдань від 1 до 7
-            }
+            }*/
 
             var gradientBrush = new LinearGradientBrush
             {
@@ -102,7 +122,7 @@ namespace TimeAndTune
         }
             };
 
-            Labels = dates.Select(date => date.ToString("dd/MM")).ToArray();
+            Labels = weekDates.Select(date => date.ToString("dd/MM")).ToArray();
 
             DataContext = this;
         }

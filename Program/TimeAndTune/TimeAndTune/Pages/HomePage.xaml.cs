@@ -1,6 +1,7 @@
 ﻿using EFCore.Service;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,55 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TimeAndTune.BLL;
 using Task = EFCore.Task;
+
 namespace TimeAndTune
 {
-    /// <summary>
-    /// Interaction logic for HomePage.xaml
-    /// </summary>
+
+    public class CustomTaskStatusToColorConverter: IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int status = int.Parse(value.ToString());
+            if (status == 3)
+            {
+                return "#001AFF";
+            } 
+            else if(status == 2)
+            {
+                return "#00A3FF";
+            }
+            else
+            {
+                return "#D0FFFF";
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class CustomTaskStatusToImage : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string status = value.ToString();
+            if(status == "True")
+            {
+                return "/Pages/checkmark.png";
+            } 
+            else
+            {
+                return "/Pages/uncheckmark.png";
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     public partial class HomePage : Page
     {
@@ -33,11 +78,7 @@ namespace TimeAndTune
         public void updateListView()
         {
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
-            List<Task> items = new List<Task>();
-            if (dataBaseTaskProvider.GetAllTasks().Count != 0)
-            {
-                items = dataBaseTaskProvider.GetAllTasks();
-            }
+            List<Task> items = dataBaseTaskProvider.GetAllTasksByUserID(MainWindow.ActiveUser.Userid);
 
             TaskListView.ItemsSource = items;
         }
