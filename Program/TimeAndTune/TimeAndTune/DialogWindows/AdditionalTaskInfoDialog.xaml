@@ -149,7 +149,7 @@
             Margin="574,185,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
-            Width="687"
+            Width="630"
             Height="313"
             Background="#A6A3A3"
             CornerRadius="15" >
@@ -238,41 +238,27 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Ellipse
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Fill="#1C4335"
-            Width="112"
-            Height="112"
-            Stroke="White"
-            StrokeThickness="2"
-            Margin="200,0,68,38" RenderTransformOrigin="0.515,0.555" >
-        </Ellipse>
-        <Polygon
-            Points="0,0 36,62, 70,0"
-            Fill="#fff"
-            StrokeThickness="2"
-            HorizontalAlignment="Center"
+        <Rectangle
+            RadiusX="15"
+            RadiusY="15"
+            Margin="924,555,0,0"
             VerticalAlignment="Top"
-            Margin="150,574,0,0"
-            RenderTransformOrigin="0.515,0.555">
-            <Polygon.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Polygon.RenderTransform>
-        </Polygon>
+            HorizontalAlignment="Left"
+            Width="279" Height="100"
+            Fill="#1C4335"/>
+        <TextBlock 
+             VerticalAlignment="Top"
+             HorizontalAlignment="Left"
+             Text="Finish"
+             Margin="1005,570,0,0"
+             Foreground="White"
+             FontSize="48"/>
         <Button
-            HorizontalAlignment="Center"
-            Margin="230,0,90,35"
-            VerticalAlignment="Bottom"
-            Background="Transparent"
-            BorderThickness="0"
-            Height="112"
-            Width="112">
+            Margin="924,555,0,0"
+            Width="279" Height="112"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Click="Finish_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -286,83 +272,25 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </Button.Style>
+            </Button.Style> 
         </Button>
-        <Ellipse
+        
+        <Image 
+            x:Name="PlayPauseImage"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Center"
-            Fill="#1C4335"
-            Width="112"
-            Height="112"
-            Stroke="White"
-            StrokeThickness="2"
-            Margin="600,0,68,38">
-        </Ellipse>
-        <Rectangle
-            RadiusX="2"
-            RadiusY="2"
-            Margin="500,585,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Width="10" Height="55"
-            Fill="#fff"/>
-        <Rectangle
-            RadiusX="2"
-            RadiusY="2"
-            Margin="570,585,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Width="10" Height="55"
-            Fill="#fff"/>
+            Margin="0,0,0,50"
+            Source="/Pages/FocusPageImages/play.png"
+            Width="90" Height="90" 
+            Visibility="Visible"/>
         <Button
             HorizontalAlignment="Center"
-            Margin="625,0,90,35"
+            Margin="96,0,90,47"
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderThickness="0"
-            Height="112"
-            Width="112">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Ellipse
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Fill="#1C4335"
-            Width="112"
-            Height="112"
-            Stroke="White"
-            StrokeThickness="2"
-            Margin="980,0,68,38">
-        </Ellipse>
-        <Rectangle
-            RadiusX="2"
-            RadiusY="2"
-            Margin="1005,0,90,67"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
-            Width="50" Height="50"
-            Fill="#fff"/>
-        <Button
-            HorizontalAlignment="Center"
-            Margin="1010,0,90,35"
-            VerticalAlignment="Bottom"
-            Background="Transparent"
-            BorderThickness="0"
-            Height="112"
-            Width="112">
+            Height="90"
+            Width="90">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
