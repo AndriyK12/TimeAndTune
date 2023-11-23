@@ -11,7 +11,8 @@
         WindowStartupLocation="CenterScreen"
         Background ="#25232A"
         BorderBrush="White"
-        BorderThickness="3">
+        BorderThickness="3"
+        IsEnabled="True">
     <Window.Resources>
         <Style TargetType="Border">
             <Setter Property="CornerRadius" Value="17"/>
@@ -170,7 +171,7 @@
                 />
             </StackPanel>
         </Border>
-        <Button
+        <Button x:Name="priorityButton"
             Margin="124,435,0,0"
             Width="280" Height="62"
             VerticalAlignment="Top"
@@ -183,7 +184,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <ComboBox Width="280" BorderBrush="#A6A3A3" Background="#ADD8E6" FontSize="34"  >
+                                <ComboBox x:Name="priorityComboBox" Width="280" BorderBrush="#A6A3A3" Background="#ADD8E6" FontSize="34"  >
                                     <ComboBoxItem FontSize="20">Normal</ComboBoxItem>
                                     <ComboBoxItem FontSize="20">Important</ComboBoxItem>
                                     <ComboBoxItem FontSize="20">Very important</ComboBoxItem>
@@ -225,7 +226,7 @@
             Width="279" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
-            >
+            Click="update_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
