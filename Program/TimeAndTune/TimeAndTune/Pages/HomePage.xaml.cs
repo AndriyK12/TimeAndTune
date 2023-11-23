@@ -80,10 +80,6 @@ namespace TimeAndTune
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             List<Task> items = dataBaseTaskProvider.GetAllTasksByUserID(MainWindow.ActiveUser.Userid);
 
-            Task task = items.FirstOrDefault();
-            task.Completed = true;
-            dataBaseTaskProvider.updateTaskById(task.Taskid, task);
-
             TaskListView.ItemsSource = items;
         }
 
