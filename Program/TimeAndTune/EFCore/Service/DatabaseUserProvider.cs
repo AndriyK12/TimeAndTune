@@ -63,5 +63,18 @@ namespace EFCore.Service
             user.Coinsamount = amount;
         }
 
+        public bool isUserAlreadyExist(string email)
+        {
+            User user = getUserByEmail(email);
+            if (user != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
