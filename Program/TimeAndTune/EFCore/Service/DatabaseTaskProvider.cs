@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace EFCore.Service
 {
@@ -104,9 +105,49 @@ namespace EFCore.Service
             return task.Priority;
         }
 
+        public EFCore.Task? getTaskById(int id)
+        {
+            foreach(EFCore.Task item in this.GetAllTasks())
+            {
+                if(item.Taskid == id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         public TimeSpan getExecutionTime(Task task)
         {
             return (TimeSpan)task.Executiontime;
+        }
+        public void updateTaskById(int id, EFCore.Task task)
+        {
+            List<EFCore.Task> items = this.GetAllTasks();
+            using (var context = new TTContext())
+            {
+                foreach (EFCore.Task item in items)
+                {
+                    if (item.Taskid == id)
+                    {
+                        Task newTask = new Task();
+                        newTask.Taskid = id;
+                        newTask.Name = task.Name;
+                        newTask.Description = task.Description;
+                        newTask.Dateofcreation = task.Dateofcreation;
+                        newTask.Expectedfinishtime = task.Expectedfinishtime;
+                        newTask.Finishtime = task.Finishtime;
+                        newTask.Priority = task.Priority;
+                        newTask.Completed = task.Completed;
+                        newTask.Executiontime = task.Executiontime;
+                        newTask.Useridref = task.Useridref;
+                        newTask.UseridrefNavigation = task.UseridrefNavigation;
+                        context.Update(newTask);
+                        context.SaveChangesAsync();
+                        break;
+                    }
+                }
+            }
         }
     }
 }

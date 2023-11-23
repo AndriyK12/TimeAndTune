@@ -45,6 +45,27 @@ namespace TimeAndTune
         }
     }
 
+    public class CustomTaskStatusToImage : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string status = value.ToString();
+            if(status == "True")
+            {
+                return "/Pages/checkmark.png";
+            } 
+            else
+            {
+                return "/Pages/uncheckmark.png";
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public partial class HomePage : Page
     {
 
@@ -58,7 +79,11 @@ namespace TimeAndTune
         {
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             List<Task> items = dataBaseTaskProvider.GetAllTasksByUserID(MainWindow.ActiveUser.Userid);
-            
+
+            Task task = items.FirstOrDefault();
+            task.Completed = true;
+            dataBaseTaskProvider.updateTaskById(task.Taskid, task);
+
             TaskListView.ItemsSource = items;
         }
 
