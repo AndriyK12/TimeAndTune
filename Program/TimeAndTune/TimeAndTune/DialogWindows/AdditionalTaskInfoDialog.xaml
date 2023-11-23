@@ -209,7 +209,9 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Width="279" Height="100"
-            Fill="#1C4335"/>
+            Fill="#1C4335"
+            Stroke="#FFFFFF"
+            StrokeThickness="3"/>
         <TextBlock 
              VerticalAlignment="Top"
              HorizontalAlignment="Left"
