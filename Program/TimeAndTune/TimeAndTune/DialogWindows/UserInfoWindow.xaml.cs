@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TimeAndTune.BLL;
 using TimeAndTune.Pages;
 
 namespace TimeAndTune
@@ -20,7 +21,7 @@ namespace TimeAndTune
     /// </summary>
     public partial class UserInfoWindow : Window
     {
-        private bool isClosedByUser = false;
+        public bool isClosedByUser = false;
         protected override void OnDeactivated(EventArgs e)
         {
             base.OnDeactivated(e);
@@ -31,15 +32,7 @@ namespace TimeAndTune
         }
         public void exit_Click(object sender, RoutedEventArgs e)
         {
-            // add exit logic
-            LoginPage loginPage = new LoginPage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(loginPage);
-            }
-            isClosedByUser = true;
-            Close();
+            UserInfoBack.exit_Click(sender, e, this);
         }
         public UserInfoWindow()
         {

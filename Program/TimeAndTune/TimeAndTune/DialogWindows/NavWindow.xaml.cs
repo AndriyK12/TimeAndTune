@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeAndTune.BLL;
 
 namespace TimeAndTune
 {
@@ -20,7 +21,7 @@ namespace TimeAndTune
     /// </summary>
     public partial class NavWindow : Window
     {
-        private bool isClosedByUser = false;
+        public bool isClosedByUser = false;
         protected override void OnDeactivated(EventArgs e)
         {
             base.OnDeactivated(e);
@@ -31,36 +32,15 @@ namespace TimeAndTune
         }
         public void navigateHome_Click(object sender, RoutedEventArgs e)
         {
-            HomePage homePage = new HomePage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(homePage);
-            }
-            isClosedByUser = true;
-            Close();
+            NavWindowBack.navigateHome_Click(sender, e, this);
         }
         public void navigateStatistics_Click(object sender, RoutedEventArgs e)
         {
-            StatisticsPage statisticsPage = new StatisticsPage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(statisticsPage);
-            }
-            isClosedByUser = true;
-            Close();
+            NavWindowBack.navigateStatistics_Click(sender, e, this);
         }
         public void navigateFocus_Click(object sender, RoutedEventArgs e)
         {
-            FocusPage focusPage = new FocusPage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(focusPage);
-            }
-            isClosedByUser = true;
-            Close();
+            NavWindowBack.navigateFocus_Click(sender, e, this);
         }
         public NavWindow()
         {
