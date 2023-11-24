@@ -34,6 +34,12 @@ namespace TimeAndTune
         public string[] Labels { get; set; }
         public string[] LabelsMonth { get; set; }
         public string[] LabelsYear { get; set; }
+        public int overallWeekTasksAmount;
+        public int overallMonthTasksAmount;
+        public int overallYearTasksAmount;
+        public int completedWeekTasksAmount;
+        public int completedMonthTasksAmount;
+        public int completedYearTasksAmount;
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             NavWindow nav = new NavWindow();
@@ -56,6 +62,12 @@ namespace TimeAndTune
             };
             userWnd.Show();
         }
+        private void updateProgressBar(int completedTasks, int overallTasks)
+        {
+            float percentage = ((float)completedTasks / (float)overallTasks);
+            progressPercentage.Text = (percentage * 100).ToString()+"%";
+            progressThumb.Height = 578 * percentage;
+        }
         private void Week_Click(object sender, RoutedEventArgs e)
         {
             WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
@@ -64,6 +76,7 @@ namespace TimeAndTune
             WeekHistogram.Visibility = Visibility.Visible;
             MonthHistogram.Visibility = Visibility.Hidden;
             YearHistogram.Visibility = Visibility.Hidden;
+            updateProgressBar(completedWeekTasksAmount, overallWeekTasksAmount);
         }
 
         private void Month_Click(object sender, RoutedEventArgs e)
@@ -74,6 +87,7 @@ namespace TimeAndTune
             WeekHistogram.Visibility = Visibility.Hidden;
             MonthHistogram.Visibility = Visibility.Visible;
             YearHistogram.Visibility = Visibility.Hidden;
+            updateProgressBar(completedMonthTasksAmount, overallMonthTasksAmount);
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)
@@ -84,6 +98,7 @@ namespace TimeAndTune
             WeekHistogram.Visibility = Visibility.Hidden;
             MonthHistogram.Visibility = Visibility.Hidden;
             YearHistogram.Visibility = Visibility.Visible;
+            updateProgressBar(completedYearTasksAmount, overallYearTasksAmount);
         }
         public StatisticsPage()
         {
@@ -104,7 +119,11 @@ namespace TimeAndTune
             DatabaseUserProvider userService = new DatabaseUserProvider();
             foreach (DateOnly date in dates)
             {
-                tasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
+                int overallAmount = taskService.GetAmountOfTasksByDate(date, userService.getUserID(MainWindow.ActiveUser));
+                int amount = taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser));
+                tasks.Add(amount);
+                completedWeekTasksAmount += amount;
+                overallWeekTasksAmount += overallAmount;
             }
             var gradientBrush = new LinearGradientBrush
             {
@@ -114,7 +133,6 @@ namespace TimeAndTune
             gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0xFF, 0x7F, 0x22, 0xAB), 0));
             gradientBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0xFF, 0x6D, 0x67, 0x70), 1));
 
-            // Побудова гістограми
             SeriesCollection = new SeriesCollection
                 {
                 new ColumnSeries
@@ -127,6 +145,7 @@ namespace TimeAndTune
                 };
             Labels = dates.Select(date => date.ToString("dd/MM")).ToArray();
             DataContext = this;
+            updateProgressBar(completedWeekTasksAmount, overallWeekTasksAmount);
 
             // Month Histogram
 
@@ -142,10 +161,13 @@ namespace TimeAndTune
             tasks = new List<int>();
             foreach (DateOnly date in dates)
             {
-                tasks.Add(taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser)));
+                int overallAmount = taskService.GetAmountOfTasksByDate(date, userService.getUserID(MainWindow.ActiveUser));
+                int amount = taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser));
+                tasks.Add(amount);
+                completedMonthTasksAmount += amount;
+                overallMonthTasksAmount += overallAmount;
             }
 
-            // Побудова гістограми
             SeriesCollectionMonth = new SeriesCollection
                 {
                 new ColumnSeries
@@ -179,12 +201,17 @@ namespace TimeAndTune
             {
                 Console.WriteLine($"Місяць {kvp.Key}:");
                 int amount_of_tasks_by_month = 0;
+                int overall_amount = 0;
                 foreach (var date in kvp.Value)
                 {
+                    overall_amount += taskService.GetAmountOfTasksByDate(date,
+                        userService.getUserID(MainWindow.ActiveUser));
                     amount_of_tasks_by_month += taskService.GetAmountOfCompletedTasksByDate(date,
                         userService.getUserID(MainWindow.ActiveUser));
                 }
                 tasks.Add(amount_of_tasks_by_month);
+                completedYearTasksAmount += amount_of_tasks_by_month;
+                overallYearTasksAmount += overall_amount;
             }
             SeriesCollectionYear = new SeriesCollection
                 {
@@ -202,7 +229,6 @@ namespace TimeAndTune
             };
             LabelsYear = months;
             DataContext = this;
-
         }
     }
 }

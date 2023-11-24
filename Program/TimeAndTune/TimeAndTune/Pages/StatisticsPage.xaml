@@ -330,21 +330,22 @@
         <Rectangle
             RadiusX="27"
             RadiusY="27" 
-            Margin="1900,283,0,0" 
+            Margin="1803,0,0,128" 
             Fill="#D9D9D9"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
             Width="51" 
             Height="578" />
         <Rectangle 
+            Name= "progressThumb"
             RadiusX="27"
             RadiusY="27" 
-            Margin="1900,476,0,0"
+            Margin="1803,0,0,128"
             Fill="#26C770"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
             Width="51"
-            Height="385" />
+            Height="0" />
         <Rectangle
             RadiusX="8"
             RadiusY="8" 
@@ -365,11 +366,12 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <TextBlock
-            Text="80%"
+            Name="progressPercentage"
+            Text="0%"
             FontSize="30"
             Foreground="#FFFFFF"
-            Margin="1905,889,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left" />
+            Margin="1803,889,0,80"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center" />
     </Grid>
 </Page>
