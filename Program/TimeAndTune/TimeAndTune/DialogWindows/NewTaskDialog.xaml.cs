@@ -81,7 +81,7 @@ namespace TimeAndTune
             {
                 taskPriority = 1;
             }
-            if (DateOnly.TryParse(txtDate.Text, out DateOnly result))
+            if (DateOnly.TryParseExact(txtDate.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateOnly result))
             {
                 taskExpectedTime = result;
                 noNeedToCloseOnDeactivated = true;
