@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeAndTune.BLL;
 
 namespace TimeAndTune.Pages
 {
@@ -32,12 +33,7 @@ namespace TimeAndTune.Pages
         }
         public void NavigateToHomePage(object sender, RoutedEventArgs e)
         {
-            HomePage homePage = new HomePage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(homePage);
-            }
+            RegisterPageBack.NavigateToHomePage(sender, e);
         }
         static bool IsEmail(string input)
         {
@@ -86,12 +82,7 @@ namespace TimeAndTune.Pages
         }
         public void onSignIn_Click(object sender, RoutedEventArgs e)
         {
-            LoginPage loginPage = new LoginPage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(loginPage);
-            }
+            RegisterPageBack.onSignIn_Click(sender, e);
         }
         public RegisterPage()
         {
@@ -100,108 +91,59 @@ namespace TimeAndTune.Pages
 
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string newText = txtName.Text;
-            Console.WriteLine("Text changed: " + newText);
+            RegisterPageBack.txtName_TextChanged(sender, e, this);
         }
         private void txtName_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtName.Text == "")
-            {
-                txtName.Text = "";
-            }
+            RegisterPageBack.txtName_GotFocus(sender, e, this);
         }
 
         private void txtName_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                txtName.Text = "";
-            }
+            RegisterPageBack.txtName_LostFocus(sender, e, this);
         }
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string newText = txtEmail.Text;
-            Console.WriteLine("Text changed: " + newText);
+            RegisterPageBack.txtEmail_TextChanged(sender, e, this);
         }
         private void txtEmail_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtEmail.Text == "")
-            {
-                txtEmail.Text = "";
-            }
+            RegisterPageBack.txtEmail_GotFocus(sender, e, this);
         }
 
         private void txtEmail_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                txtEmail.Text = "";
-            }
+            RegisterPageBack.txtEmail_LostFocus(sender, e, this);
         }
 
         private void txtPassword_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtPassword.Password == "")
-            {
-                txtPassword.Password = "";
-                txtPassword.Foreground = Brushes.Black;
-                txtPasswordVisible.Text = txtPassword.Password;
-                txtPasswordVisible.Text = "";
-            }
+            RegisterPageBack.txtPassword_GotFocus(sender, e, this);
         }
 
         private void btnShowPassword_Checked(object sender, RoutedEventArgs e)
         {
-            // Показати пароль
-            txtPassword.Visibility = Visibility.Collapsed;
-            txtPasswordVisible.Visibility = Visibility.Visible;
-            txtPasswordVisible.Text = txtPassword.Password;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
-            passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
+            RegisterPageBack.btnShowPassword_Checked(sender, e, this);
         }
 
         private void btnShowPassword_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Приховати пароль
-            txtPassword.Visibility = Visibility.Visible;
-            txtPasswordVisible.Visibility = Visibility.Collapsed;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
-            passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
+            RegisterPageBack.btnShowPassword_Unchecked(sender, e, this);
         }
 
         private void txtConfirmPassword_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtConfirmPassword.Password == "")
-            {
-                txtConfirmPassword.Password = "";
-                txtConfirmPassword.Foreground = Brushes.Black;
-                txtConfirmPasswordVisible.Text = txtConfirmPassword.Password;
-                txtConfirmPasswordVisible.Text = "";
-            }
+            RegisterPageBack.txtConfirmPassword_GotFocus(sender, e, this);
         }
 
         private void btnShowConfirmPassword_Checked(object sender, RoutedEventArgs e)
         {
-
-            // Показати пароль
-            txtConfirmPassword.Visibility = Visibility.Collapsed;
-            txtConfirmPasswordVisible.Visibility = Visibility.Visible;
-            txtConfirmPasswordVisible.Text = txtConfirmPassword.Password;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image confPasswordVisibility = toggleButton.Template.FindName("confPasswordVisibility", toggleButton) as Image;
-            confPasswordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
+            RegisterPageBack.btnShowConfirmPassword_Checked(sender, e, this);
         }
 
         private void btnShowConfirmPassword_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Приховати пароль
-            txtConfirmPassword.Visibility = Visibility.Visible;
-            txtConfirmPasswordVisible.Visibility = Visibility.Collapsed;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image confPasswordVisibility = toggleButton.Template.FindName("confPasswordVisibility", toggleButton) as Image;
-            confPasswordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
+            RegisterPageBack.btnShowConfirmPassword_Unchecked(sender, e, this);
         }
     }
 }
