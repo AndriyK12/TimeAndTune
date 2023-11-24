@@ -19,6 +19,7 @@ using EFCore;
 using EFCore.Service;
 using LiveCharts.Definitions.Charts;
 using LiveCharts.Wpf.Charts.Base;
+using TimeAndTune.BLL;
 
 namespace TimeAndTune
 {
@@ -27,7 +28,6 @@ namespace TimeAndTune
     /// </summary>
     public partial class StatisticsPage : Page
     {
-        DateOnly[] dates;
         public SeriesCollection SeriesCollection { get; set; }
         public SeriesCollection SeriesCollectionMonth { get; set; }
         public SeriesCollection SeriesCollectionYear { get; set; }
@@ -42,52 +42,24 @@ namespace TimeAndTune
         public int completedYearTasksAmount;
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
-            NavWindow nav = new NavWindow();
-            Window mainWnd = Window.GetWindow((DependencyObject)sender);
-            mainWnd.Opacity = 0.3;
-            nav.Closed += (s, args) =>
-            {
-                mainWnd.Opacity = 1.0;
-            };
-            nav.Show();
+            StatisticsPageBack.openNavigation_Click(sender, e);
         }
         public void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
-            UserInfoWindow userWnd = new UserInfoWindow();
-            Window mainWnd = Window.GetWindow((DependencyObject)sender);
-            mainWnd.Opacity = 0.3;
-            userWnd.Closed += (s, args) =>
-            {
-                mainWnd.Opacity = 1.0;
-            };
-            userWnd.Show();
+            StatisticsPageBack.openUserInfo_Click(sender, e);
         }
         private void updateProgressBar(int completedTasks, int overallTasks)
         {
-            float percentage = ((float)completedTasks / (float)overallTasks);
-            progressPercentage.Text = (percentage * 100).ToString()+"%";
-            progressThumb.Height = 578 * percentage;
+            StatisticsPageBack.updateProgressBar(completedTasks, overallTasks, this);
         }
         private void Week_Click(object sender, RoutedEventArgs e)
         {
-            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
-            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            YearRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            WeekHistogram.Visibility = Visibility.Visible;
-            MonthHistogram.Visibility = Visibility.Hidden;
-            YearHistogram.Visibility = Visibility.Hidden;
-            updateProgressBar(completedWeekTasksAmount, overallWeekTasksAmount);
+            StatisticsPageBack.Week_Click(sender, e, this);
         }
 
         private void Month_Click(object sender, RoutedEventArgs e)
         {
-            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
-            YearRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            WeekHistogram.Visibility = Visibility.Hidden;
-            MonthHistogram.Visibility = Visibility.Visible;
-            YearHistogram.Visibility = Visibility.Hidden;
-            updateProgressBar(completedMonthTasksAmount, overallMonthTasksAmount);
+            StatisticsPageBack.Month_Click(sender, e, this);
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)

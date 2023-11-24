@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using EFCore.Service;
+using TimeAndTune.BLL;
 
 namespace TimeAndTune.DialogWindows
 {
@@ -22,39 +23,14 @@ namespace TimeAndTune.DialogWindows
     public partial class AdditionalTaskInfoDialog : Window
     {
         public int taskId;
-        /*private bool isClosedByUser = false;
-        public static bool noNeedToClose = false;*/
         public void goBackToHomePage(object sender, RoutedEventArgs e)
         {
-            Window currentWindow = Window.GetWindow((DependencyObject)sender);
-
-            if (currentWindow != null)
-            {
-                //isClosedByUser = true;
-                currentWindow.Close();
-            }
+            AdditionalTaskInfoBack.goBackToHomePage(sender, e);
         }
         public void update_Click(object sender, RoutedEventArgs e)
         {
-            string newName = txtTaskName.Text;
-            string newDesc = txtDescription.Text;
-            string newDate = txtDate.Text;
-            ComboBox? priorityComboBox = priorityButton.Template
-                .FindName("priorityComboBox", priorityButton) as ComboBox;
-            int newPrority = priorityComboBox.SelectedIndex;
-            DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
-            EFCore.Task? newTask =  dataBaseTaskProvider.getTaskById(taskId);
-            dataBaseTaskProvider.updateTaskById(taskId, newName, newDesc, newDate, newPrority);
-            Close();
+            AdditionalTaskInfoBack.update_Click(sender, e, this);
         }
-        /*protected override void OnDeactivated(EventArgs e)
-        {
-            base.OnDeactivated(e);
-            if (!isClosedByUser && !noNeedToClose)
-            {
-                Close();
-            }
-        }*/
         public AdditionalTaskInfoDialog()
         {
             InitializeComponent();
@@ -63,94 +39,49 @@ namespace TimeAndTune.DialogWindows
 
         private void txtTaskName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string newText = txtTaskName.Text;
-            Console.WriteLine("Text changed: " + newText);
+            AdditionalTaskInfoBack.txtTaskName_TextChanged(sender, e, this);
         }
         private void txtTaskName_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtTaskName.Text == "")
-            {
-                txtTaskName.Text = "";
-            }
+            AdditionalTaskInfoBack.txtTaskName_GotFocus(sender, e, this);
         }
 
         private void txtTaskName_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTaskName.Text))
-            {
-                txtTaskName.Text = "";
-            }
+            AdditionalTaskInfoBack.txtTaskName_LostFocus(sender, e, this);
         }
 
         private void txtDate_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string newText = txtDate.Text;
-            Console.WriteLine("Text changed: " + newText);
+            AdditionalTaskInfoBack.txtDate_TextChanged(sender, e, this);
         }
         private void txtDate_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtDate.Text == "")
-            {
-                txtDate.Text = "";
-            }
+            AdditionalTaskInfoBack.txtDate_GotFocus(sender, e, this);
         }
 
         private void txtDate_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDate.Text))
-            {
-                txtDate.Text = "";
-            }
+            AdditionalTaskInfoBack.txtDate_LostFocus(sender, e, this);
         }
 
         private void txtDate_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!char.IsDigit(e.Text[0]) && e.Text[0] != '/' && e.Text[0] != '.' && e.Text[0] != '-')
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                TextBox textBox = (TextBox)sender;
-                string currentText = textBox.Text;
-                int caretIndex = textBox.CaretIndex;
-
-                if ((caretIndex == 2 || caretIndex == 5) && caretIndex < 10)
-                {
-                    textBox.Text = currentText + "/";
-                    textBox.CaretIndex = caretIndex + 1;
-                }
-                if (textBox.Text.Length >= 10)
-                {
-                    e.Handled = true;
-                }
-
-                //if (caretIndex == 0 && (e.Text[0] > '1' || (e.Text[0] == '1' && currentText.Length > 0 && currentText[0] > '1')))
-                //{
-                //    e.Handled = true; // Забороняємо введення значень більше 12 для місяця
-                //}
-            }
+            AdditionalTaskInfoBack.txtDate_PreviewTextInput(sender, e);
         }
 
         private void txtDescription_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string newText = txtDescription.Text;
-            Console.WriteLine("Text changed: " + newText);
+            AdditionalTaskInfoBack.txtDescription_TextChanged(sender, e, this);
         }
         private void txtDescription_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtDescription.Text == "")
-            {
-                txtDescription.Text = "";
-            }
+            AdditionalTaskInfoBack.txtDescription_GotFocus(sender, e, this);
         }
 
         private void txtDescription_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDescription.Text))
-            {
-                txtDescription.Text = "";
-            }
+            AdditionalTaskInfoBack.txtDescription_LostFocus(sender, e, this);
         }
     }
 }
