@@ -33,6 +33,25 @@ namespace EFCore.Service
                 return allTasks;
             }
         }
+        public int GetAmountOfTasksByDate(DateOnly date, int userID)
+        {
+            using (var context = new TTContext())
+            {
+                var allTasks = context.Tasks.ToList();
+                var dateTasksAmount = 0;
+                foreach (var task in allTasks)
+                {
+                    if (task.Finishtime == date || (task.Expectedfinishtime == date && task.Completed == false))
+                    {
+                        if (task.Useridref == userID)
+                        {
+                            dateTasksAmount++;
+                        }
+                    }
+                }
+                return dateTasksAmount;
+            }
+        }
 
         public int GetAmountOfCompletedTasksByDate(DateOnly date, int userID)
         {

@@ -12,6 +12,7 @@ namespace EFCore.Service
         List<Task> getAllTasksByWeekUsingUserId(int userId);
         List<Task> getAllTasksByMonthUsingUserId(int userId);
         List<Task> GetAllTasksByUserID(int userID);
+        int GetAmountOfTasksByDate(DateOnly date, int userID);
         int GetAmountOfCompletedTasksByDate(DateOnly date, int userID);
         int getTaskId(Task task);
         string getName(Task task);

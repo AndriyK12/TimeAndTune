@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EFCore;
 using EFCore.Service;
+using TimeAndTune.BLL;
 
 namespace TimeAndTune.Pages
 {
@@ -57,12 +58,7 @@ namespace TimeAndTune.Pages
 
         public void NavigateToHomePage(object sender, RoutedEventArgs e)
         {
-            HomePage homePage = new HomePage();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
-            {
-                mainFrame.Navigate(homePage);
-            }
+            LoginPageBack.NavigateToHomePage(sender, e);
         }
 
         public void onCreateAccount_Click(object sender, RoutedEventArgs e)
@@ -77,68 +73,35 @@ namespace TimeAndTune.Pages
 
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string newText = txtEmail.Text;
-            Console.WriteLine("Text changed: " + newText);
+            LoginPageBack.txtEmail_TextChanged(sender, e, this);
         }
         private void txtEmail_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtEmail.Text == "")
-            {
-                txtEmail.Text = "";
-            }
+            LoginPageBack.txtEmail_GotFocus(sender, e, this);
         }
 
         private void txtEmail_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                txtEmail.Text = "";
-            }
+            LoginPageBack.txtEmail_LostFocus(sender, e, this);
         }
 
         private void txtPassword_TextChanged(object sender, RoutedEventArgs e)
         {
-            string newText = txtPassword.Password;
-            Console.WriteLine("Text changed: " + newText);
+            LoginPageBack.txtPassword_TextChanged(sender, e, this);
         }
         private void txtPassword_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtPassword.Password == "")
-            {
-                txtPassword.Password = "";
-                txtPassword.Foreground = Brushes.Black;
-                txtPasswordVisible.Text = txtPassword.Password;
-                txtPasswordVisible.Text = "";
-            }
+            LoginPageBack.txtPassword_GotFocus(sender, e, this);
         }
 
         private void btnShowPassword_Checked(object sender, RoutedEventArgs e)
         {
-            // Показати пароль
-            txtPassword.Visibility = Visibility.Collapsed;
-            txtPasswordVisible.Visibility = Visibility.Visible;
-            txtPasswordVisible.Text = txtPassword.Password;
-            //Image passwordVisibility = FindName("passwordVisibility") as Image;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
-
-
-            passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
-            toggleButton.Content = passwordVisibility;
+            LoginPageBack.btnShowPassword_Checked(sender, e, this);
         }
 
         private void btnShowPassword_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Приховати пароль
-            txtPassword.Visibility = Visibility.Visible;
-
-            txtPasswordVisible.Visibility = Visibility.Collapsed;
-            //Image passwordVisibility = FindName("passwordVisibility") as Image;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
-
-            passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
-            toggleButton.Content = passwordVisibility;
+            LoginPageBack.btnShowPassword_Unchecked(sender, e, this);
         }
     }
 }
