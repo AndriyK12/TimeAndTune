@@ -25,5 +25,6 @@ namespace EFCore.Service
         EFCore.Task getTaskById(int id);
         void addNewTask(string name, string description, DateOnly expectedDate, int priority, int userRef);
         void updateTaskById(int id, string newName, string newDesc, string newDate, int newpriority);
+        void updateTaskExecutiontimeById(int id, TimeSpan time, bool finished);
     }
 }

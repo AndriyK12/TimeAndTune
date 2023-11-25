@@ -18,7 +18,10 @@
     <None Remove="back_button.png" />
     <None Remove="coin_image.png" />
     <None Remove="DialogWindows\focus_image.png" />
+    <None Remove="DialogWindows\greenButton.png" />
     <None Remove="DialogWindows\home_image.png" />
+    <None Remove="DialogWindows\pauseTimer.png" />
+    <None Remove="DialogWindows\playTimer.png" />
     <None Remove="DialogWindows\statistics_image.png" />
     <None Remove="logo.png" />
     <None Remove="logout_image.png" />
@@ -56,7 +59,10 @@
     <Resource Include="back_button.png" />
     <Resource Include="coin_image.png" />
     <Resource Include="DialogWindows\focus_image.png" />
+    <Resource Include="DialogWindows\greenButton.png" />
     <Resource Include="DialogWindows\home_image.png" />
+    <Resource Include="DialogWindows\pauseTimer.png" />
+    <Resource Include="DialogWindows\playTimer.png" />
     <Resource Include="DialogWindows\statistics_image.png" />
     <Resource Include="logo.png" />
     <Resource Include="logout_image.png" />

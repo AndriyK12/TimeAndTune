@@ -48,9 +48,9 @@ namespace TimeAndTune.BLL
             userWnd.Show();
         }
 
-        public static void openTaskInfo_Click(object sender, RoutedEventArgs e, EFCore.Task t)
+        public static void openTaskInfo_Click(object sender, RoutedEventArgs e, EFCore.Task t, HomePage homePage, int taskId)
         {
-            AdditionalTaskInfoDialog taskInfoWnd = new AdditionalTaskInfoDialog();
+            AdditionalTaskInfoDialog taskInfoWnd = new AdditionalTaskInfoDialog(homePage, taskId);
             taskInfoWnd.taskId = t.Taskid;
             Window mainWnd = Window.GetWindow((DependencyObject)sender);
             mainWnd.Opacity = 0.3;
