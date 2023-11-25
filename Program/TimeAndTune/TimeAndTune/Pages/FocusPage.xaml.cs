@@ -142,20 +142,7 @@ namespace TimeAndTune
             changeFocus("windImage");
             playPauseSound("wind");
         }
-        private void MuteButton(object sender, RoutedEventArgs e)
-        {
-            if (!muteButtonWasPressed)
-            {
-                muteImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/volume.png", UriKind.Relative));
-                muteButtonWasPressed = true;
-            }
-            else
-            {
-                muteImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/mute.png", UriKind.Relative));
-                muteButtonWasPressed = false;
-            }
-        }
-
+        
         private void playPauseSound(string name)
         {
             if(state == 0)

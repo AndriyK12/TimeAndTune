@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 
 namespace EFCore.Service
@@ -58,6 +59,7 @@ namespace EFCore.Service
             {
                 var allTasks = context.Tasks.ToList();
                 var userTasks = new List<Task>();
+                DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
                 foreach (var task in allTasks)
                 {
                     if (task.Useridref == userID)
@@ -65,6 +67,11 @@ namespace EFCore.Service
                         userTasks.Add(task);
                     }
                 }
+                /*List<Task> tasksWithTargetDate = userTasks
+                    .Where
+                    (task => task.Completed == false &&
+                    task.*/
+
                 return userTasks;
             }
         }
@@ -132,56 +139,72 @@ namespace EFCore.Service
                 task.Expectedfinishtime = dateOnly;
                 task.Priority = newpriority + 1;
                 context.Update(task);
-                context.SaveChangesAsync();
+                context.SaveChanges();
             }
         }
-
-        public List<Task> getAllTasksByDayUsingUserId(int userId)
+        public void updateTaskExecutiontimeById(int id, TimeSpan time, bool finished)
         {
-            List<EFCore.Task> items = this.GetAllTasks();
+            using (var context = new TTContext())
+            {
+                Task task = getTaskById(id);
+                task.Executiontime = time;
+                task.Completed = finished;
+                context.Update(task);
+                context.SaveChanges();
+            }
+        }
+        public List<Task> getAllSpecificTaskByUserId(int userID)
+        {
+            List<EFCore.Task> items = GetAllTasksByUserID(userID);
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
-            List<Task> tasksWithTargetDate = items
-                .Where
-                (task => task.Expectedfinishtime <= currentDate && 
-                task.Useridref == userId)
-                .ToList();
 
-            return tasksWithTargetDate;
+            List<Task> tasks = items
+                .Where(task => (task.Expectedfinishtime < currentDate &&
+                task.Completed == false) ||
+                task.Expectedfinishtime >= currentDate).ToList();
+
+            return tasks;
         }
 
-        public List<Task> getAllTasksByWeekUsingUserId(int userId)
+        public List<Task> getAllTasksByDayUsingUserId(int userID)
         {
-            List<EFCore.Task> items = this.GetAllTasks();
-
+            List<EFCore.Task> items = GetAllTasksByUserID(userID);
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+            List<Task> tasks = items
+                .Where(task => (task.Expectedfinishtime < currentDate &&
+                task.Completed == false) ||
+                (task.Expectedfinishtime == currentDate)).ToList();
+
+            return tasks;
+        }
+
+        public List<Task> getAllTasksByWeekUsingUserId(int userID)
+        {
+            List<EFCore.Task> items = GetAllTasksByUserID(userID);
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+
             int currentDayOfWeek = (int)currentDate.DayOfWeek;
             int daysToMonday = currentDayOfWeek - (int)DayOfWeek.Monday;
             DateOnly endOfWeekDate = currentDate.AddDays(daysToMonday);
 
-            List<Task> tasksWithTargetDate = items
-                .Where
-                (task => task.Expectedfinishtime >= currentDate &&
-                task.Expectedfinishtime <= endOfWeekDate &&
-                task.Useridref == userId)
-                .ToList();
-            return tasksWithTargetDate;
+            List<Task> tasks = items
+                .Where(task => task.Expectedfinishtime >= currentDate &&
+                task.Expectedfinishtime <= endOfWeekDate).ToList();
+            return tasks;
         }
 
-        public List<Task> getAllTasksByMonthUsingUserId(int userId)
+        public List<Task> getAllTasksByMonthUsingUserId(int userID)
         {
-            List<Task> items = this.GetAllTasks();
+            List<EFCore.Task> items = GetAllTasksByUserID(userID);
 
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             DateOnly endOfMonthDate = new DateOnly(currentDate.Year, currentDate.Month, DateTime.DaysInMonth(currentDate.Year, currentDate.Month));
 
-            List<Task> tasksWithTargetDate = items
-                .Where
-                (task => task.Expectedfinishtime >= currentDate && 
-                task.Expectedfinishtime <= endOfMonthDate && 
-                task.Useridref == userId)
-                .ToList();
+            List<Task> tasks = items
+                .Where(task => task.Expectedfinishtime >= currentDate && 
+                task.Expectedfinishtime <= endOfMonthDate).ToList();
 
-            return tasksWithTargetDate;
+            return tasks;
         }
     }
 }

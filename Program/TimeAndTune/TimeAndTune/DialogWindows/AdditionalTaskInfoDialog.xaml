@@ -1,187 +1,228 @@
-﻿<Window x:Class="TimeAndTune.DialogWindows.AdditionalTaskInfoDialog"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TimeAndTune.DialogWindows"
-        mc:Ignorable="d"
-        Title="AdditionalTaskInfoDialog" Height="710" Width="1340"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen"
-        Background ="#25232A"
-        BorderBrush="White"
-        BorderThickness="3"
-        IsEnabled="True">
+﻿<Window
+    x:Class="TimeAndTune.DialogWindows.AdditionalTaskInfoDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimeAndTune.DialogWindows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AdditionalTaskInfoDialog"
+    Width="1340"
+    Height="710"
+    AllowsTransparency="True"
+    Background="#25232A"
+    BorderBrush="White"
+    BorderThickness="3"
+    IsEnabled="True"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <Window.Resources>
         <Style TargetType="Border">
-            <Setter Property="CornerRadius" Value="17"/>
+            <Setter Property="CornerRadius" Value="17" />
         </Style>
     </Window.Resources>
     <Grid>
-        <Image 
-            HorizontalAlignment="Left"
-            Height="59" 
-            Margin="31,26,0,0"
-            VerticalAlignment="Top"
+        <Image
+            Grid.ColumnSpan="2"
             Width="59"
-            Source="/back_button.png" Grid.ColumnSpan="2"/>
-        <Button
-            HorizontalAlignment="Left"
+            Height="59"
             Margin="31,26,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Source="/back_button.png" />
+        <Button
+            Grid.ColumnSpan="2"
+            Width="59"
+            Height="59"
+            Margin="31,26,0,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Transparent"
             BorderThickness="0"
-            Height="59"
-            Width="59"
-            Click="goBackToHomePage" Grid.ColumnSpan="2">
+            Click="goBackToHomePage">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Button.Style>
         </Button>
-        <Rectangle 
+        <Image
+            x:Name="additionalInfoCheckmark"
+            Width="50"
+            Height="50"
+            Margin="700,41,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="/Pages/checkmark.png"
+            Visibility="Hidden" />
+        <Rectangle
+            Width="540"
+            Height="71"
+            Margin="85,30,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
             Fill="Transparent"
             RadiusX="12"
             RadiusY="12"
-            Margin="85,30,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Width="540"
-            Height="71"
-            Stroke="#C57B0C" 
-            StrokeThickness="6"/>
-        <TextBlock 
-            Text="Additional information"
-            Margin="475,30,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            FontSize="48"
-            Foreground="#FFFFFF"/>
+            Stroke="#C57B0C"
+            StrokeThickness="6" />
         <TextBlock
-            Text="Name:"
-            Margin="154,140,0,0"
+            x:Name="TimerTextBlock"
+            Margin="0,15,25,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
+            FontSize="34"
+            Foreground="White"
+            Text="00:00:00"
+            Visibility="Hidden" />
+        <TextBlock
+            Margin="475,30,0,0"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="48"
             Foreground="#FFFFFF"
-            FontSize="28"/>
-        <Border
-            Margin="124,185,0,0"
-            VerticalAlignment="Top"
+            Text="Additional information" />
+        <TextBlock
+            Margin="154,140,0,0"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="28"
+            Foreground="#FFFFFF"
+            Text="Name:" />
+        <Border
             Width="280"
             Height="65"
+            Margin="124,185,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="#A6A3A3"
-            CornerRadius="15"  >
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            CornerRadius="15">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
                 <TextBox
                     Name="txtTaskName"
-                    Text=""
-                    BorderThickness="0"
-                    Background="Transparent"
-                    VerticalAlignment="Center"
-                    Foreground="Black"
-                    FontSize="32"
                     Width="269"
                     Height="66"
                     Margin="5,5,0,-15"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="32"
+                    Foreground="Black"
                     GotFocus="txtTaskName_GotFocus"
-                    LostFocus="txtTaskName_LostFocus" TextChanged="txtTaskName_TextChanged"/>
+                    LostFocus="txtTaskName_LostFocus"
+                    Text=""
+                    TextChanged="txtTaskName_TextChanged" />
             </StackPanel>
         </Border>
         <TextBlock
-            Text="Date:"
             Margin="154,265,0,0"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="28"
             Foreground="#FFFFFF"
-            FontSize="28"/>
+            Text="Date:" />
         <Border
-            Margin="124,310,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
             Width="280"
             Height="62"
+            Margin="124,310,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="#A6A3A3"
             CornerRadius="15">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
                 <TextBox
                     Name="txtDate"
-                    BorderThickness="0"
-                    Background="Transparent"
-                    Text=""
-                    VerticalAlignment="Center"
-                    Foreground="Black"
-                    FontSize="32"
                     Width="269"
                     Height="66"
                     Margin="10,2,0,-15"
-                    PreviewTextInput="txtDate_PreviewTextInput"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="32"
+                    Foreground="Black"
                     GotFocus="txtDate_GotFocus"
-                    LostFocus="txtDate_LostFocus" TextChanged="txtDate_TextChanged"/>
+                    LostFocus="txtDate_LostFocus"
+                    PreviewTextInput="txtDate_PreviewTextInput"
+                    Text=""
+                    TextChanged="txtDate_TextChanged" />
             </StackPanel>
         </Border>
         <TextBlock
-            Text="Priority:"
             Margin="154,390,0,0"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="28"
             Foreground="#FFFFFF"
-            FontSize="28"/>
+            Text="Priority:" />
         <TextBlock
-            Text="Description:"
             Margin="614,140,0,0"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="28"
             Foreground="#FFFFFF"
-            FontSize="28"/>
+            Text="Description:" />
         <Border
-            Margin="574,185,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
             Width="630"
             Height="313"
+            Margin="574,185,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="#A6A3A3"
-            CornerRadius="15" >
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            CornerRadius="15">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
                 <TextBox
                     x:Name="txtDescription"
-                    BorderThickness="0"
-                    Background="Transparent"
-                    Text=""
-                    Foreground="Black"
-                    FontSize="32"
                     Width="678"
                     Height="313"
-                    TextWrapping="Wrap"
                     AcceptsReturn="True"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    FontSize="32"
+                    Foreground="Black"
                     GotFocus="txtDescription_GotFocus"
-                    LostFocus="txtDescription_LostFocus" TextChanged="txtDescription_TextChanged"/>
+                    LostFocus="txtDescription_LostFocus"
+                    Text=""
+                    TextChanged="txtDescription_TextChanged"
+                    TextWrapping="Wrap" />
             </StackPanel>
         </Border>
-        <Button x:Name="priorityButton"
+        <Button
+            x:Name="priorityButton"
+            Width="280"
+            Height="62"
             Margin="124,435,0,0"
-            Width="280" Height="62"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left">
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <ComboBox x:Name="priorityComboBox" Width="280" BorderBrush="#A6A3A3" Background="#ADD8E6" FontSize="34"  >
+                                <ComboBox
+                                    x:Name="priorityComboBox"
+                                    Width="280"
+                                    Background="#ADD8E6"
+                                    BorderBrush="#A6A3A3"
+                                    FontSize="34">
                                     <ComboBoxItem FontSize="20">Normal</ComboBoxItem>
                                     <ComboBoxItem FontSize="20">Important</ComboBoxItem>
                                     <ComboBoxItem FontSize="20">Very important</ComboBoxItem>
@@ -202,104 +243,109 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Rectangle
-            RadiusX="15"
-            RadiusY="15"
-            Margin="124,555,0,0"
-            VerticalAlignment="Top"
+
+        <Image
+            Width="330"
+            Height="110"
+            Margin="-750,0,0,55"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Source="/DialogWindows/greenButton.png"
+            Visibility="Visible" />
+
+        <TextBlock
+            Margin="215,570,0,0"
             HorizontalAlignment="Left"
-            Width="279" Height="100"
-            Fill="#1C4335"/>
-        <TextBlock 
-             VerticalAlignment="Top"
-             HorizontalAlignment="Left"
-             Text="Update"
-             Margin="187,570,0,0"
-             Foreground="White"
-             FontSize="48"/>
+            VerticalAlignment="Top"
+            FontSize="48"
+            Foreground="White"
+            Text="Update" />
         <Button
+            Width="279"
+            Height="112"
             Margin="124,555,0,0"
-            Width="279" Height="112"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Click="update_Click">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Button.Style>
         </Button>
-        <Rectangle
-            RadiusX="15"
-            RadiusY="15"
-            Margin="924,555,0,0"
-            VerticalAlignment="Top"
+
+
+        <Image
+            Width="330"
+            Height="110"
+            Margin="750,0,0,55"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Source="/DialogWindows/greenButton.png"
+            Visibility="Visible" />
+        <TextBlock
+            Margin="985,570,0,0"
             HorizontalAlignment="Left"
-            Width="279" Height="100"
-            Fill="#1C4335"/>
-        <TextBlock 
-             VerticalAlignment="Top"
-             HorizontalAlignment="Left"
-             Text="Finish"
-             Margin="1005,570,0,0"
-             Foreground="White"
-             FontSize="48"/>
+            VerticalAlignment="Top"
+            FontSize="48"
+            Foreground="White"
+            Text="Finish" />
         <Button
+            Width="279"
+            Height="112"
             Margin="924,555,0,0"
-            Width="279" Height="112"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
-            Click="Finish_Click">
+            VerticalAlignment="Top"
+            Click="FinishClick">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </Button.Style> 
+            </Button.Style>
         </Button>
-        
-        <Image 
+
+        <Image
             x:Name="PlayPauseImage"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Center"
+            Width="90"
+            Height="90"
             Margin="0,0,0,50"
-            Source="/Pages/FocusPageImages/play.png"
-            Width="90" Height="90" 
-            Visibility="Visible"/>
-        <Button
             HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Source="/DialogWindows/playTimer.png"
+            Visibility="Visible" />
+        <Button
+            Width="90"
+            Height="90"
             Margin="96,0,90,47"
+            HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Background="Transparent"
             BorderThickness="0"
-            Height="90"
-            Width="90">
+            Click="playTimerClick">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>

@@ -1,13 +1,15 @@
-﻿<Page x:Class="TimeAndTune.FocusPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TimeAndTune"
-      mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
-      Background="#25232A"
-      Title="FocusPage">
+﻿<Page
+    x:Class="TimeAndTune.FocusPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimeAndTune"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="FocusPage"
+    d:DesignHeight="1080"
+    d:DesignWidth="1920"
+    Background="#25232A"
+    mc:Ignorable="d">
 
     <Grid>
 
@@ -15,31 +17,32 @@
             <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
         </Grid.LayoutTransform>
 
-        <Image 
+        <Image
+            Width="90"
+            Height="90"
             Margin="90,53,0,0"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Source="/Pages/menu_icon.png"
-            Width="90" Height="90" 
-            Visibility="Visible"/>
+            Visibility="Visible" />
         <Button
-            Visibility="Visible"
+            Width="90"
+            Height="90"
             Margin="90,53,0,0"
-            Width="90" Height="90"
-            VerticalAlignment="Top"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="Transparent"
             BorderThickness="0"
-            Click="openNavigation_Click">
+            Click="openNavigation_Click"
+            Visibility="Visible">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -47,122 +50,129 @@
             </Button.Style>
         </Button>
 
-        <Rectangle 
-            Grid.Row="0" Grid.Column="0" Panel.ZIndex="1"
+        <Rectangle
+            Grid.Row="0"
+            Grid.Column="0"
+            Width="282"
+            Height="84"
+            Margin="0,60,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Panel.ZIndex="1"
             Fill="Transparent"
             RadiusX="12"
             RadiusY="12"
-            Margin="0,60,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Width="282"
-            Height="84"
-            Stroke="#5CF26B" 
-            StrokeThickness="6"/>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Text="Focus"
+            Stroke="#5CF26B"
+            StrokeThickness="6" />
+        <TextBlock
+            Grid.Row="0"
             Margin="0,77,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Panel.ZIndex="2"
+            FontSize="37"
             Foreground="White"
-            FontSize="37"/>
-        <Image 
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Margin="0,60,90,0"
-            Height="100"
-            Width="100" 
-            Source="/Pages/user_image.png"
-            Visibility="Visible"/>
-        <Button
-            Visibility="Visible"
-            Background="Transparent"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Right"
-            Height="100"
+            Text="Focus"
+            Visibility="Visible" />
+        <Image
             Width="100"
+            Height="100"
             Margin="0,60,90,0"
-            BorderThickness="0"
-            Click="openUserInfo_Click">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-          
-        </Button>
-        <Image 
-            x:Name="PlayPauseImage"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Margin="0,200,1200,0"
-            Source="/Pages/FocusPageImages/play.png"
-            Width="130" Height="130" 
-            Visibility="Visible"/>
+            Source="/Pages/user_image.png"
+            Visibility="Visible" />
         <Button
-            Visibility="Visible"
-            Margin="300,200,0,0"
-            Width="135" Height="135"
+            Width="100"
+            Height="100"
+            Margin="0,60,90,0"
+            HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            HorizontalAlignment="Center"
             Background="Transparent"
             BorderThickness="0"
-            Click="PlayButton">
+            Click="openUserInfo_Click"
+            Visibility="Visible">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="Cursor" Value="Hand" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
+                                <Border Background="Transparent" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Image
+            x:Name="PlayPauseImage"
+            Width="130"
+            Height="130"
+            Margin="0,198,1200,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="/Pages/FocusPageImages/play.png"
+            Visibility="Visible" />
+        <Button
+            Width="135"
+            Height="135"
+            Margin="-1200,200,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            BorderThickness="0"
+            Click="PlayButton"
+            Visibility="Visible">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="Transparent" />
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Text="Master volume"
+        <TextBlock
+            Grid.Row="0"
             Margin="0,200,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Panel.ZIndex="2"
+            FontSize="42"
             Foreground="White"
-            FontSize="40"/>
-        <Slider 
+            Text="Master volume"
+            Visibility="Visible" />
+        <Slider
             x:Name="Slider"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Top" 
-            Margin="0,266,0,0" 
-            Width="399"
-            Minimum="0" 
+            Width="545"
+            Margin="0,266,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
             Maximum="100"
-            Value="50"
-            ValueChanged="Slider_ValueChanged">
+            Minimum="0"
+            ValueChanged="Slider_ValueChanged"
+            Value="50">
             <Slider.Template>
                 <ControlTemplate TargetType="Slider">
                     <Grid>
-                        <Rectangle x:Name="PART_SelectionRange"/>
+                        <Rectangle x:Name="PART_SelectionRange" />
                         <Track x:Name="PART_Track">
                             <Track.DecreaseRepeatButton>
                                 <RepeatButton />
                             </Track.DecreaseRepeatButton>
                             <Track.Thumb>
-                                <Thumb x:Name="Thumb" Height="58" Width="50" />
+                                <Thumb
+                                    x:Name="Thumb"
+                                    Width="50"
+                                    Height="58" />
                             </Track.Thumb>
                             <Track.IncreaseRepeatButton>
                                 <RepeatButton />
@@ -175,52 +185,52 @@
 
         <ProgressBar
             x:Name="ProgressBar"
-            VerticalAlignment="Top"
+            Width="545"
+            Height="60"
+            Margin="0,265,0,0"
             HorizontalAlignment="Center"
+            VerticalAlignment="Top"
             Background="#313131"
             BorderThickness="0"
-            Margin="0,265,0,0"
-            Width="400"
-            Height="60"
-            Minimum="0" 
-            Maximum="100" 
-            Value="50"
+            IsHitTestVisible="False"
+            Maximum="100"
+            Minimum="0"
             ValueChanged="ProgressBar_ValueChanged"
-            IsHitTestVisible="False">
+            Value="50">
             <ProgressBar.Foreground>
                 <SolidColorBrush Color="#D9D9D9" />
             </ProgressBar.Foreground>
         </ProgressBar>
 
         <Grid
-            VerticalAlignment="center"
+            Margin="0,0,0,90"
             HorizontalAlignment="center"
-            Margin="0,0,0,90">
-            
-            <Image 
+            VerticalAlignment="center">
+
+            <Image
                 x:Name="cafeImage"
+                Width="550"
+                Height="200"
                 Margin="-1200,0,0,0"
-                Width="550" Height="200"
                 Source="/Pages/FocusPageImages/cafeSound.png"
-                Visibility="Visible">
-            </Image>
-            
+                Visibility="Visible" />
+
             <Button
-                Visibility="Visible"
+                Width="550"
+                Height="200"
                 Margin="-1200,0,0,0"
-                Width="550" Height="200"
                 Background="{x:Null}"
                 BorderThickness="0"
-                Click="CafeSoundButton">
+                Click="CafeSoundButton"
+                Visibility="Visible">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Border Background="Transparent">
-                                    </Border>
+                                    <Border Background="Transparent" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -228,67 +238,72 @@
                 </Button.Style>
             </Button>
 
-            
 
-            <Image 
+
+            <Image
                 x:Name="rainImage"
+                Width="550"
+                Height="200"
                 Source="/Pages/FocusPageImages/rainSound.png"
-                Width="550" Height="200" 
-                Visibility="Visible"/>
+                Visibility="Visible" />
             <Button
-                Visibility="Visible"
+                Width="550"
+                Height="200"
                 Margin="0,0,0,0"
-                Width="550" Height="200"
                 Background="Transparent"
                 BorderThickness="0"
-                Click="RainSoundButton">
+                Click="RainSoundButton"
+                Visibility="Visible">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Border Background="Transparent">
-                                    </Border>
+                                    <Border Background="Transparent" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                     </Style>
                 </Button.Style>
             </Button>
-            <TextBlock 
-                Grid.Row="0" Panel.ZIndex="2"
-                Visibility="Visible"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Text="RAIN"
+            <TextBlock
+                Grid.Row="0"
                 Margin="0,55,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Panel.ZIndex="2"
+                FontFamily="Franklin Gothic Medium"
+                FontSize="80"
                 Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"
-                IsHitTestVisible="False"/>
+                IsHitTestVisible="False"
+                Text="RAIN"
+                Visibility="Visible" />
 
             <Image
                 x:Name="campFireImage"
+                Width="550"
+                Height="200"
                 Margin="1200,0,0,0"
-                Width="550" Height="200" 
-                Visibility="Visible" Source="/Pages/FocusPageImages/campFireSound.png"/>
-            <Button 
-                Visibility="Visible"
+                Source="/Pages/FocusPageImages/campFireSound.png"
+                Visibility="Visible" />
+            <Button
+                Width="550"
+                Height="200"
                 Margin="1200,0,0,0"
-                Width="550" Height="200"
                 Background="Transparent"
                 BorderThickness="0"
-                Click="CampFireSoundButton">
+                Click="CampFireSoundButton"
+                Visibility="Visible">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Border Background="Transparent">
-                                    </Border>
+                                    <Border Background="Transparent" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -296,194 +311,163 @@
                 </Button.Style>
             </Button>
         </Grid>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            VerticalAlignment="Center"
-            HorizontalAlignment="center"
-            Text="CAFE"
+        <TextBlock
+            Grid.Row="0"
             Margin="-1200,-70,0,0"
-            Foreground="White"
-            FontSize="80" FontFamily="Franklin Gothic Medium"
-            IsHitTestVisible="False"/>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            VerticalAlignment="center"
             HorizontalAlignment="center"
-            Text="CAMP FIRE"
+            VerticalAlignment="Center"
+            Panel.ZIndex="2"
+            FontFamily="Franklin Gothic Medium"
+            FontSize="80"
+            Foreground="White"
+            IsHitTestVisible="False"
+            Text="CAFE"
+            Visibility="Visible" />
+        <TextBlock
+            Grid.Row="0"
             Margin="1300,-70,80,0"
-            Foreground="White"
-            FontSize="80" FontFamily="Franklin Gothic Medium"
-            IsHitTestVisible="False"/>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Text="NIGHT CRICKETS"
-            Margin="-1200,400,0,0"
-            Foreground="White"
-            FontSize="70" FontFamily="Franklin Gothic Medium"
-            IsHitTestVisible="False"/>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Text="WIND"
-            Margin="1390,400,180,0"
-            Foreground="White"
-            FontSize="80" FontFamily="Franklin Gothic Medium"
-            IsHitTestVisible="False"/>
-        <Grid
-            VerticalAlignment="center"
             HorizontalAlignment="center"
-            Margin="0,0,0,-400">
-            <Image 
+            VerticalAlignment="center"
+            Panel.ZIndex="2"
+            FontFamily="Franklin Gothic Medium"
+            FontSize="80"
+            Foreground="White"
+            IsHitTestVisible="False"
+            Text="CAMP FIRE"
+            Visibility="Visible" />
+        <TextBlock
+            Grid.Row="0"
+            Margin="-1200,400,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Panel.ZIndex="2"
+            FontFamily="Franklin Gothic Medium"
+            FontSize="70"
+            Foreground="White"
+            IsHitTestVisible="False"
+            Text="NIGHT CRICKETS"
+            Visibility="Visible" />
+        <TextBlock
+            Grid.Row="0"
+            Margin="1390,400,180,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Panel.ZIndex="2"
+            FontFamily="Franklin Gothic Medium"
+            FontSize="80"
+            Foreground="White"
+            IsHitTestVisible="False"
+            Text="WIND"
+            Visibility="Visible" />
+        <Grid
+            Margin="0,0,0,-400"
+            HorizontalAlignment="center"
+            VerticalAlignment="center">
+            <Image
                 x:Name="nightCricketsImage"
+                Width="550"
+                Height="200"
                 Margin="-1200,0,0,0"
                 Source="/Pages/FocusPageImages/nightCricketsSound.png"
-                Width="550" Height="200" 
-                Visibility="Visible"/>
+                Visibility="Visible" />
             <Button
-                Visibility="Visible"
+                Width="550"
+                Height="200"
                 Margin="-1200,0,0,0"
-                Width="550" Height="200"
                 Background="Transparent"
                 BorderThickness="0"
-                Click="NightCricketsSoundButton">
+                Click="NightCricketsSoundButton"
+                Visibility="Visible">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Border Background="Transparent">
-                                    </Border>
+                                    <Border Background="Transparent" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                     </Style>
                 </Button.Style>
             </Button>
-            
-            <Image 
-                x:Name="trainImage"
-                Source="/Pages/FocusPageImages/trainSound.png"
-                Width="550" Height="200" 
-                Visibility="Visible"/>
-            <Button
-                Visibility="Visible"
-                Margin="0,0,0,0"
-                Width="550" Height="200"
-                Background="Transparent"
-                BorderThickness="0"
-                Click="TrainSoundButton">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Cursor" Value="Hand" />
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Border Background="Transparent">
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <TextBlock 
-                Grid.Row="0" Panel.ZIndex="2"
-                Visibility="Visible"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Text="TRAIN"
-                Margin="0,55,0,0"
-                Foreground="White"
-                FontSize="80" FontFamily="Franklin Gothic Medium"
-                IsHitTestVisible="False"/>
 
-            <Image 
+            <Image
+                x:Name="trainImage"
+                Width="550"
+                Height="200"
+                Source="/Pages/FocusPageImages/trainSound.png"
+                Visibility="Visible" />
+            <Button
+                Width="550"
+                Height="200"
+                Margin="0,0,0,0"
+                Background="Transparent"
+                BorderThickness="0"
+                Click="TrainSoundButton"
+                Visibility="Visible">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border Background="Transparent" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock
+                Grid.Row="0"
+                Margin="0,55,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Panel.ZIndex="2"
+                FontFamily="Franklin Gothic Medium"
+                FontSize="80"
+                Foreground="White"
+                IsHitTestVisible="False"
+                Text="TRAIN"
+                Visibility="Visible" />
+
+            <Image
                 x:Name="windImage"
+                Width="550"
+                Height="200"
                 Margin="1200,0,0,0"
                 Source="/Pages/FocusPageImages/windSound.png"
-                Width="550" Height="200" 
-                Visibility="Visible"/>
+                Visibility="Visible" />
             <Button
-                Visibility="Visible"
+                Width="550"
+                Height="200"
                 Margin="1200,0,0,0"
-                Width="550" Height="200"
                 Background="Transparent"
                 BorderThickness="0"
-                Click="WindSoundButton">
+                Click="WindSoundButton"
+                Visibility="Visible">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Cursor" Value="Hand" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Border Background="Transparent">
-                                    </Border>
+                                    <Border Background="Transparent" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                     </Style>
                 </Button.Style>
-                <Image 
+                <Image
+                    Width="550"
+                    Height="200"
                     Source="/Pages/wind_sound.png"
-                    Width="550" Height="200" 
-                    Visibility="Visible"/>
+                    Visibility="Visible" />
             </Button>
         </Grid>
-
-        <Image
-            x:Name = "muteImage"
-            Margin="0,0,0,90"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="center"
-            Width="100" Height="100" 
-            Visibility="Visible" Source="/Pages/FocusPageImages/mute.png"/>
-        <Button
-            Visibility="Visible"
-            Margin="0,0,0,90"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="center"
-            Width="135" Height="135"
-            Background="Transparent"
-            BorderThickness="0"
-            Click="MuteButton">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border Background="Transparent">
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
-        <TextBlock 
-            Grid.Row="0" Panel.ZIndex="2"
-            Visibility="Visible"
-            Text="Mute notifications"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="center"
-            Margin="0,0,0,30"
-            Foreground="White"
-            FontSize="40"/>
-        
-
-
-
     </Grid>
 </Page>

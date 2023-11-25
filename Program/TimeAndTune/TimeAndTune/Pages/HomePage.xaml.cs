@@ -117,7 +117,7 @@ namespace TimeAndTune
                     items = dataBaseTaskProvider.getAllTasksByMonthUsingUserId(userId);
                     break;
                 case "allTime":
-                    items = dataBaseTaskProvider.GetAllTasksByUserID(userId);
+                    items = dataBaseTaskProvider.getAllSpecificTaskByUserId(userId);
                     break;
                 default:
                     items = dataBaseTaskProvider.getAllTasksByDayUsingUserId(userId);
@@ -182,8 +182,7 @@ namespace TimeAndTune
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             if (item != null && item.DataContext is Task task)
             {
-                
-                HomePageBack.openTaskInfo_Click(sender, e, task);
+                HomePageBack.openTaskInfo_Click(sender, e, task, this, task.Taskid);
             }
         }
     }
