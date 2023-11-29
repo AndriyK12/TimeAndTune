@@ -197,9 +197,15 @@ namespace TimeAndTune.DialogWindows
                 currentWindow.Close();
             }
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
+            int hoursSpent = parseTimeFromString(TimerTextBlock.Text).Hours;
+            if (!dataBaseTaskProvider.getCompleted(dataBaseTaskProvider.getTaskById(taskId)))
+            {
+                DatabaseUserProvider userProvider = new DatabaseUserProvider();
+                userProvider.addCoinsForAUserById(MainWindow.ActiveUser.Userid, (10 + hoursSpent));
+                MainWindow.ActiveUser = userProvider.getUserByEmail(MainWindow.ActiveUser.Email);
+            }
             dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, parseTimeFromString(TimerTextBlock.Text), true);
             homePage.updateListView();
-
             MainWindow.deleteTaskPerformingDate(taskId);
         }
 

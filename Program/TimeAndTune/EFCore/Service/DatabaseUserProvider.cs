@@ -76,5 +76,22 @@ namespace EFCore.Service
             }
         }
 
+        public void addCoinsForAUserById(int id, int coinsAmount)
+        {
+            User user = new User();
+            using (var context = new TTContext())
+            {
+                var allUsers = context.Users.ToList();
+                foreach (User u in allUsers)
+                {
+                    if (getUserID(u) == id)
+                    {
+                        user = u;
+                    }
+                }
+                user.Coinsamount += coinsAmount;
+                context.SaveChanges();
+            }
+        }
     }
 }
