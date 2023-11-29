@@ -39,7 +39,7 @@ namespace TimeAndTune.BLL
         public static void updateProgressBar(int completedTasks, int overallTasks, StatisticsPage sp)
         {
             float percentage = ((float)completedTasks / (float)overallTasks);
-            sp.progressPercentage.Text = (percentage * 100).ToString() + "%";
+            sp.progressPercentage.Text = Math.Round((percentage * 100)).ToString() + "%";
             sp.progressThumb.Height = 578 * percentage;
         }
         public static void Week_Click(object sender, RoutedEventArgs e, StatisticsPage sp)
