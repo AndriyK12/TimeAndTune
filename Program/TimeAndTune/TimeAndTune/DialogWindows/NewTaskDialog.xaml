@@ -25,8 +25,7 @@
             Margin="31,26,0,0"
             VerticalAlignment="Top"
             Width="59"
-            Source="/back_button.png" Grid.ColumnSpan="2"
-            />
+            Source="/back_button.png" Grid.ColumnSpan="2"/>
         <Button
             HorizontalAlignment="Left"
             Margin="31,26,0,0"
@@ -35,8 +34,7 @@
             BorderThickness="0"
             Height="59"
             Width="59"
-            Click="goBackToHomePage" Grid.ColumnSpan="2"
-            >
+            Click="goBackToHomePage" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -69,16 +67,14 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             FontSize="48"
-            Foreground="#FFFFFF"
-            />
+            Foreground="#FFFFFF"/>
         <TextBlock
             Text="Name:"
             Margin="154,140,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Foreground="#FFFFFF"
-            FontSize="28"
-        />
+            FontSize="28"/>
         <Border
             Margin="124,185,0,0"
             VerticalAlignment="Top"
@@ -86,8 +82,7 @@
             Width="280"
             Height="65"
             Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+            CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBox
                     Name="txtTaskName"
@@ -101,8 +96,7 @@
                     Height="66"
                     Margin="5,5,0,-15"
                     GotFocus="txtTaskName_GotFocus"
-                    LostFocus="txtTaskName_LostFocus" TextChanged="txtTaskName_TextChanged"
-                />
+                    LostFocus="txtTaskName_LostFocus" TextChanged="txtTaskName_TextChanged"/>
             </StackPanel>
         </Border>
         <TextBox
@@ -121,8 +115,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Foreground="#FFFFFF"
-            FontSize="28"
-        />
+            FontSize="28"/>
         <Border
             Margin="124,310,0,0"
             VerticalAlignment="Top"
@@ -130,8 +123,7 @@
             Width="280"
             Height="62"
             Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+            CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBox
                     Name="txtDate"
@@ -146,8 +138,7 @@
                     Margin="10,2,0,-15"
                     PreviewTextInput="txtDate_PreviewTextInput"
                     GotFocus="txtDate_GotFocus"
-                    LostFocus="txtDate_LostFocus" TextChanged="txtDate_TextChanged"
-                />
+                    LostFocus="txtDate_LostFocus" TextChanged="txtDate_TextChanged"/>
             </StackPanel>
         </Border>
         <TextBox
@@ -166,25 +157,22 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Foreground="#FFFFFF"
-            FontSize="28"
-        />
+            FontSize="28"/>
         <TextBlock
             Text="Description:"
-            Margin="614,140,0,0"
+            Margin="604,140,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Foreground="#FFFFFF"
-            FontSize="28"
-        />
+            FontSize="28"/>
         <Border
             Margin="574,185,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
-            Width="689"
+            Width="630"
             Height="313"
             Background="#A6A3A3"
-            CornerRadius="15" 
-            >
+            CornerRadius="15">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBox
                     x:Name="txtDescription"
@@ -198,19 +186,15 @@
                     TextWrapping="Wrap"
                     AcceptsReturn="True"
                     GotFocus="txtDescription_GotFocus"
-                    LostFocus="txtDescription_LostFocus" TextChanged="txtDescription_TextChanged"
-                />
+                    LostFocus="txtDescription_LostFocus" TextChanged="txtDescription_TextChanged"/>
             </StackPanel>
         </Border>
-
-
-            <Button x:Name="priorBtn"
+        <Button 
+            x:Name="priorBtn"
             Margin="124,435,0,0"
             Width="280" Height="62"
             VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            
-            >
+            HorizontalAlignment="Left">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -239,11 +223,10 @@
                 </Style>
             </Button.Style>
         </Button>
-
         <Rectangle
             RadiusX="15"
             RadiusY="15"
-            Margin="910,555,0,0"
+            Margin="800,555,0,0"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
             Width="279" Height="100"
@@ -254,17 +237,15 @@
              VerticalAlignment="Top"
              HorizontalAlignment="Center"
              Text="Create"
-             Margin="917,570,0,0"
+             Margin="820,570,0,0"
              Foreground="White"
-             FontSize="48"
-        />
+             FontSize="48"/>
         <Button
             Margin="917,555,0,0"
             Width="279" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Click="addNewTask_Click"
-            >
+            Click="addNewTask_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0"/>
