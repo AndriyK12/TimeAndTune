@@ -208,6 +208,16 @@
             VerticalAlignment="center">
 
             <Image
+                x:Name="cafeImageBackGround"
+                Width="620"
+                Height="260"
+                Margin="-1200,-2,0,0"
+                IsHitTestVisible="False"
+                Opacity="0"
+                Source="/Pages/animationBackGround.png"
+                Visibility="Visible" />
+
+            <Image
                 x:Name="cafeImage"
                 Width="550"
                 Height="200"
@@ -238,7 +248,15 @@
                 </Button.Style>
             </Button>
 
-
+            <Image
+                x:Name="rainImageBackGround"
+                Width="620"
+                Height="260"
+                Margin="0,0,0,0"
+                IsHitTestVisible="False"
+                Opacity="0"
+                Source="/Pages/animationBackGround.png"
+                Visibility="Visible" />
 
             <Image
                 x:Name="rainImage"
@@ -270,7 +288,7 @@
             </Button>
             <TextBlock
                 Grid.Row="0"
-                Margin="0,55,0,0"
+                Margin="0,90,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Panel.ZIndex="2"
@@ -279,6 +297,16 @@
                 Foreground="White"
                 IsHitTestVisible="False"
                 Text="RAIN"
+                Visibility="Visible" />
+
+            <Image
+                x:Name="campFireImageBackGround"
+                Width="620"
+                Height="260"
+                Margin="1200,0,0,0"
+                IsHitTestVisible="False"
+                Opacity="0"
+                Source="/Pages/animationBackGround.png"
                 Visibility="Visible" />
 
             <Image
@@ -363,11 +391,22 @@
             Margin="0,0,0,-400"
             HorizontalAlignment="center"
             VerticalAlignment="center">
+
+            <Image
+                x:Name="nightCricketsImageBackGround"
+                Width="620"
+                Height="260"
+                Margin="-1200,0,0,0"
+                IsHitTestVisible="False"
+                Opacity="0"
+                Source="/Pages/animationBackGround.png"
+                Visibility="Visible" />
+
             <Image
                 x:Name="nightCricketsImage"
                 Width="550"
                 Height="200"
-                Margin="-1200,0,0,0"
+                Margin="-1200,-2,0,0"
                 Source="/Pages/FocusPageImages/nightCricketsSound.png"
                 Visibility="Visible" />
             <Button
@@ -392,6 +431,17 @@
                     </Style>
                 </Button.Style>
             </Button>
+
+
+            <Image
+                x:Name="trainImageBackGround"
+                Width="620"
+                Height="260"
+                Margin="0,-3,0,0"
+                IsHitTestVisible="False"
+                Opacity="0"
+                Source="/Pages/animationBackGround.png"
+                Visibility="Visible" />
 
             <Image
                 x:Name="trainImage"
@@ -423,7 +473,7 @@
             </Button>
             <TextBlock
                 Grid.Row="0"
-                Margin="0,55,0,0"
+                Margin="0,90,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Panel.ZIndex="2"
@@ -434,6 +484,16 @@
                 Text="TRAIN"
                 Visibility="Visible" />
 
+
+            <Image
+                x:Name="windImageBackGround"
+                Width="620"
+                Height="260"
+                Margin="1200,-3,0,0"
+                IsHitTestVisible="False"
+                Opacity="0"
+                Source="/Pages/animationBackGround.png"
+                Visibility="Visible" />
             <Image
                 x:Name="windImage"
                 Width="550"

@@ -102,7 +102,7 @@ namespace TimeAndTune
 
         private void CafeSoundButton(object sender, RoutedEventArgs e)
         {
-            state = smoothButtonTransform("cafeImage");
+            state = smoothButtonTransform("cafeImageBackGround");
             changeFocus("cafeImage");
             playPauseSound("cafe");
 
@@ -110,35 +110,35 @@ namespace TimeAndTune
 
         private void RainSoundButton(object sender, RoutedEventArgs e)
         {
-            state = smoothButtonTransform("rainImage");
+            state = smoothButtonTransform("rainImageBackGround");
             changeFocus("rainImage");
             playPauseSound("rain");
         }
 
         private void CampFireSoundButton(object sender, RoutedEventArgs e)
         {
-            state = smoothButtonTransform("campFireImage");
+            state = smoothButtonTransform("campFireImageBackGround");
             changeFocus("campFireImage");
             playPauseSound("campFire");
         }
 
         private void NightCricketsSoundButton(object sender, RoutedEventArgs e)
         {
-            state = smoothButtonTransform("nightCricketsImage");
+            state = smoothButtonTransform("nightCricketsImageBackGround");
             changeFocus("nightCricketsImage");
             playPauseSound("nightCrickets");
         }
 
         private void TrainSoundButton(object sender, RoutedEventArgs e)
         {
-            state = smoothButtonTransform("trainImage");
+            state = smoothButtonTransform("trainImageBackGround");
             changeFocus("trainImage");
             playPauseSound("train");
         }
 
         private void WindSoundButton(object sender, RoutedEventArgs e)
         {
-            state = smoothButtonTransform("windImage");
+            state = smoothButtonTransform("windImageBackGround");
             changeFocus("windImage");
             playPauseSound("wind");
         }
@@ -186,7 +186,33 @@ namespace TimeAndTune
             int returnValue = 0;
 
             Image image = FindName(name) as Image;
-            double targetWidth = 0.0;
+
+            double targetOpacity = 0.0;
+            if (image.Opacity == 1)
+            {
+                targetOpacity = 0.0;
+                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/play.png", UriKind.Relative));
+                soundEffectWasPressed = false;
+                playPauseButtonWasPressed = false;
+            }
+            else
+            {
+                targetOpacity = 1.0;
+                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/pause.png", UriKind.Relative));
+                soundEffectWasPressed = true;
+                playPauseButtonWasPressed = true;
+
+                returnValue = 1;
+            }
+            DoubleAnimation opacityAnimation = new DoubleAnimation
+            {
+                To = targetOpacity,
+                Duration = TimeSpan.FromSeconds(0.2)
+            };
+            image.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
+            return returnValue;
+        }
+            /*double targetWidth = 0.0;
             if (image.Width >= 580)
             {
                 targetWidth = image.Width - 30;
@@ -202,9 +228,9 @@ namespace TimeAndTune
                 playPauseButtonWasPressed = true;
 
                 returnValue = 1;
-            }
+            }*/
 
-            DoubleAnimation widthAnimation = new DoubleAnimation
+            /*DoubleAnimation widthAnimation = new DoubleAnimation
             {
                 To = targetWidth,
                 Duration = TimeSpan.FromSeconds(0.2)
@@ -212,7 +238,7 @@ namespace TimeAndTune
             image.BeginAnimation(Image.WidthProperty, widthAnimation);
 
             return returnValue;
-        }
+        }*/
        
         private void changeFocus(string name)
         {

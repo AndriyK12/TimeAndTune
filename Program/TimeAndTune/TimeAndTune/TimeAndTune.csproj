@@ -25,6 +25,7 @@
     <None Remove="DialogWindows\statistics_image.png" />
     <None Remove="logo.png" />
     <None Remove="logout_image.png" />
+    <None Remove="Pages\animationBackGround.png" />
     <None Remove="Pages\cafe_sound.png" />
     <None Remove="Pages\camp_fire_sound.png" />
     <None Remove="Pages\checkmark.png" />
@@ -66,6 +67,7 @@
     <Resource Include="DialogWindows\statistics_image.png" />
     <Resource Include="logo.png" />
     <Resource Include="logout_image.png" />
+    <Resource Include="Pages\animationBackGround.png" />
     <Resource Include="Pages\checkmark.png" />
     <Resource Include="Pages\FocusPageImages\cafeSound.png" />
     <Resource Include="Pages\FocusPageImages\campFireSound.png" />
