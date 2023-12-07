@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using EFCore;
-using EFCore.Service;
-using TimeAndTune.BLL;
-
-namespace TimeAndTune.DialogWindows
+﻿namespace TimeAndTune.DialogWindows
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using System.Windows.Threading;
+    using EFCore;
+    using EFCore.Service;
+    using TimeAndTune.BLL;
 
     public partial class AdditionalTaskInfoDialog : Window
     {
@@ -40,7 +39,7 @@ namespace TimeAndTune.DialogWindows
             this.homePage = homePage;
 
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); 
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
 
             string? performingTime = MainWindow.getTaskPerformingTime(sendedTaskID);
@@ -61,18 +60,11 @@ namespace TimeAndTune.DialogWindows
                     MainWindow.deleteTaskBackgroundPerformingTime(sendedTaskID);
                 }
             }
-            
+
             if (task != null && task.Completed == true)
             {
                 additionalInfoCheckmark.Visibility = Visibility.Visible;
             }
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            elapsed = elapsed.Add(TimeSpan.FromSeconds(1));
-
-            TimerTextBlock.Text = elapsed.ToString(@"hh\:mm\:ss");
         }
 
         public void goBackToHomePage(object sender, RoutedEventArgs e)
@@ -81,7 +73,7 @@ namespace TimeAndTune.DialogWindows
 
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, parseTimeFromString(TimerTextBlock.Text), false);
-            
+
             if (currentWindow != null)
             {
                 MainWindow.addTaskPerformingTime(taskId, TimerTextBlock.Text);
@@ -90,11 +82,13 @@ namespace TimeAndTune.DialogWindows
                 {
                     MainWindow.addTaskBackgroundPerformingTime(taskId);
                 }
+
                 timer.Stop();
 
                 currentWindow.Close();
             }
         }
+
         public void update_Click(object sender, RoutedEventArgs e)
         {
             string newName = txtTaskName.Text;
@@ -105,8 +99,8 @@ namespace TimeAndTune.DialogWindows
                 .FindName("priorityComboBox", priorityButton) as ComboBox;
             int newPrority = priorityComboBox.SelectedIndex;
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
-            EFCore.Task? newTask =  dataBaseTaskProvider.getTaskById(taskId);
-            
+            EFCore.Task? newTask = dataBaseTaskProvider.getTaskById(taskId);
+
             dataBaseTaskProvider.updateTaskById(taskId, newName, newDesc, newDate, newPrority);
 
             MainWindow.addTaskPerformingTime(taskId, TimerTextBlock.Text);
@@ -116,19 +110,19 @@ namespace TimeAndTune.DialogWindows
 
             Close();
         }
-        /*protected override void OnDeactivated(EventArgs e)
+
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            base.OnDeactivated(e);
-            if (!isClosedByUser && !noNeedToClose)
-            {
-                Close();
-            }
-        }*/
-        
+            elapsed = elapsed.Add(TimeSpan.FromSeconds(1));
+
+            TimerTextBlock.Text = elapsed.ToString(@"hh\:mm\:ss");
+        }
+
         private void txtTaskName_TextChanged(object sender, TextChangedEventArgs e)
         {
             AdditionalTaskInfoBack.txtTaskName_TextChanged(sender, e, this);
         }
+
         private void txtTaskName_GotFocus(object sender, RoutedEventArgs e)
         {
             AdditionalTaskInfoBack.txtTaskName_GotFocus(sender, e, this);
@@ -143,6 +137,7 @@ namespace TimeAndTune.DialogWindows
         {
             AdditionalTaskInfoBack.txtDate_TextChanged(sender, e, this);
         }
+
         private void txtDate_GotFocus(object sender, RoutedEventArgs e)
         {
             AdditionalTaskInfoBack.txtDate_GotFocus(sender, e, this);
@@ -162,6 +157,7 @@ namespace TimeAndTune.DialogWindows
         {
             AdditionalTaskInfoBack.txtDescription_TextChanged(sender, e, this);
         }
+
         private void txtDescription_GotFocus(object sender, RoutedEventArgs e)
         {
             AdditionalTaskInfoBack.txtDescription_GotFocus(sender, e, this);
@@ -188,6 +184,7 @@ namespace TimeAndTune.DialogWindows
                 timer.Stop();
             }
         }
+
         private void FinishClick(object sender, RoutedEventArgs e)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
@@ -196,6 +193,7 @@ namespace TimeAndTune.DialogWindows
             {
                 currentWindow.Close();
             }
+
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             int hoursSpent = parseTimeFromString(TimerTextBlock.Text).Hours;
             if (!dataBaseTaskProvider.getCompleted(dataBaseTaskProvider.getTaskById(taskId)))
@@ -204,6 +202,7 @@ namespace TimeAndTune.DialogWindows
                 userProvider.addCoinsForAUserById(MainWindow.ActiveUser.Userid, (10 + hoursSpent));
                 MainWindow.ActiveUser = userProvider.getUserByEmail(MainWindow.ActiveUser.Email);
             }
+
             dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, parseTimeFromString(TimerTextBlock.Text), true);
             homePage.updateListView();
             MainWindow.deleteTaskPerformingDate(taskId);
@@ -212,7 +211,7 @@ namespace TimeAndTune.DialogWindows
         private TimeSpan parseTimeFromString(string time)
         {
             string[] parts = time.Split(":");
-            return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2].Substring(0,2)));
+            return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2].Substring(0, 2)));
         }
     }
 }

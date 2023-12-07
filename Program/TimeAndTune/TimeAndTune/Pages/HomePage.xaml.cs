@@ -1,25 +1,24 @@
-﻿using EFCore.Service;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TimeAndTune.BLL;
-using TimeAndTune.DialogWindows;
-using Task = EFCore.Task;
-
-namespace TimeAndTune
+﻿namespace TimeAndTune
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    using EFCore.Service;
+    using TimeAndTune.BLL;
+    using TimeAndTune.DialogWindows;
+    using Task = EFCore.Task;
 
     public class CustomTaskStatusToColorConverter: IValueConverter
     {
@@ -46,12 +45,12 @@ namespace TimeAndTune
         }
     }
 
-    public class CustomTaskStatusToImage: IValueConverter
+    public class CustomTaskStatusToImage : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string status = value.ToString();
-            if(status == "True")
+            if (status == "True")
             {
                 return "/Pages/checkmark.png";
             } 
@@ -88,9 +87,9 @@ namespace TimeAndTune
             throw new NotImplementedException();
         }
     }
+
     public partial class HomePage : Page
     {
-
         private string filterState = "today";
         private int userId;
 
@@ -122,7 +121,7 @@ namespace TimeAndTune
                 default:
                     items = dataBaseTaskProvider.getAllTasksByDayUsingUserId(userId);
                     break;
-            };
+            }
             TaskListView.ItemsSource = items;
         }
 
@@ -130,14 +129,17 @@ namespace TimeAndTune
         {
             HomePageBack.openCreateNewTaskDialog_Click(sender, e, this);
         }
+
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             HomePageBack.openNavigation_Click(sender, e);
         }
+
         public void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
             HomePageBack.openUserInfo_Click(sender, e);
         }
+
         private void Today_Click(object sender, RoutedEventArgs e)
         {
             TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
@@ -167,6 +169,7 @@ namespace TimeAndTune
             filterState = "month";
             updateListView();
         }
+
         private void AllTime_Click(object sender, RoutedEventArgs e)
         {
             TodayRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
@@ -176,6 +179,7 @@ namespace TimeAndTune
             filterState = "allTime";
             updateListView();
         }
+
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;
