@@ -30,7 +30,7 @@ namespace TimeAndTune
         bool playPauseButtonWasPressed = false;
         bool muteButtonWasPressed = false;
         bool soundEffectWasPressed = false;
-        string[] soundsName = {"cafeImage", "rainImage", "campFireImage", "nightCricketsImage", "trainImage", "windImage"};
+        string[] soundsName = { "cafeImageBackGround", "rainImageBackGround", "campFireImageBackGround", "nightCricketsImageBackGround", "trainImageBackGround", "windImageBackGround" };
 
         MediaPlayer mediaPlayer = new MediaPlayer();
         int state = 0;
@@ -103,7 +103,7 @@ namespace TimeAndTune
         private void CafeSoundButton(object sender, RoutedEventArgs e)
         {
             state = smoothButtonTransform("cafeImageBackGround");
-            changeFocus("cafeImage");
+            changeFocus("cafeImageBackGround");
             playPauseSound("cafe");
 
         }
@@ -111,35 +111,35 @@ namespace TimeAndTune
         private void RainSoundButton(object sender, RoutedEventArgs e)
         {
             state = smoothButtonTransform("rainImageBackGround");
-            changeFocus("rainImage");
+            changeFocus("rainImageBackGround");
             playPauseSound("rain");
         }
 
         private void CampFireSoundButton(object sender, RoutedEventArgs e)
         {
             state = smoothButtonTransform("campFireImageBackGround");
-            changeFocus("campFireImage");
+            changeFocus("campFireImageBackGround");
             playPauseSound("campFire");
         }
 
         private void NightCricketsSoundButton(object sender, RoutedEventArgs e)
         {
             state = smoothButtonTransform("nightCricketsImageBackGround");
-            changeFocus("nightCricketsImage");
+            changeFocus("nightCricketsImageBackGround");
             playPauseSound("nightCrickets");
         }
 
         private void TrainSoundButton(object sender, RoutedEventArgs e)
         {
             state = smoothButtonTransform("trainImageBackGround");
-            changeFocus("trainImage");
+            changeFocus("trainImageBackGround");
             playPauseSound("train");
         }
 
         private void WindSoundButton(object sender, RoutedEventArgs e)
         {
             state = smoothButtonTransform("windImageBackGround");
-            changeFocus("windImage");
+            changeFocus("windImageBackGround");
             playPauseSound("wind");
         }
         
@@ -212,34 +212,7 @@ namespace TimeAndTune
             image.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
             return returnValue;
         }
-            /*double targetWidth = 0.0;
-            if (image.Width >= 580)
-            {
-                targetWidth = image.Width - 30;
-                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/play.png", UriKind.Relative));
-                soundEffectWasPressed = false;
-                playPauseButtonWasPressed = false;
-            } 
-            else
-            {
-                targetWidth = image.Width + 30;
-                PlayPauseImage.Source = new BitmapImage(new Uri("/Pages/FocusPageImages/pause.png", UriKind.Relative));
-                soundEffectWasPressed = true;
-                playPauseButtonWasPressed = true;
-
-                returnValue = 1;
-            }*/
-
-            /*DoubleAnimation widthAnimation = new DoubleAnimation
-            {
-                To = targetWidth,
-                Duration = TimeSpan.FromSeconds(0.2)
-            };
-            image.BeginAnimation(Image.WidthProperty, widthAnimation);
-
-            return returnValue;
-        }*/
-       
+            
         private void changeFocus(string name)
         {
             for (int i = 0; i < soundsName.Length; i++)
@@ -247,17 +220,14 @@ namespace TimeAndTune
                 if (soundsName[i] != name) 
                 {
                     Image image = FindName(soundsName[i]) as Image;
-                    double targetWidth = 0.0;
-                    if (image.Width >= 580)
+                    DoubleAnimation opacityAnimation = new DoubleAnimation
                     {
-                        targetWidth = image.Width - 30;
-                        DoubleAnimation widthAnimation = new DoubleAnimation
-                        {
-                            To = targetWidth,
-                            Duration = TimeSpan.FromSeconds(0.2)
-                        };
-
-                        image.BeginAnimation(Image.WidthProperty, widthAnimation);
+                        To = 0.0,
+                        Duration = TimeSpan.FromSeconds(0.2)
+                    };
+                    if (image != null)
+                    {
+                        image.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
                     }
                 }
             }
