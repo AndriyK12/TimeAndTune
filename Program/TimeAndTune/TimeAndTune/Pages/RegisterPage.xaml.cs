@@ -27,7 +27,7 @@ namespace TimeAndTune.Pages
     public partial class RegisterPage : Page
     {
         DatabaseUserProvider userService = new DatabaseUserProvider();
-        public bool comparePasswords(string passw1, string passw2)
+        public static bool comparePasswords(string passw1, string passw2)
         {
             return passw1 == passw2;
         }
@@ -35,7 +35,7 @@ namespace TimeAndTune.Pages
         {
             RegisterPageBack.NavigateToHomePage(sender, e);
         }
-        static bool IsEmail(string input)
+        public static bool IsEmail(string input)
         {
             string pattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
             Regex regex = new Regex(pattern);

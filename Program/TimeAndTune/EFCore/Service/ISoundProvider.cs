@@ -12,5 +12,6 @@ namespace EFCore.Service
         string getSoundName(Sound sound);
         string getAudioFilePath(Sound sound);
         string getPhotoFilePath(Sound sound);
+        Sound getSoundById(int id);
     }
 }
