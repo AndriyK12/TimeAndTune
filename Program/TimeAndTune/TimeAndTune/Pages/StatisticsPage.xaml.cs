@@ -1,57 +1,64 @@
-using LiveCharts.Wpf;
-using LiveCharts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using EFCore;
-using EFCore.Service;
-using LiveCharts.Definitions.Charts;
-using LiveCharts.Wpf.Charts.Base;
-using TimeAndTune.BLL;
-
 namespace TimeAndTune
 {
-    /// <summary>
-    /// Interaction logic for StatisticsPage.xaml
-    /// </summary>
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection.Emit;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+    using EFCore;
+    using EFCore.Service;
+    using LiveCharts;
+    using LiveCharts.Definitions.Charts;
+    using LiveCharts.Wpf;
+    using LiveCharts.Wpf.Charts.Base;
+    using TimeAndTune.BLL;
+
     public partial class StatisticsPage : Page
     {
         public SeriesCollection SeriesCollection { get; set; }
+
         public SeriesCollection SeriesCollectionMonth { get; set; }
+
         public SeriesCollection SeriesCollectionYear { get; set; }
+
         public string[] Labels { get; set; }
+
         public string[] LabelsMonth { get; set; }
+
         public string[] LabelsYear { get; set; }
+
         public int overallWeekTasksAmount;
         public int overallMonthTasksAmount;
         public int overallYearTasksAmount;
         public int completedWeekTasksAmount;
         public int completedMonthTasksAmount;
         public int completedYearTasksAmount;
+
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             StatisticsPageBack.openNavigation_Click(sender, e);
         }
+
         public void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
             StatisticsPageBack.openUserInfo_Click(sender, e);
         }
+
         private void updateProgressBar(int completedTasks, int overallTasks)
         {
             StatisticsPageBack.updateProgressBar(completedTasks, overallTasks, this);
         }
+
         private void Week_Click(object sender, RoutedEventArgs e)
         {
             StatisticsPageBack.Week_Click(sender, e, this);
@@ -72,10 +79,10 @@ namespace TimeAndTune
             YearHistogram.Visibility = Visibility.Visible;
             updateProgressBar(completedYearTasksAmount, overallYearTasksAmount);
         }
+
         public StatisticsPage()
         {
             InitializeComponent();
-            // Week Histogram
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             int currentDayOfWeek = (int)currentDate.DayOfWeek;
             int daysToMonday = currentDayOfWeek - (int)DayOfWeek.Monday;
@@ -119,8 +126,6 @@ namespace TimeAndTune
             DataContext = this;
             updateProgressBar(completedWeekTasksAmount, overallWeekTasksAmount);
 
-            // Month Histogram
-
             DateOnly firstDayOfMonth = new DateOnly(currentDate.Year, currentDate.Month, 1);
             DateOnly lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
             int daysInMonth = (int)lastDayOfMonth.Day - firstDayOfMonth.Day + 1;
@@ -154,7 +159,6 @@ namespace TimeAndTune
             DataContext = this;
 
             // Year Histogram
-
             int currentYear = currentDate.Year;
             Dictionary<int, List<DateOnly>> dateDictionary = new Dictionary<int, List<DateOnly>>();
             for (int month = 1; month <= 12; month++)
@@ -176,10 +180,8 @@ namespace TimeAndTune
                 int overall_amount = 0;
                 foreach (var date in kvp.Value)
                 {
-                    overall_amount += taskService.GetAmountOfTasksByDate(date,
-                        userService.getUserID(MainWindow.ActiveUser));
-                    amount_of_tasks_by_month += taskService.GetAmountOfCompletedTasksByDate(date,
-                        userService.getUserID(MainWindow.ActiveUser));
+                    overall_amount += taskService.GetAmountOfTasksByDate(date, userService.getUserID(MainWindow.ActiveUser));
+                    amount_of_tasks_by_month += taskService.GetAmountOfCompletedTasksByDate(date, userService.getUserID(MainWindow.ActiveUser));
                 }
                 tasks.Add(amount_of_tasks_by_month);
                 completedYearTasksAmount += amount_of_tasks_by_month;
@@ -195,7 +197,8 @@ namespace TimeAndTune
                         MaxColumnWidth = 110
                     }
                 };
-            string[] months = {
+            string[] months =
+            {
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             };
