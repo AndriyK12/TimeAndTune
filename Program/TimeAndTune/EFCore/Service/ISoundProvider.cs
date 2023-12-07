@@ -9,8 +9,11 @@ namespace EFCore.Service
     internal interface ISoundProvider
     {
         int getSoundId(Sound sound);
+
         string getSoundName(Sound sound);
+
         string getAudioFilePath(Sound sound);
+
         string getPhotoFilePath(Sound sound);
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace EFCore.Service
 {
     public class DatabaseTaskProvider : ITaskProvider
@@ -25,6 +24,7 @@ namespace EFCore.Service
                 context.SaveChanges();
             }
         }
+
         public List<Task> GetAllTasks()
         {
             using (var context = new TTContext())
@@ -33,6 +33,7 @@ namespace EFCore.Service
                 return allTasks;
             }
         }
+
         public int GetAmountOfTasksByDate(DateOnly date, int userID)
         {
             using (var context = new TTContext())
@@ -72,6 +73,7 @@ namespace EFCore.Service
                 return dateTasksAmount;
             }
         }
+
         public List<Task> GetAllTasksByUserID(int userID)
         {
             using (var context = new TTContext())
@@ -86,10 +88,6 @@ namespace EFCore.Service
                         userTasks.Add(task);
                     }
                 }
-                /*List<Task> tasksWithTargetDate = userTasks
-                    .Where
-                    (task => task.Completed == false &&
-                    task.*/
 
                 return userTasks;
             }
@@ -133,9 +131,9 @@ namespace EFCore.Service
 
         public EFCore.Task? getTaskById(int id)
         {
-            foreach(EFCore.Task item in this.GetAllTasks())
+            foreach (EFCore.Task item in this.GetAllTasks())
             {
-                if(item.Taskid == id)
+                if (item.Taskid == id)
                 {
                     return item;
                 }
@@ -147,13 +145,14 @@ namespace EFCore.Service
         {
             return (TimeSpan)task.Executiontime;
         }
+
         public void updateTaskById(int id, string newName, string newDesc, string newDate, int newpriority)
         {
             using (var context = new TTContext())
             {
                 Task task = getTaskById(id);
                 task.Name = newName;
-                task.Description= newDesc;
+                task.Description = newDesc;
                 DateOnly.TryParse(newDate, out DateOnly dateOnly);
                 task.Expectedfinishtime = dateOnly;
                 task.Priority = newpriority + 1;
@@ -161,6 +160,7 @@ namespace EFCore.Service
                 context.SaveChanges();
             }
         }
+
         public void updateTaskExecutiontimeById(int id, TimeSpan time, bool finished)
         {
             using (var context = new TTContext())
@@ -172,6 +172,7 @@ namespace EFCore.Service
                 context.SaveChanges();
             }
         }
+
         public List<Task> getAllSpecificTaskByUserId(int userID)
         {
             List<EFCore.Task> items = GetAllTasksByUserID(userID);
