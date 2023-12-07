@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using TimeAndTune.DialogWindows;
-using EFCore.Service;
-
-namespace TimeAndTune.BLL
+﻿namespace TimeAndTune.BLL
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using EFCore.Service;
+    using TimeAndTune.DialogWindows;
+
     internal class StatisticsPageBack : Page
     {
         public static void openNavigation_Click(object sender, RoutedEventArgs e)
@@ -25,6 +25,7 @@ namespace TimeAndTune.BLL
             };
             nav.Show();
         }
+
         public static void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
             UserInfoWindow userWnd = new UserInfoWindow();
@@ -36,12 +37,14 @@ namespace TimeAndTune.BLL
             };
             userWnd.Show();
         }
+
         public static void updateProgressBar(int completedTasks, int overallTasks, StatisticsPage sp)
         {
-            float percentage = ((float)completedTasks / (float)overallTasks);
-            sp.progressPercentage.Text = Math.Round((percentage * 100)).ToString() + "%";
+            float percentage = (float)completedTasks / (float)overallTasks;
+            sp.progressPercentage.Text = Math.Round(percentage * 100).ToString() + "%";
             sp.progressThumb.Height = 578 * percentage;
         }
+
         public static void Week_Click(object sender, RoutedEventArgs e, StatisticsPage sp)
         {
             sp.WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
@@ -52,6 +55,7 @@ namespace TimeAndTune.BLL
             sp.YearHistogram.Visibility = Visibility.Hidden;
             updateProgressBar(sp.completedWeekTasksAmount, sp.overallWeekTasksAmount, sp);
         }
+
         public static void Month_Click(object sender, RoutedEventArgs e, StatisticsPage sp)
         {
             sp.WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
@@ -62,6 +66,7 @@ namespace TimeAndTune.BLL
             sp.YearHistogram.Visibility = Visibility.Hidden;
             updateProgressBar(sp.completedMonthTasksAmount, sp.overallMonthTasksAmount, sp);
         }
+
         public static void Year_Click(object sender, RoutedEventArgs e, StatisticsPage sp)
         {
             sp.WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));

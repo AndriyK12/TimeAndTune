@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using TimeAndTune.DialogWindows;
-using EFCore.Service;
-using EFCore;
-using TimeAndTune.Pages;
-using System.Windows.Controls.Primitives;
-using System.Windows.Media.Imaging;
-
-namespace TimeAndTune.BLL
+﻿namespace TimeAndTune.BLL
 {
-    class LoginPageBack : Page
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Controls.Primitives;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using EFCore;
+    using EFCore.Service;
+    using TimeAndTune.DialogWindows;
+    using TimeAndTune.Pages;
+
+    public class LoginPageBack : Page
     {
         public static void NavigateToHomePage(object sender, RoutedEventArgs e)
         {
@@ -36,9 +36,9 @@ namespace TimeAndTune.BLL
 
         public static void txtEmail_GotFocus(object sender, RoutedEventArgs e, LoginPage lp)
         {
-            if (lp.txtEmail.Text == "")
+            if (lp.txtEmail.Text == string.Empty)
             {
-                lp.txtEmail.Text = "";
+                lp.txtEmail.Text = string.Empty;
             }
         }
 
@@ -46,7 +46,7 @@ namespace TimeAndTune.BLL
         {
             if (string.IsNullOrWhiteSpace(lp.txtEmail.Text))
             {
-                lp.txtEmail.Text = "";
+                lp.txtEmail.Text = string.Empty;
             }
         }
 
@@ -58,23 +58,23 @@ namespace TimeAndTune.BLL
 
         public static void txtPassword_GotFocus(object sender, RoutedEventArgs e, LoginPage lp)
         {
-            if (lp.txtPassword.Password == "")
+            if (lp.txtPassword.Password == string.Empty)
             {
-                lp.txtPassword.Password = "";
+                lp.txtPassword.Password = string.Empty;
                 lp.txtPassword.Foreground = Brushes.Black;
                 lp.txtPasswordVisible.Text = lp.txtPassword.Password;
-                lp.txtPasswordVisible.Text = "";
+                lp.txtPasswordVisible.Text = string.Empty;
             }
         }
 
         public static void btnShowPassword_Checked(object sender, RoutedEventArgs e, LoginPage lp)
         {
-            // Показати пароль
+           // Показати пароль
             lp.txtPassword.Visibility = Visibility.Collapsed;
             lp.txtPasswordVisible.Visibility = Visibility.Visible;
             lp.txtPasswordVisible.Text = lp.txtPassword.Password;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
+            ToggleButton? toggleButton = sender as ToggleButton;
+            Image? passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/hidePassword_image.png", UriKind.Relative));
         }
 
@@ -83,8 +83,8 @@ namespace TimeAndTune.BLL
             // Приховати пароль
             lp.txtPassword.Visibility = Visibility.Visible;
             lp.txtPasswordVisible.Visibility = Visibility.Collapsed;
-            ToggleButton toggleButton = sender as ToggleButton;
-            Image passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
+            ToggleButton? toggleButton = sender as ToggleButton;
+            Image? passwordVisibility = toggleButton.Template.FindName("passwordVisibility", toggleButton) as Image;
             passwordVisibility.Source = new BitmapImage(new Uri("/Pages/showPassword_image.png", UriKind.Relative));
         }
     }

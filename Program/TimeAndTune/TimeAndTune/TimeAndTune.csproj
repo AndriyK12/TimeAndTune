@@ -25,6 +25,7 @@
     <None Remove="DialogWindows\statistics_image.png" />
     <None Remove="logo.png" />
     <None Remove="logout_image.png" />
+    <None Remove="Pages\animationBackGround.png" />
     <None Remove="Pages\cafe_sound.png" />
     <None Remove="Pages\camp_fire_sound.png" />
     <None Remove="Pages\checkmark.png" />
@@ -49,6 +50,10 @@
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -66,6 +71,7 @@
     <Resource Include="DialogWindows\statistics_image.png" />
     <Resource Include="logo.png" />
     <Resource Include="logout_image.png" />
+    <Resource Include="Pages\animationBackGround.png" />
     <Resource Include="Pages\checkmark.png" />
     <Resource Include="Pages\FocusPageImages\cafeSound.png" />
     <Resource Include="Pages\FocusPageImages\campFireSound.png" />

@@ -1,22 +1,23 @@
-﻿using EFCore;
-using EFCore.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Xml.Linq;
-using TimeAndTune.BLL;
-namespace TimeAndTune.BLL
+﻿namespace TimeAndTune.BLL
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using System.Xml.Linq;
+    using EFCore;
+    using EFCore.Service;
+    using TimeAndTune.BLL;
+
     internal class NewTaskDialogBack : Window
     {
         public static void goBackToHomePage(object sender, RoutedEventArgs e, NewTaskDialog nw)
@@ -29,10 +30,11 @@ namespace TimeAndTune.BLL
                 currentWindow.Close();
             }
         }
+
         public static void addNewTask_Click(object sender, RoutedEventArgs e, NewTaskDialog nw)
         {
-            nw.errorTaskDate.Text = "";
-            nw.errorTaskName.Text = "";
+            nw.errorTaskDate.Text = string.Empty;
+            nw.errorTaskName.Text = string.Empty;
             string taskName = nw.txtTaskName.Text;
             string taskDescription = nw.txtDescription.Text;
             DateOnly taskExpectedTime;
@@ -67,7 +69,7 @@ namespace TimeAndTune.BLL
                 DateOnly today = DateOnly.FromDateTime(DateTime.Now);
                 if (taskExpectedTime >= today)
                 {
-                    if (taskName == "")
+                    if (taskName == string.Empty)
                     {
                         nw.noNeedToCloseOnDeactivated = true;
                         nw.errorTaskName.Text = "Please enter task name!";
@@ -96,42 +98,49 @@ namespace TimeAndTune.BLL
                 nw.noNeedToCloseOnDeactivated = false;
             }
         }
+
         public static void txtTaskName_TextChanged(object sender, TextChangedEventArgs e, NewTaskDialog nwd)
         {
             string newText = nwd.txtTaskName.Text;
         }
+
         public static void txtTaskName_GotFocus(object sender, RoutedEventArgs e, NewTaskDialog nwd)
         {
-            if (nwd.txtTaskName.Text == "")
+            if (nwd.txtTaskName.Text == string.Empty)
             {
-                nwd.txtTaskName.Text = "";
+                nwd.txtTaskName.Text = string.Empty;
             }
         }
+
         public static void txtTaskName_LostFocus(object sender, RoutedEventArgs e, NewTaskDialog nwd)
         {
             if (string.IsNullOrWhiteSpace(nwd.txtTaskName.Text))
             {
-                nwd.txtTaskName.Text = "";
+                nwd.txtTaskName.Text = string.Empty;
             }
         }
+
         public static void txtDate_TextChanged(object sender, TextChangedEventArgs e, NewTaskDialog nwd)
         {
             string newText = nwd.txtDate.Text;
         }
+
         public static void txtDate_GotFocus(object sender, RoutedEventArgs e, NewTaskDialog nwd)
         {
-            if (nwd.txtDate.Text == "")
+            if (nwd.txtDate.Text == string.Empty)
             {
-                nwd.txtDate.Text = "";
+                nwd.txtDate.Text = string.Empty;
             }
         }
+
         public static void txtDate_LostFocus(object sender, RoutedEventArgs e, NewTaskDialog nwd)
         {
             if (string.IsNullOrWhiteSpace(nwd.txtDate.Text))
             {
-                nwd.txtDate.Text = "";
+                nwd.txtDate.Text = string.Empty;
             }
         }
+
         public static void txtDate_PreviewTextInput(object sender, TextCompositionEventArgs e, NewTaskDialog nwd)
         {
             if (!char.IsDigit(e.Text[0]) && e.Text[0] != '/' && e.Text[0] != '.' && e.Text[0] != '-')
@@ -155,22 +164,25 @@ namespace TimeAndTune.BLL
                 }
             }
         }
+
         public static void txtDescription_TextChanged(object sender, TextChangedEventArgs e, NewTaskDialog nwd)
         {
             string newText = nwd.txtDescription.Text;
         }
+
         public static void txtDescription_GotFocus(object sender, RoutedEventArgs e, NewTaskDialog nwd)
         {
-            if (nwd.txtDescription.Text == "")
+            if (nwd.txtDescription.Text == string.Empty)
             {
-                nwd.txtDescription.Text = "";
+                nwd.txtDescription.Text = string.Empty;
             }
         }
+
         public static void txtDescription_LostFocus(object sender, RoutedEventArgs e, NewTaskDialog nwd)
         {
             if (string.IsNullOrWhiteSpace(nwd.txtDescription.Text))
             {
-                nwd.txtDescription.Text = "";
+                nwd.txtDescription.Text = string.Empty;
             }
         }
     }

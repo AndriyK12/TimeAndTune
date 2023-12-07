@@ -169,7 +169,7 @@
             Foreground="#FFFFFF"
             Text="Priority:" />
         <TextBlock
-            Margin="614,140,0,0"
+            Margin="604,140,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="28"
@@ -189,7 +189,7 @@
                 Orientation="Horizontal">
                 <TextBox
                     x:Name="txtDescription"
-                    Width="678"
+                    Width="610"
                     Height="313"
                     AcceptsReturn="True"
                     Background="Transparent"
@@ -243,18 +243,18 @@
                 </Style>
             </Button.Style>
         </Button>
-
-        <Image
-            Width="330"
-            Height="110"
-            Margin="-750,0,0,55"
+        <Rectangle
+            RadiusX="15"
+            RadiusY="15"
+            Margin="0,555,800,0"
+            VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Source="/DialogWindows/greenButton.png"
-            Visibility="Visible" />
-
+            Width="279" Height="100"
+            Fill="#1C4335"
+            Stroke="#FFFFFF"
+            StrokeThickness="3"/>
         <TextBlock
-            Margin="215,570,0,0"
+            Margin="190,570,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="48"
@@ -281,18 +281,18 @@
                 </Style>
             </Button.Style>
         </Button>
-
-
-        <Image
-            Width="330"
-            Height="110"
-            Margin="750,0,0,55"
+        <Rectangle
+            RadiusX="15"
+            RadiusY="15"
+            Margin="800,555,0,0"
+            VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Source="/DialogWindows/greenButton.png"
-            Visibility="Visible" />
+            Width="279" Height="100"
+            Fill="#1C4335"
+            Stroke="#FFFFFF"
+            StrokeThickness="3"/>
         <TextBlock
-            Margin="985,570,0,0"
+            Margin="1013,570,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="48"
@@ -319,7 +319,6 @@
                 </Style>
             </Button.Style>
         </Button>
-
         <Image
             x:Name="PlayPauseImage"
             Width="90"

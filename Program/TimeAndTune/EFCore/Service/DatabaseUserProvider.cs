@@ -22,6 +22,7 @@ namespace EFCore.Service
                 context.SaveChanges();
             }
         }
+
         public User getUserByEmail(string email)
         {
             User user = new User();
@@ -38,6 +39,7 @@ namespace EFCore.Service
             }
             return user;
         }
+
         public int getCoinsAmount(User user)
         {
             return (int)user.Coinsamount;

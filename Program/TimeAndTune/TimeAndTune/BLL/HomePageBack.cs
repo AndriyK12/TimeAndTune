@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using TimeAndTune.DialogWindows;
-using EFCore.Service;
-
-namespace TimeAndTune.BLL
+﻿namespace TimeAndTune.BLL
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using EFCore.Service;
+    using TimeAndTune.DialogWindows;
+
     internal class HomePageBack : Page
     {
         public static void openCreateNewTaskDialog_Click(object sender, RoutedEventArgs e, HomePage homePage)
@@ -25,6 +25,7 @@ namespace TimeAndTune.BLL
             };
             dialog.Show();
         }
+
         public static void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             NavWindow nav = new NavWindow();
@@ -36,6 +37,7 @@ namespace TimeAndTune.BLL
             };
             nav.Show();
         }
+
         public static void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
             UserInfoWindow userWnd = new UserInfoWindow();
