@@ -49,7 +49,7 @@ namespace TimeAndTune
             catch (Exception e)
             {
                 return "00:00:00";
-            } 
+            }
         }
 
         public static void deleteTaskPerformingDate(int taskId)
