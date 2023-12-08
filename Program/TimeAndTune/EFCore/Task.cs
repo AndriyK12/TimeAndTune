@@ -19,7 +19,7 @@ public partial class Task
 
     public int Priority { get; set; }
 
-    public bool? Completed { get; set; }
+    public bool Completed { get; set; }
 
     public TimeSpan? Executiontime { get; set; }
 
