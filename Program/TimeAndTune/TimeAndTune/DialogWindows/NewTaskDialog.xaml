@@ -181,7 +181,7 @@
                     Text=""
                     Foreground="Black"
                     FontSize="32"
-                    Width="678"
+                    Width="610"
                     Height="313"
                     TextWrapping="Wrap"
                     AcceptsReturn="True"
@@ -237,11 +237,11 @@
              VerticalAlignment="Top"
              HorizontalAlignment="Center"
              Text="Create"
-             Margin="820,570,0,0"
+             Margin="800,570,0,0"
              Foreground="White"
              FontSize="48"/>
         <Button
-            Margin="917,555,0,0"
+            Margin="810,555,0,0"
             Width="279" Height="112"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"

@@ -150,7 +150,7 @@ namespace EFCore.Service
         {
             using (var context = new TTContext())
             {
-                Task task = getTaskById(id);
+                Task? task = getTaskById(id);
                 task.Name = newName;
                 task.Description = newDesc;
                 DateOnly.TryParse(newDate, out DateOnly dateOnly);

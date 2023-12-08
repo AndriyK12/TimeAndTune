@@ -292,7 +292,7 @@
             Stroke="#FFFFFF"
             StrokeThickness="3"/>
         <TextBlock
-            Margin="1013,570,0,0"
+            Margin="1004,570,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="48"
