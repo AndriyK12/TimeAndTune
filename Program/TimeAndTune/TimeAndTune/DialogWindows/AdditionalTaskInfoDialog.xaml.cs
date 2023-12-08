@@ -28,12 +28,14 @@
 
         private HomePage homePage;
 
+        private EFCore.Task? currentTask;
+
         public AdditionalTaskInfoDialog(HomePage homePage, int sendedTaskID)
         {
             InitializeComponent();
 
             DatabaseTaskProvider databaseTaskProvider = new DatabaseTaskProvider();
-            EFCore.Task? task = databaseTaskProvider.getTaskById(sendedTaskID);
+            this.currentTask = databaseTaskProvider.getTaskById(sendedTaskID);
 
             taskId = sendedTaskID;
             this.homePage = homePage;
@@ -61,7 +63,7 @@
                 }
             }
 
-            if (task != null && task.Completed == true)
+            if (currentTask != null && currentTask.Completed == true)
             {
                 additionalInfoCheckmark.Visibility = Visibility.Visible;
             }
@@ -170,6 +172,11 @@
 
         private void playTimerClick(object sender, RoutedEventArgs e)
         {
+            if (currentTask.Completed == true)
+            {
+                return;
+            }
+
             if (!playPauseButtonWasPressed && !timer.IsEnabled)
             {
                 PlayPauseImage.Source = new BitmapImage(new Uri("/DialogWindows/pauseTimer.png", UriKind.Relative));
@@ -188,15 +195,20 @@
         private void FinishClick(object sender, RoutedEventArgs e)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
-
+            
             if (currentWindow != null)
             {
                 currentWindow.Close();
             }
 
+            if (currentTask.Completed == true)
+            {
+                return;
+            }
+
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
             int hoursSpent = parseTimeFromString(TimerTextBlock.Text).Hours;
-            if (!dataBaseTaskProvider.getCompleted(dataBaseTaskProvider.getTaskById(taskId)))
+            if (!dataBaseTaskProvider.getCompleted(currentTask))
             {
                 DatabaseUserProvider userProvider = new DatabaseUserProvider();
                 userProvider.addCoinsForAUserById(MainWindow.ActiveUser.Userid, (10 + hoursSpent));
