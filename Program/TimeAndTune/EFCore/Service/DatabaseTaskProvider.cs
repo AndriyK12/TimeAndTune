@@ -168,6 +168,7 @@ namespace EFCore.Service
                 Task task = getTaskById(id);
                 task.Executiontime = time;
                 task.Completed = finished;
+                task.Finishtime = DateOnly.FromDateTime(DateTime.Now);
                 context.Update(task);
                 context.SaveChanges();
             }
