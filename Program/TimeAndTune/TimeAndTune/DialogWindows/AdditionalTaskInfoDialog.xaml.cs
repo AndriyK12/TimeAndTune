@@ -74,8 +74,9 @@
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
 
             DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
-            dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, parseTimeFromString(TimerTextBlock.Text), false);
-
+            
+            dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, parseTimeFromString(TimerTextBlock.Text), currentTask.Completed);
+            
             if (currentWindow != null)
             {
                 MainWindow.addTaskPerformingTime(taskId, TimerTextBlock.Text);
