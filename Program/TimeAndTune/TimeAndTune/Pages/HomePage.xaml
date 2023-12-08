@@ -316,7 +316,6 @@
                 Name="TaskListView"
                 Grid.ColumnSpan="2"
                 Margin="10,10,10,10"
-                d:ItemsSource="{d:SampleData ItemCount=78}"
                 Background="Transparent"
                 BorderBrush="Transparent">
                 <ListView.Resources>

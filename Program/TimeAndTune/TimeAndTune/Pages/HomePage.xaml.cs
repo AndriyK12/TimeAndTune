@@ -20,7 +20,7 @@
     using TimeAndTune.DialogWindows;
     using Task = EFCore.Task;
 
-    public class CustomTaskStatusToColorConverter: IValueConverter
+    public class CustomTaskStatusToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -29,7 +29,7 @@
             {
                 return "#001AFF";
             } 
-            else if(status == 2)
+            else if (status == 2)
             {
                 return "#00A3FF";
             }
