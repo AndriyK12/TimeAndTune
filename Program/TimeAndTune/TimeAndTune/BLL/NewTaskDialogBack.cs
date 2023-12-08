@@ -64,7 +64,6 @@
             }
             if (DateOnly.TryParseExact(nw.txtDate.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateOnly result))
             {
-                MessageBox.Show(result.ToString());
                 taskExpectedTime = result;
                 nw.noNeedToCloseOnDeactivated = true;
                 DateOnly today = DateOnly.FromDateTime(DateTime.Now);
