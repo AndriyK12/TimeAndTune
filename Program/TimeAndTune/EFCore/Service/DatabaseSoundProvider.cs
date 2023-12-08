@@ -8,6 +8,22 @@
 
     public class DatabaseSoundProvider : ISoundProvider
     {
+        public Sound getSoundById(int id)
+        {
+            Sound sound = new Sound();
+            using (var context = new TTContext())
+            {
+                var allSounds = context.Sounds.ToList();
+                foreach (Sound s in allSounds)
+                {
+                    if (getSoundId(s) == id)
+                    {
+                        sound = s;
+                    }
+                }
+            }
+            return sound;
+        }
         public string getAudioFilePath(Sound sound)
         {
             return sound.Audiofilepath;
