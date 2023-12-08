@@ -406,8 +406,11 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top"
                                 FontSize="48"
-                                Foreground="#FFFFFF"
-                                Text="{Binding Expectedfinishtime}" />
+                                Foreground="#FFFFFF">
+                                <TextBlock.Text>
+                                    <Binding Path="Expectedfinishtime" StringFormat="dd/MM/yyyy" />
+                                </TextBlock.Text>
+                            </TextBlock>
                             <Line
                                 Width="65"
                                 Margin="-94,35,0,0"
