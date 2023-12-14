@@ -9,6 +9,7 @@
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
+    using EFCore;
     using EFCore.Service;
     using TimeAndTune.DialogWindows;
 
@@ -53,7 +54,6 @@
         public static void openTaskInfo_Click(object sender, RoutedEventArgs e, EFCore.Task t, HomePage homePage, int taskId)
         {
             AdditionalTaskInfoDialog taskInfoWnd = new AdditionalTaskInfoDialog(homePage, taskId);
-            taskInfoWnd.taskId = t.Taskid;
             Window mainWnd = Window.GetWindow((DependencyObject)sender);
             mainWnd.Opacity = 0.3;
             taskInfoWnd.Activated += (s, args) =>
