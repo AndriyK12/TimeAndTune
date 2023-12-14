@@ -13,9 +13,13 @@
     using System.Windows.Media.Imaging;
     using EFCore.Service;
     using TimeAndTune.DialogWindows;
+    using TimeAndTune.Pages;
+    using Serilog;
 
     internal class FocusPageBack : Page
     {
+        private static readonly ILogger logger = Log.ForContext<FocusPageBack>();
+
         static FocusPage fp;
         static bool playPauseButtonWasPressed = false;
         static bool muteButtonWasPressed = false;
@@ -28,6 +32,7 @@
         public static void setFocusPageObject(FocusPage fp_)
         {
             fp = fp_;
+            logger.Debug("FocusPage object is successfully set");
         }
 
         public static void openNavigationClick(object sender, RoutedEventArgs e)
@@ -60,6 +65,7 @@
             {
                 mediaPlayer.Volume = (float)(value / 100.0);
             }
+            logger.Debug("New volume value is successfully set");
         }
 
         public static void PlayButton(object sender, RoutedEventArgs e)
@@ -131,6 +137,7 @@
             if (state == 0)
             {
                 mediaPlayer.Stop();
+                logger.Debug("Sound effect playback stopped");
             }
             else
             {
@@ -158,6 +165,7 @@
 
                 mediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
                 mediaPlayer.Play();
+                logger.Debug("Sound effect playback started");
             }
         }
 
@@ -202,6 +210,7 @@
 
         public static void changeFocus(string name)
         {
+            
             for (int i = 0; i < soundsName.Length; i++)
             {
                 if (soundsName[i] != name)
@@ -218,6 +227,7 @@
                     }
                 }
             }
+            logger.Debug("Focus changed");
         }
     }
 }

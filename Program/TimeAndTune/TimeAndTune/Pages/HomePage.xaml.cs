@@ -1,5 +1,6 @@
 ﻿namespace TimeAndTune
 {
+    using Serilog;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -90,12 +91,15 @@
 
     public partial class HomePage : Page
     {
+        private readonly ILogger logger = Log.ForContext<HomePage>();
         private string filterState = "today";
         private int userId;
 
         public HomePage()
         {
+            logger.Information("Initializing HomePage");
             InitializeComponent();
+            logger.Information("StatisticPage initialized successfully");
             userId = MainWindow.ActiveUser.Userid;
             updateListView();
         }
@@ -123,20 +127,24 @@
                     break;
             }
             TaskListView.ItemsSource = items;
+            logger.Debug("ListView was updated");
         }
 
         public void openCreateNewTaskDialog_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("openCreateNewTaskDialog_Click clicked");
             HomePageBack.openCreateNewTaskDialog_Click(sender, e, this);
         }
 
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("openNavigation_Click clicked");
             HomePageBack.openNavigation_Click(sender, e);
         }
 
         public void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("openUserInfo_Click clicked");
             HomePageBack.openUserInfo_Click(sender, e);
         }
 
@@ -147,6 +155,7 @@
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             filterState = "today";
+            logger.Debug("Button focus chanched to " + filterState);
             updateListView();
         }
 
@@ -157,6 +166,7 @@
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             filterState = "week";
+            logger.Debug("Button focus chanched to " + filterState);
             updateListView();
         }
 
@@ -167,6 +177,7 @@
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             filterState = "month";
+            logger.Debug("Button focus chanched to " + filterState);
             updateListView();
         }
 
@@ -177,6 +188,7 @@
             MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
             AllTimeRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
             filterState = "allTime";
+            logger.Debug("Button focus chanched to " + filterState);
             updateListView();
         }
 

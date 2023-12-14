@@ -4,6 +4,7 @@
 
 namespace TimeAndTune.BLL
 {
+    using Serilog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -32,6 +33,8 @@ namespace TimeAndTune.BLL
         private static HomePage homePage;
         private static EFCore.Task? currentTask;
         private static AdditionalTaskInfoDialog atid;
+
+        private readonly static ILogger logger = Log.ForContext<AdditionalTaskInfoBack>();
 
         public static void setAllVariables(
             int taskId_, 
@@ -137,8 +140,9 @@ namespace TimeAndTune.BLL
             timer.Stop();
 
             homePage.updateListView();
-
+            logger.Debug("update_Click clicked");
             atid.Close();
+            logger.Debug("Task updated successfully");
         }
         
         public static void Timer_Tick(object sender, EventArgs e)
@@ -267,6 +271,7 @@ namespace TimeAndTune.BLL
         public static TimeSpan parseTimeFromString(string time)
         {
             string[] parts = time.Split(":");
+            logger.Debug("Parsing time data from string");
             return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2].Substring(0, 2)));
         }
     }

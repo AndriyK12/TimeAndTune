@@ -1,5 +1,6 @@
 ﻿namespace TimeAndTune.BLL
 {
+    using Serilog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
