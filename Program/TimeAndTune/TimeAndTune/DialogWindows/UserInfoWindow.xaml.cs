@@ -28,7 +28,7 @@
             if (!isClosedByUser)
             {
                 Close();
-                logger.Debug("UserInfoWindow deactivated");
+                logger.Information("UserInfoWindow deactivated");
             }
         }
 
