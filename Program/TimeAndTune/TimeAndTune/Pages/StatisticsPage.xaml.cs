@@ -71,13 +71,7 @@ namespace TimeAndTune
 
         private void Year_Click(object sender, RoutedEventArgs e)
         {
-            WeekRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            MonthRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#353535"));
-            YearRect.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A7373"));
-            WeekHistogram.Visibility = Visibility.Hidden;
-            MonthHistogram.Visibility = Visibility.Hidden;
-            YearHistogram.Visibility = Visibility.Visible;
-            updateProgressBar(completedYearTasksAmount, overallYearTasksAmount);
+            StatisticsPageBack.Year_Click(sender, e, this);
         }
 
         public StatisticsPage()
