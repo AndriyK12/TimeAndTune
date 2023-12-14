@@ -17,9 +17,11 @@
     using EFCore;
     using EFCore.Service;
     using TimeAndTune.BLL;
+    using Serilog;
 
     public partial class NewTaskDialog : Window
     {
+        private readonly ILogger logger = Log.ForContext<NewTaskDialog>();
         public bool noNeedToCloseOnDeactivated = false;
         public HomePage homePage;
 
@@ -27,6 +29,7 @@
         {
             InitializeComponent();
             this.homePage = homePage;
+            logger.Information("NewTaskDialog created.");
         }
 
         public void goBackToHomePage(object sender, RoutedEventArgs e)
@@ -45,6 +48,7 @@
 
         private void addNewTask_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("addNewTask_Click triggered.");
             NewTaskDialogBack.addNewTask_Click(sender, e, this);
         }
 
