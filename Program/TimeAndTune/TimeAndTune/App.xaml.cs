@@ -8,8 +8,25 @@
     using System.Threading.Tasks;
     using System.Windows;
     using Microsoft.Extensions.DependencyInjection;
+    using Serilog;
+    using Serilog.Events;
 
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            ConfigureLogging();
+
+            base.OnStartup(e);
+        }
+
+        private static void ConfigureLogging()
+        {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Debug()
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+        }
     }
 }
