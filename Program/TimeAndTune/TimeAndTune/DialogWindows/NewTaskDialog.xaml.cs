@@ -27,14 +27,17 @@
 
         public NewTaskDialog(HomePage homePage)
         {
+            logger.Information("Initializing NewTaskDialog");
             InitializeComponent();
             this.homePage = homePage;
-            logger.Information("NewTaskDialog created.");
+            logger.Information("NewTaskDialog initialized successfully");
         }
 
         public void goBackToHomePage(object sender, RoutedEventArgs e)
         {
+            logger.Debug("Navigating to HomePage");
             NewTaskDialogBack.goBackToHomePage(sender, e, this);
+            logger.Debug("Navigated to HomePage successfully");
         }
 
         protected override void OnDeactivated(EventArgs e)
@@ -43,13 +46,15 @@
             if (!noNeedToCloseOnDeactivated)
             {
                 Close();
+                logger.Information("NewTaskDialog window deactivated");
             }
         }
 
         private void addNewTask_Click(object sender, RoutedEventArgs e)
         {
-            logger.Debug("addNewTask_Click triggered.");
+            logger.Debug("addNewTask_Click clicked");
             NewTaskDialogBack.addNewTask_Click(sender, e, this);
+            logger.Debug("addNewTask_Click completed");
         }
 
         private void txtTaskName_TextChanged(object sender, TextChangedEventArgs e)

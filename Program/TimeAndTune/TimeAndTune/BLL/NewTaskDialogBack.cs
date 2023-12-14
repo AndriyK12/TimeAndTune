@@ -16,10 +16,12 @@
     using System.Xml.Linq;
     using EFCore;
     using EFCore.Service;
+    using Serilog;
     using TimeAndTune.BLL;
 
     internal class NewTaskDialogBack : Window
     {
+        private readonly static ILogger logger = Log.ForContext<NewTaskDialogBack>();
         public static void goBackToHomePage(object sender, RoutedEventArgs e, NewTaskDialog nw)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
@@ -73,20 +75,25 @@
                     {
                         nw.noNeedToCloseOnDeactivated = true;
                         nw.errorTaskName.Text = "Please enter task name!";
+                        logger.Error("Wrong task name");
                         nw.noNeedToCloseOnDeactivated = false;
                     }
                     else
                     {
                         DatabaseTaskProvider taskService = new DatabaseTaskProvider();
                         taskService.addNewTask(taskName, taskDescription, taskExpectedTime, taskPriority, userIdRef);
+                        logger.Debug("Added new task successfully");
                         nw.homePage.updateListView();
+                        logger.Debug("Updated list of tasks successfully");
                         nw.Close();
+                        logger.Debug("NewTaskDialog window deactivated");
                     }
                 }
                 else
                 {
                     nw.noNeedToCloseOnDeactivated = true;
                     nw.errorTaskDate.Text = "You can not set expected finish date to past time!";
+                    logger.Error("Finish date was set to the past");
                     nw.noNeedToCloseOnDeactivated = false;
                 }
 
@@ -95,6 +102,7 @@
             {
                 nw.noNeedToCloseOnDeactivated = true;
                 nw.errorTaskDate.Text = "Date was set incorrectly! Please enter in format dd/mm/yyyy.";
+                logger.Error("Date was set incorrectly");
                 nw.noNeedToCloseOnDeactivated = false;
             }
         }

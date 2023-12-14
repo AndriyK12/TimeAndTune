@@ -10,10 +10,12 @@
     using System.Windows.Input;
     using System.Windows.Media;
     using EFCore.Service;
+    using Serilog;
     using TimeAndTune.DialogWindows;
 
     internal class StatisticsPageBack : Page
     {
+        private readonly static ILogger logger = Log.ForContext<StatisticsPageBack>();
         public static void openNavigation_Click(object sender, RoutedEventArgs e)
         {
             NavWindow nav = new NavWindow();
@@ -40,9 +42,11 @@
 
         public static void updateProgressBar(int completedTasks, int overallTasks, StatisticsPage sp)
         {
+            logger.Debug("Updating progressBar...");
             float percentage = (float)completedTasks / (float)overallTasks;
             sp.progressPercentage.Text = Math.Round(percentage * 100).ToString() + "%";
             sp.progressThumb.Height = 578 * percentage;
+            logger.Debug("ProgressBar updated");
         }
 
         public static void Week_Click(object sender, RoutedEventArgs e, StatisticsPage sp)

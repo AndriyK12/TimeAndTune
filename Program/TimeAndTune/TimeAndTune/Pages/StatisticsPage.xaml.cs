@@ -21,10 +21,12 @@ namespace TimeAndTune
     using LiveCharts.Definitions.Charts;
     using LiveCharts.Wpf;
     using LiveCharts.Wpf.Charts.Base;
+    using Serilog;
     using TimeAndTune.BLL;
 
     public partial class StatisticsPage : Page
     {
+        private readonly ILogger logger = Log.ForContext<StatisticsPage>();
         public SeriesCollection SeriesCollection { get; set; }
 
         public SeriesCollection SeriesCollectionMonth { get; set; }
@@ -46,37 +48,51 @@ namespace TimeAndTune
 
         public void openNavigation_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("openNavigation_Click clicked");
             StatisticsPageBack.openNavigation_Click(sender, e);
+            logger.Debug("Navigation window opened");
         }
 
         public void openUserInfo_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("openUserInfo_Click clicked");
             StatisticsPageBack.openUserInfo_Click(sender, e);
+            logger.Debug("UserInfo opened successfully");
         }
 
         private void updateProgressBar(int completedTasks, int overallTasks)
         {
+            logger.Debug("Updating progressBar...");
             StatisticsPageBack.updateProgressBar(completedTasks, overallTasks, this);
+            logger.Debug("ProgressBar updated");
         }
 
         private void Week_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("Week_Click clicked");
             StatisticsPageBack.Week_Click(sender, e, this);
+            logger.Debug("Week graph displayed successfully");
         }
 
         private void Month_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("Month_Click clicked");
             StatisticsPageBack.Month_Click(sender, e, this);
+            logger.Debug("Month graph displayed successfully");
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("Year_Click clicked");
             StatisticsPageBack.Year_Click(sender, e, this);
+            logger.Debug("Year graph displayed successfully");
         }
 
         public StatisticsPage()
         {
+            logger.Information("Initializing StatisticPage");
             InitializeComponent();
+            logger.Information("StatisticPage initialized successfully");
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
             int currentDayOfWeek = (int)currentDate.DayOfWeek;
             int daysToMonday = currentDayOfWeek - (int)DayOfWeek.Monday;
