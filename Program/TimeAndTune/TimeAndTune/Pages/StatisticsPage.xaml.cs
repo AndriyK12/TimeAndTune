@@ -27,6 +27,7 @@ namespace TimeAndTune
     public partial class StatisticsPage : Page
     {
         private readonly ILogger logger = Log.ForContext<StatisticsPage>();
+
         public SeriesCollection SeriesCollection { get; set; }
 
         public SeriesCollection SeriesCollectionMonth { get; set; }
