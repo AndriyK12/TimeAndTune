@@ -19,11 +19,14 @@
     using System.Windows.Shapes;
     using EFCore;
     using EFCore.Service;
+    using Serilog;
     using TimeAndTune.BLL;
 
     public partial class RegisterPage : Page
     {
+        private readonly ILogger logger = Log.ForContext<RegisterPage>();
         DatabaseUserProvider userService = new DatabaseUserProvider();
+
         public static bool comparePasswords(string passw1, string passw2)
         {
             return passw1 == passw2;
@@ -31,7 +34,9 @@
 
         public void NavigateToHomePage(object sender, RoutedEventArgs e)
         {
+            logger.Debug("Navigating to HomePage");
             RegisterPageBack.NavigateToHomePage(sender, e);
+            logger.Debug("Navigated to HomePage successfully");
         }
 
         public static bool IsEmail(string input)
@@ -43,6 +48,7 @@
 
         public void SighUp_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("SighUp_Click clicked");
             errorRegisterEmailInput.Text = string.Empty;
             errorRegisterPasswordsDontMatch.Text = string.Empty;
             errorRegisterAllFields.Text = string.Empty;
@@ -53,16 +59,19 @@
             if (!IsEmail(enteredEmail))
             {
                 errorRegisterEmailInput.Text = "Please enter valid email!";
+                logger.Error("Entered invalid email");
             }
             else if (userService.isUserAlreadyExist(enteredEmail))
             {
                 errorRegisterEmailInput.Text = "User with this email already exists!";
+                logger.Error("Entered already existing email");
             }
             else if (!comparePasswords(enteredPassword, passwordConfirmation))
             {
                 txtPassword.Password = string.Empty;
                 txtConfirmPassword.Password = string.Empty;
                 errorRegisterPasswordsDontMatch.Text = "Passwords do not match!";
+                logger.Error("Entered passwords do not match");
             }
             else 
             { 
@@ -70,10 +79,12 @@
                 if (enteredName == string.Empty || enteredEmail == string.Empty || enteredPassword == string.Empty)
                 {
                     errorRegisterAllFields.Text = "Please enter every field!";
+                    logger.Error("Not every field was entered");
                 }
                 else
                 {
                     userService.addNewUser(enteredName, enteredEmail, hashedPassword);
+                    logger.Debug("Signed up successfully");
                     User user = userService.getUserByEmail(enteredEmail);
                     MainWindow.ActiveUser = user;
                     NavigateToHomePage(sender, e);
@@ -83,12 +94,16 @@
 
         public void onSignIn_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("onSignIn_Click clicked");
             RegisterPageBack.onSignIn_Click(sender, e);
+            logger.Debug("onSignIn_Click completed");
         }
 
         public RegisterPage()
         {
+            logger.Information("Initializing RegisterPage");
             InitializeComponent();
+            logger.Information("RegisterPage initialized successfully");
         }
 
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
@@ -128,12 +143,16 @@
 
         private void btnShowPassword_Checked(object sender, RoutedEventArgs e)
         {
+            logger.Debug("btnShowPassword_Checked clicked");
             RegisterPageBack.btnShowPassword_Checked(sender, e, this);
+            logger.Debug("btnShowPassword_Checked success");
         }
 
         private void btnShowPassword_Unchecked(object sender, RoutedEventArgs e)
         {
+            logger.Debug("btnShowPassword_Unchecked clicked");
             RegisterPageBack.btnShowPassword_Unchecked(sender, e, this);
+            logger.Debug("btnShowPassword_Unchecked success");
         }
 
         private void txtConfirmPassword_GotFocus(object sender, RoutedEventArgs e)
@@ -143,12 +162,16 @@
 
         private void btnShowConfirmPassword_Checked(object sender, RoutedEventArgs e)
         {
+            logger.Debug("btnShowConfirmPassword_Checked clicked");
             RegisterPageBack.btnShowConfirmPassword_Checked(sender, e, this);
+            logger.Debug("btnShowConfirmPassword_Checked success");
         }
 
         private void btnShowConfirmPassword_Unchecked(object sender, RoutedEventArgs e)
         {
+            logger.Debug("btnShowConfirmPassword_Unchecked clicked");
             RegisterPageBack.btnShowConfirmPassword_Unchecked(sender, e, this);
+            logger.Debug("btnShowConfirmPassword_Unchecked success");
         }
     }
 }

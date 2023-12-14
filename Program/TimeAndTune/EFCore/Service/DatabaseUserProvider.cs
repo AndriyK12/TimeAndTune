@@ -68,7 +68,7 @@ namespace EFCore.Service
         public bool isUserAlreadyExist(string email)
         {
             User user = getUserByEmail(email);
-            if (user != null)
+            if (user.Email != null)
             {
                 return true;
             }
