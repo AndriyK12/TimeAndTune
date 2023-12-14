@@ -1,5 +1,6 @@
 ﻿namespace TimeAndTune
 {
+    using Serilog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,6 +19,7 @@
 
     public partial class UserInfoWindow : Window
     {
+        private readonly ILogger logger = Log.ForContext<UserInfoWindow>();
         public bool isClosedByUser = false;
 
         protected override void OnDeactivated(EventArgs e)
@@ -26,17 +28,22 @@
             if (!isClosedByUser)
             {
                 Close();
+                logger.Debug("UserInfoWindow deactivated");
             }
         }
 
         public void exit_Click(object sender, RoutedEventArgs e)
         {
+            logger.Debug("exit_Click clicked");
             UserInfoBack.exit_Click(sender, e, this);
+            logger.Debug("exit_Click completed");
         }
 
         public UserInfoWindow()
         {
+            logger.Information("Initializing UserInfoWindow");
             InitializeComponent();
+            logger.Information("UserInfoWindow initialized successfully");
             Left = SystemParameters.PrimaryScreenWidth - Width;
             Top = 23;
             usernameText.Text = MainWindow.ActiveUser.Username;
