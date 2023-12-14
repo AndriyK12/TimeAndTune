@@ -1,5 +1,6 @@
 ﻿namespace TimeAndTune.BLL
 {
+    using Serilog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,6 +19,7 @@
 
     internal class NavWindowBack : Window
     {
+        private readonly static ILogger logger = Log.ForContext<NavWindowBack>();
         public static void navigateHome_Click(object sender, RoutedEventArgs e, NavWindow nw)
         {
             HomePage homePage = new HomePage();
@@ -29,6 +31,7 @@
 
             nw.isClosedByUser = true;
             nw.Close();
+            logger.Information("NavWindow deactivated");
         }
 
         public static void navigateStatistics_Click(object sender, RoutedEventArgs e, NavWindow nw)
@@ -42,6 +45,7 @@
 
             nw.isClosedByUser = true;
             nw.Close();
+            logger.Information("NavWindow deactivated");
         }
 
         public static void navigateFocus_Click(object sender, RoutedEventArgs e, NavWindow nw)
@@ -55,6 +59,7 @@
 
             nw.isClosedByUser = true;
             nw.Close();
+            logger.Information("NavWindow deactivated");
         }
     }
 }
