@@ -7,6 +7,7 @@ namespace TimeAndTune.BLL
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
@@ -17,13 +18,137 @@ namespace TimeAndTune.BLL
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using System.Windows.Shapes;
+    using System.Windows.Threading;
     using EFCore;
     using EFCore.Service;
     using TimeAndTune.DialogWindows;
 
     internal class AdditionalTaskInfoBack : Window
     {
+        public static int taskId;
+        static bool playPauseButtonWasPressed = false;
+        private static DispatcherTimer timer;
+        private static TimeSpan elapsed;
+        private static HomePage homePage;
+        private static EFCore.Task? currentTask;
+        private static AdditionalTaskInfoDialog atid;
+
+        public static void setAllVariables(
+            int taskId_, 
+            HomePage homePage_,
+            AdditionalTaskInfoDialog atid_)
+        {
+            taskId = taskId_;
+            homePage = homePage_;
+            atid = atid_;
+
+            DatabaseTaskProvider databaseTaskProvider = new DatabaseTaskProvider();
+            currentTask = databaseTaskProvider.getTaskById(taskId);
+
+            string? performingTime = MainWindow.getTaskPerformingTime(taskId);
+            string backgroundPerformingTime = MainWindow.getTaskBackgroundPerformingTime(taskId);
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+
+            if (performingTime != "00:00:00")
+            {
+                elapsed = AdditionalTaskInfoBack.parseTimeFromString(performingTime).Duration() +
+                    AdditionalTaskInfoBack.parseTimeFromString(backgroundPerformingTime).Duration();
+                atid.TimerTextBlock.Text = elapsed.ToString();
+                atid.TimerTextBlock.Visibility = Visibility.Visible;
+
+                if (backgroundPerformingTime != "00:00:00")
+                {
+                    timer.Start();
+                    playPauseButtonWasPressed = true;
+                    atid.PlayPauseImage.Source = new BitmapImage(new Uri("/DialogWindows/pauseTimer.png", UriKind.Relative));
+                    MainWindow.deleteTaskBackgroundPerformingTime(taskId);
+                }
+            }
+
+            if (currentTask != null && currentTask.Completed == true)
+            {
+                atid.additionalInfoCheckmark.Visibility = Visibility.Visible;
+            }
+        }
+
         public static void goBackToHomePage(object sender, RoutedEventArgs e)
+        {
+            Window currentWindow = Window.GetWindow((DependencyObject)sender);
+
+            DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
+
+            dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, parseTimeFromString(atid.TimerTextBlock.Text), currentTask.Completed);
+
+            if (currentWindow != null)
+            {
+                MainWindow.addTaskPerformingTime(taskId, atid.TimerTextBlock.Text);
+
+                if (playPauseButtonWasPressed)
+                {
+                    MainWindow.addTaskBackgroundPerformingTime(taskId);
+                }
+
+                timer.Stop();
+
+                currentWindow.Close();
+            }
+        }
+
+        public static void playTimerClick(object sender, RoutedEventArgs e)
+        {
+            if (currentTask.Completed == true)
+            {
+                return;
+            }
+
+            if (!playPauseButtonWasPressed && !timer.IsEnabled)
+            {
+                atid.PlayPauseImage.Source = new BitmapImage(new Uri("/DialogWindows/pauseTimer.png", UriKind.Relative));
+                atid.TimerTextBlock.Visibility = Visibility.Visible;
+                playPauseButtonWasPressed = true;
+                timer.Start();
+            }
+            else
+            {
+                atid.PlayPauseImage.Source = new BitmapImage(new Uri("/DialogWindows/playTimer.png", UriKind.Relative));
+                playPauseButtonWasPressed = false;
+                timer.Stop();
+            }
+        }
+
+        public static void update_Click(object sender, RoutedEventArgs e)
+        {
+            string newName = atid.txtTaskName.Text;
+            string newDesc = atid.txtDescription.Text;
+            string newDate = atid.txtDate.Text;
+
+            ComboBox? priorityComboBox = atid.priorityButton.Template
+                .FindName("priorityComboBox", atid.priorityButton) as ComboBox;
+            int newPrority = priorityComboBox.SelectedIndex;
+            DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
+            EFCore.Task? newTask = dataBaseTaskProvider.getTaskById(taskId);
+
+            dataBaseTaskProvider.updateTaskById(taskId, newName, newDesc, newDate, newPrority);
+
+            MainWindow.addTaskPerformingTime(taskId, atid.TimerTextBlock.Text);
+            timer.Stop();
+
+            homePage.updateListView();
+
+            atid.Close();
+        }
+        
+        public static void Timer_Tick(object sender, EventArgs e)
+        {
+            elapsed = elapsed.Add(TimeSpan.FromSeconds(1));
+
+            atid.TimerTextBlock.Text = elapsed.ToString(@"hh\:mm\:ss");
+        }
+
+        public static void FinishClick(object sender, EventArgs e)
         {
             Window currentWindow = Window.GetWindow((DependencyObject)sender);
 
@@ -31,24 +156,24 @@ namespace TimeAndTune.BLL
             {
                 currentWindow.Close();
             }
-        }
 
-        public static void update_Click(object sender, RoutedEventArgs e, AdditionalTaskInfoDialog atid)
-        {
-            string newName = atid.txtTaskName.Text;
-            string newDesc = atid.txtDescription.Text;
-            string newDate = atid.txtDate.Text;
-            ComboBox? priorityComboBox = atid.priorityButton.Template
-                .FindName("priorityComboBox", atid.priorityButton) as ComboBox;
-            if (priorityComboBox != null)
+            if (currentTask.Completed == true)
             {
-                int newPrority = priorityComboBox.SelectedIndex;
-                DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
-                EFCore.Task? newTask = dataBaseTaskProvider.getTaskById(atid.taskId);
-                dataBaseTaskProvider.updateTaskById(atid.taskId, newName, newDesc, newDate, newPrority);
+                return;
             }
 
-            atid.Close();
+            DatabaseTaskProvider dataBaseTaskProvider = new DatabaseTaskProvider();
+            int hoursSpent = AdditionalTaskInfoBack.parseTimeFromString(atid.TimerTextBlock.Text).Hours;
+            if (!dataBaseTaskProvider.getCompleted(currentTask))
+            {
+                DatabaseUserProvider userProvider = new DatabaseUserProvider();
+                userProvider.addCoinsForAUserById(MainWindow.ActiveUser.Userid, (10 + hoursSpent));
+                MainWindow.ActiveUser = userProvider.getUserByEmail(MainWindow.ActiveUser.Email);
+            }
+
+            dataBaseTaskProvider.updateTaskExecutiontimeById(taskId, AdditionalTaskInfoBack.parseTimeFromString(atid.TimerTextBlock.Text), true);
+            homePage.updateListView();
+            MainWindow.deleteTaskPerformingDate(taskId);
         }
 
         public static void txtTaskName_TextChanged(object sender, TextChangedEventArgs e, AdditionalTaskInfoDialog atid)
@@ -137,6 +262,12 @@ namespace TimeAndTune.BLL
             {
                 atid.txtDescription.Text = string.Empty;
             }
+        }
+
+        public static TimeSpan parseTimeFromString(string time)
+        {
+            string[] parts = time.Split(":");
+            return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2].Substring(0, 2)));
         }
     }
 }
