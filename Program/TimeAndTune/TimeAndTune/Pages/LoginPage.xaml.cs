@@ -42,6 +42,7 @@
         public void SignIn_Click(object sender, RoutedEventArgs e)
         {
             logger.Debug("SignIn_Click clicked");
+            throw new Exception();
             string enteredEmail = txtEmail.Text;
             string enteredPassword = txtPassword.Password;
 
