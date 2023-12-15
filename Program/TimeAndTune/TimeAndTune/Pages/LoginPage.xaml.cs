@@ -74,6 +74,8 @@
         public void onCreateAccount_Click(object sender, RoutedEventArgs e)
         {
             logger.Debug("Navigating to RegisterPage");
+            throw new Exception();
+
             RegisterPage registerPage = new RegisterPage();
             var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null && mainWindow.FindName("mainFrame") is Frame mainFrame)
